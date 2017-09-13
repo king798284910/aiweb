@@ -23,7 +23,9 @@ export default new Router({
         },
         {
             path: '/web/:id',
-            component: resolve => require(['@/components/details'], resolve)
+            component: resolve => require(['@/components/details'], resolve),
+            meta:[{path:'/home',text:'首页'},
+                  {path:'/web',text:'C3/H5'}]
         },//路由到h5/c3页
 
         {
@@ -32,8 +34,10 @@ export default new Router({
         },
         {
             path: '/itnews/:id',
-            component: resolve => require(['@/components/details'], resolve)
-        },//路由到it咨询页
+            component: resolve => require(['@/components/details'], resolve),
+            meta:[{path:'/home',text:'首页'},
+                  {path:'/itnews',text:'it资讯'}]
+        },//路由到it资讯页
 
         {
             path: '/notes',
@@ -41,7 +45,9 @@ export default new Router({
         },
         {
             path: '/notes/:id',
-            component: resolve => require(['@/components/details'], resolve)
+            component: resolve => require(['@/components/details'], resolve),
+            meta:[{path:'/home',text:'首页'},
+                  {path:'/notes',text:'心得笔记'}]
         },//路由到心得笔记页
 
         {

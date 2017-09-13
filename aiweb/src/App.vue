@@ -1,5 +1,7 @@
 <template>
 	<div id="app">
+		<progress-bar v-if='progressBarShow'></progress-bar>
+
 		<div class='boxLeft' :class='{active:active3}'>
 			<header class="head">
 				<div class='headerTop'>
@@ -9,13 +11,13 @@
 						<)</p>
 				</div>
 				<div class='timaAndmusic'  :class='{TimaAndmusic:ifshowTimaAndmusic,TimaAndmusicOut:!ifshowTimaAndmusic}'>
+
 					<div class='musicEmbed'>
 						<embed src="//music.163.com/outchain/player?type=0&id=873274562&auto=0&height=90" />
 					</div>
 					<div class='timeEmbed'>
 						<embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" quality="high" bgcolor="#ffffff" width="270" height="100" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
 					</div>
-					
 					<!--<object type="application/x-shockwave-flash" style="outline:none; margin-top: 10px;border-radius: 3px;box-shadow: 0 0 10px #ccc;" data="http://cdn.abowman.com/widgets/fish/fish.swf?" width="270" height="150">
 						<param name="movie" value="http://cdn.abowman.com/widgets/fish/fish.swf?">
 						<param name="AllowScriptAccess" value="always">
@@ -59,6 +61,7 @@
 </template>
 
 <script>
+	import progressBar from './components/commen/progressBar.vue';
 	export default {
 		name: 'app',
 		data() {
@@ -95,11 +98,19 @@
 					'text': '关于我',
 					'path': '/about'
 				}, ],
+				progressBarShow:true,
 			}
 		},
+		components:{
+            progressBar
+        },
+		watch:{
+			progressBarShow_(){
+				this.progressBarShow = this.progressBarShow_
 
+			}
+		},
 		mounted() {
-
 			var self = this;
 
 			function Star(id, x, y) {
@@ -301,13 +312,14 @@
 					}
 				}
 			}; //滚动条监听
-				
-
 		},
 		computed:{
 			ifshowTimaAndmusic(){
 				return this.$store.state.asideFlag
-			}
+			},
+			progressBarShow_(){
+		        return this.$store.state.progressBarShow
+			},
 		},
 		methods: {
 			textMouseEnter_() {
@@ -348,12 +360,12 @@
 		background-attachment: fixed;
 		background-size: 100% auto;
 	}
-	
+
 	#app {
 		height: 100%;
 		width: 100%;
 	}
-	
+
 	.boxRight {
 		width: 300px;
 		background: #fff;
@@ -364,25 +376,25 @@
 		transform: translateX(100%);
 		transition: all 0.5s;
 	}
-	
+
 	.boxLeft {
 		position: relative;
 		overflow: hidden;
 		width: 100%;
 		transition: all 0.5s;
-		min-height: 900px;
+		min-height: 1030px;
 		border-top: 1px solid transparent;
 	}
-	
+
 	.boxLeft.active {
 		width: calc(100% - 300px);
 		transition: all 0.5s;
 	}
-	
+
 	.boxRight.active {
 		transform: translateX(0);
 	}
-	
+
 	.sidebar-toggle {
 		position: fixed;
 		right: 30px;
@@ -396,7 +408,7 @@
 		cursor: pointer;
 		border-radius: 50%;
 	}
-	
+
 	.sidebar-toggle-line {
 		position: relative;
 		display: inline-block;
@@ -408,11 +420,11 @@
 		opacity: 1;
 		transition: all 0.3s;
 	}
-	
+
 	.sidebar-toggle-line:first-child {
 		margin-top: 1px;
 	}
-	
+
 	.sidebar-toggle-line-first.active {
 		width: 50%;
 		top: 2px;
@@ -420,7 +432,7 @@
 		opacity: 1;
 		left: 0px;
 	}
-	
+
 	.sidebar-toggle-line-last.active {
 		width: 50%;
 		top: -2px;
@@ -428,7 +440,7 @@
 		opacity: 1;
 		left: 0px;
 	}
-	
+
 	.sidebar-toggle-line-first.active2 {
 		width: 100%;
 		top: 5px;
@@ -436,11 +448,11 @@
 		opacity: 1;
 		left: 0px;
 	}
-	
+
 	.sidebar-toggle-line-middle.active2 {
 		opacity: 0;
 	}
-	
+
 	.sidebar-toggle-line-last.active2 {
 		width: 100%;
 		top: -5px;
@@ -448,7 +460,7 @@
 		opacity: 1;
 		left: 0px;
 	}
-	
+
 	.routerVue {
 		position: relative;
 		top: 0;
@@ -456,7 +468,7 @@
 		margin: 105px auto 70px;
 		z-index: 99;
 	}
-	
+
 	.nav {
 		width: 100%;
 		height: 40px;
@@ -468,7 +480,7 @@
 		/*background: linear-gradient(to right,rgba(255, 167, 73, 0.2) 0%,rgb(255, 167, 73) 20%,rgb(255, 167, 73) 80%,rgba(255, 167, 73, 0.2) 100%);*/
 		animation: headMove 1s ease-out;
 	}
-	
+
 	.nav.active {
 		position: fixed;
 		z-index: 999;
@@ -476,14 +488,14 @@
 		background: linear-gradient(to right, rgba(255, 123, 173, 0) 0%, rgba(124, 189, 253, 1) 20%, rgba(124, 189, 253, 1) 80%, rgba(255, 123, 173, 0) 100%);
 		overflow: hidden;
 	}
-	
+
 	.nav ul {
 		width: 1030px;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 	}
-	
+
 	.nav ul li {
 		width: 100px;
 		height: 40px;
@@ -493,7 +505,7 @@
 		color: #fff;
 		cursor: pointer;
 	}
-	
+
 	#canvas {
 		width: 100%;
 		height: 100%;
@@ -518,7 +530,7 @@
   animation-fill-mode:both;
   mix-blend-mode:overlay;
 }*/
-	
+
 	@keyframes colorChange {
 		0%,
 		100% {
@@ -565,14 +577,14 @@
 			transform: translateY(0);
 			opacity: 1;
 		}
-		
+
 	}
 	.canvasBox {
 		width: 1000px;
 		height: 100px;
 		margin: 0 auto;
 	}
-	
+
 	.head {
 		width: 1030px;
 		height: 80px;
@@ -580,7 +592,7 @@
 		position: relative;
 		z-index: 999;
 	}
-	
+
 	.headerTop {
 		color: #fff;
 		/*text-align: center;*/
@@ -588,7 +600,7 @@
 		text-shadow: #fe5757 1px 1px 3px;
 		position: relative;
 	}
-	
+
 	.headerTop span {
 		display: inline-block;
 		position: relative;
@@ -597,7 +609,7 @@
 		cursor: pointer;
 		animation: headMove 0.7s ease-out;
 	}
-	
+
 	.headerTop p {
 		position: absolute;
 		font-size: 12px;
@@ -612,22 +624,22 @@
 		transition: all 0.3s;
 		font-style: italic;
 	}
-	
+
 	.headerTop p.active {
 		transform: translateX(-200%);
 	}
-	
+
 	.headerTop h1 {
 		font-size: 16px;
 		font-weight: normal;
 		animation: headMove 0.4s ease-out;
 	}
-	
+
 	.blogName {
 		color: #fff;
 		position: relative;
 	}
-	
+
 	.blogName:before {
 		content: "";
 		position: absolute;
@@ -640,7 +652,7 @@
 		transform: scaleX(0);
 		transition: all 0.3s;
 	}
-	
+
 	.navLink {
 		display: inline-block;
 		width: 100%;
@@ -652,30 +664,30 @@
 		background: rgba(255, 255, 255, 0.4);
 		border-radius: 50px 0;
 	}
-	
+
 	.navLink:hover {
 		transform: rotate(0);
 		background: #ff7bad;
 		font-weight: bold;
 	}
-	
+
 	.nav .router-link-exact-active ,.nav .router-link-active{
 		transform: rotate(0);
 		background: #ff7bad;
 		font-weight: bold;
 	}
-	
+
 	.blogName.router-link-exact-active {
 		transform: rotate(0);
 		background: transparent;
 	}
-	
+
 	.blogName:hover::before {
 		content: "";
 		visibility: visible;
 		transform: scaleX(1);
 	}
-	
+
 	.footer {
 		height: 40px;
 		width: 100%;
@@ -687,7 +699,7 @@
 		position: absolute;
 		bottom: 0;
 	}
-	
+
 	.timaAndmusic {
 		position: absolute;
 		top: 185px;
@@ -695,16 +707,16 @@
 		width: 270px;
 		transform: translateX(10000px);
 	}
-	
+
 	.timeEmbed {
 		box-shadow: 0 0 10px #ccc;
 		background: rgba(255,255,255,0.5);
 		margin-top: 15px;
 	}
-	
+
 	.musicEmbed{
 		position: relative;
-		
+
 		width: 270px;
 		height: 90px;
 		box-shadow: 0 0 10px #ccc;

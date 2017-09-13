@@ -185,7 +185,7 @@
         margin-top: 15px;
         width: 100%;
         padding-top: 90px;
-        background: url('../assets/img/hot-recommend-img.png') rgba(255,255,255,0.4) no-repeat;
+        background: url('../../assets/img/hot-recommend-img.png') rgba(255,255,255,0.4) no-repeat;
         background-position: 0px -50px;
         background-size: 270px;
         border-radius: 4px;
@@ -193,7 +193,7 @@
     }
     .tuijianImg ul {
         list-style-type: none;
-        background: url(../assets/img/libg.png) 0 -392px no-repeat;
+        background: url(../../assets/img/libg.png) 0 -392px no-repeat;
         margin-left:8px;
     }
     .tuijianImg li .itemLiA {
@@ -233,7 +233,7 @@
     }
     .jishutantao ul {
         padding-left: 28px;
-        background: url(../assets/img/hot_title_bg.gif) 8px 8px rgba(255,255,255,0.4) no-repeat;
+        background: url(../../assets/img/hot_title_bg.gif) 8px 8px rgba(255,255,255,0.4) no-repeat;
         border-radius:0 0 4px 4px;
         box-shadow: 0 0 10px #ccc;
     }

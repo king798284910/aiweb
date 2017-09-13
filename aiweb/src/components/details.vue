@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
-			{{ $route.params.id }}
+			<v-crumbs :Rlist='Rlist'></v-crumbs>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>
@@ -10,16 +10,19 @@
 </template>
 
 <script>
-    import vSide from './aside.vue';
+    import vSide from './commen/aside.vue';
+    import store from '../vuex';
+    import vCrumbs from './commen/crumbs.vue';
 	export default {
 		name: 'web',
 		data() {
 			return {
-
+                Rlist:[]
 			}
 		},
 		components:{
-            vSide
+            vSide,
+            vCrumbs
         },
         computed:{
             asideMoveIn(){
@@ -38,16 +41,33 @@
             self.$store.commit('changeMoveT');
 
         },
-        beforeRouteLeave (to, from, next) {
+        beforeRouteEnter (to, from, next) {
             var self = this;
-            //self.$store.commit('changeMoveOutT');
-            self.$store.commit('changeAsideF');
-            self.$store.commit('changeMoveF');
-            setTimeout(function(){
-                //self.$store.commit('changeMoveOutF');
-                next();
-            },250);
-
+            store.commit('progressBarisNo');
+            store.commit('progressBarShow_');
+            var time3 = setTimeout(function(){
+                store.commit('progressBarisOk');
+                store.commit('changeAsideF');
+                store.commit('changeMoveF');
+                setTimeout(function(){
+                next(vm => {
+                    var title_ = '文章'
+                    var  path_o = [{path:to.path,text:title_}]
+                    vm.Rlist = to.meta.concat(path_o);
+                })
+                clearTimeout(time3);
+                },100)
+            },0)
+            // getPost(to.params.id, (err, post) => {
+            //   if (err) {
+            //     // display some global error message
+            //     next(false)
+            //   } else {
+            //     next(vm => {
+            //       vm.post = post
+            //     })
+            //   }
+            // })
         },
 	}
 </script>

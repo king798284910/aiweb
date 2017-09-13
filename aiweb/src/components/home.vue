@@ -48,7 +48,7 @@
 					</div>
 					<p class='autor'>
 						<span class='paddings textTime'>2017-09-01 18:26:54</span>
-						<span class='paddings fenlei'>[<router-link :to="'/web/16036'" class="fenleiA" >H5/C3</router-link>]</span>
+						<span class='paddings fenlei'>[<router-link :to="'/web'" class="fenleiA" >H5/C3</router-link>]</span>
 						<span class='paddings liulan'>浏览(666)</span>
 						<span class='paddings author'>金理学</span>
 					</p>
@@ -63,7 +63,8 @@
 </template>
 
 <script>
-    import vSide from './aside.vue';
+    import vSide from './commen/aside.vue';
+    import store from '../vuex';
 	export default {
 		name: 'home',
 		data() {
@@ -86,18 +87,32 @@
 			var self = this;
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
-
         },
-        beforeRouteLeave (to, from, next) {
-        	var self = this;
-		    //self.$store.commit('changeMoveOutT');
-		    self.$store.commit('changeAsideF');
-		    self.$store.commit('changeMoveF');
-		    setTimeout(function(){
-		    	//self.$store.commit('changeMoveOutF');
-		    	next();
-	    	},300);
+        beforeRouteEnter (to, from, next) {
+      		var self = this;
+      		store.commit('progressBarisNo');
+      		store.commit('progressBarShow_');
+      		var time2 = setTimeout(function(){
+      			store.commit('progressBarisOk');
+      			store.commit('changeAsideF');
+		    	store.commit('changeMoveF');
+		    	setTimeout(()=>{
+	      			clearTimeout(time2);
+	  				next(vm => {
 
+		        	})
+	        	},100)
+      		},0)
+		    // getPost(to.params.id, (err, post) => {
+		    //   if (err) {
+		    //     // display some global error message
+		    //     next(false)
+		    //   } else {
+		    //     next(vm => {
+		    //       vm.post = post
+		    //     })
+		    //   }
+		    // })
 	  	},
         methods:{
 
@@ -252,7 +267,7 @@
 		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 		display: block;
 	}
-	ul.l-article li {
+	/*ul.l-article li {
 	box-sizing: border-box;
     height: auto;
     box-shadow: 1px 1px 5px #bbb;
@@ -352,5 +367,5 @@
 	.fenleiA:hover{
 		color:#ef3900;
 		text-decoration:underline;
-	}
+	}*/
 </style>

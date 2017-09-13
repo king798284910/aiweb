@@ -1,6 +1,7 @@
 <template>
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
+            <v-crumbs :Rlist='Rlist'></v-crumbs>
 			<ul class='l-article'>
 				<li>
 					<h2><router-link :to="'/web/16036'" class='textTitleA' title="新的一年，继续在前端这条路上前行"  >新的一年，继续在前端这条路上前行</router-link></h2>
@@ -13,7 +14,7 @@
 					</div>
 					<p class='autor'>
 						<span class='paddings textTime'>2017-09-01 18:26:54</span>
-						<span class='paddings fenlei'>[<router-link :to="'/web/16036'" class="fenleiA" >H5/C3</router-link>]</span>
+						<span class='paddings fenlei'>[<router-link :to="'/web'" class="fenleiA" >H5/C3</router-link>]</span>
 						<span class='paddings liulan'>浏览(666)</span>
 						<span class='paddings author'>金理学</span>
 					</p>
@@ -28,48 +29,71 @@
 </template>
 
 <script>
-    import vSide from './aside.vue';
+    import vSide from './commen/aside.vue';
+    import vCrumbs from './commen/crumbs.vue';
+    import store from '../vuex';
 	export default {
 		name: 'web',
 		data() {
 			return {
+                Rlist:[]
 			}
 		},
 		computed:{
 			asideMoveIn(){
 				return this.$store.state.asideMoveFlag
 			},
-			asideMoveOut(){
-				return this.$store.state.changeMoveOutFlag
-			}
+			// asideMoveOut(){
+			// 	return this.$store.state.changeMoveOutFlag
+			// }
 		},
 		components:{
-            vSide
+            vSide,
+            vCrumbs
         },
         mounted(){
         	var self = this;
         },
         activated(){
 			var self = this;
-        	self.$store.commit('changeAsideT');
+            self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
         },
-        beforeRouteLeave (to, from, next) {
-        	var self = this;
-        	self.$store.commit('changeAsideF');
-        	self.$store.commit('changeMoveF');
-		    //self.$store.commit('changeMoveOutT');
-		    setTimeout(function(){
-		    	//self.$store.commit('changeMoveOutF');
-		    	next();
-	    	},250);
+      	beforeRouteEnter (to, from, next) {
+      		var self = this;
+      		store.commit('progressBarisNo');
+      		store.commit('progressBarShow_');
+      		var time3 = setTimeout(function(){
+      			store.commit('progressBarisOk');
+      			store.commit('changeAsideF');
+                store.commit('changeMoveF');
+                setTimeout(()=>{
+                    next(vm => {
+                        vm.Rlist = [
+                            {path:'/home',text:'首页'},
+                            {path:'/web',text:'C3/H5'}
+                        ]
+                    })
+                    clearTimeout(time3);
+                },100)
+      		},0)
+		    // getPost(to.params.id, (err, post) => {
+		    //   if (err) {
+		    //     // display some global error message
+		    //     next(false)
+		    //   } else {
+		    //     next(vm => {
+		    //       vm.post = post
+		    //     })
+		    //   }
+		    // })
 	  	},
 	}
 </script>
 <style scoped>
 	@import "../assets/css/reset.css";
 	.wrapper {}
-	
+
 	.main {
 		float: left;
 		width: 745px;
@@ -77,7 +101,7 @@
 		height: 800px;*/
 		/*box-shadow: 0 0 10px #ccc;*/
 	}
-	
+
 	.aside {
 		margin-top: 435px;
 		float: right;
@@ -85,5 +109,5 @@
 		/*box-shadow: 0 0 10px #ccc;
 		background: rgba(255, 255, 255, 0.5);*/
 	}
-	
+
 </style>

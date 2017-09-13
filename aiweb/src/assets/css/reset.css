@@ -25,7 +25,7 @@ clear: both;
     animation-fill-mode :forwards;
 }
 .aside.moveOut{
-    animation: moveChangeOut 0.3s ease-out;
+    animation: moveChangeOut 0.1s ease-out;
     animation-fill-mode :forwards;
 }
 .TimaAndmusic{
@@ -33,7 +33,8 @@ clear: both;
     animation-fill-mode :forwards;
 }
 .TimaAndmusicOut{
-    animation: moveChangeOut 0.3s ease-out;
+    animation: moveChangeOut 0.1s ease-out;
+    /*opacity: 0;*/
     transform: translateX(10000px);
 }
 .moveInMain{
@@ -41,8 +42,9 @@ clear: both;
     animation-fill-mode :forwards;
 }
 .moveOutMain{
-    animation: moveMainOut 0.3s ease-out;
+    animation: moveMainOut 0.1s ease-out;
     animation-fill-mode :forwards;
+    
 }
 @keyframes moveMainIn {
     0%{
@@ -57,12 +59,9 @@ clear: both;
 @keyframes moveMainOut {
     0%{
         opacity: 1;
-        transform: translateX(0);
     }
     100% {
         opacity: 0;
-        transform: translateX(-50px);
-        
     }
 }
 @keyframes moveChangeIn {
@@ -78,12 +77,9 @@ clear: both;
 @keyframes moveChangeOut {
     0%{
         opacity: 1;
-        transform: translateX(0);
     }
     100% {
         opacity: 0;
-        transform: translateX(50px);
-        
     }
 }
 /*文章列表样式*/
@@ -92,7 +88,7 @@ ul.l-article li {
     height: auto;
     box-shadow: 1px 1px 5px #bbb;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-top: 10px;
     width: 745px;
     padding: 10px 20px;
     font-size: 12px;
@@ -100,18 +96,21 @@ ul.l-article li {
     transition: all 0.5s;
 	}
 	ul.l-article li:hover{
-		background: rgba(255, 255, 255, 0.7);
+		background: rgba(255, 255, 255, 0.8);
 	}
 	ul.l-article li h2 {
-		font-size: 14px;
-    margin-bottom: 10px;
+	font-size: 14px;
+    
     font-weight: bold;
     position: relative;
 }
 	ul.l-article li h2 a{
+        width: 100%;
+        height: 100%;
 		color: #333;
+        padding-bottom: 10px;
 	}
-	ul.l-article li:hover img.a-pic {
+	ul.l-article li img.a-pic:hover  {
 		transform: scale(1.05);
 	}
 	ul.l-article li img.a-pic {
@@ -147,7 +146,7 @@ ul.l-article li {
     overflow: hidden;
     margin-top: 10px;
     display: inline-block;
-    color: #999;
+    color: #666;
     width: 100%;
 	}
 	.paddings{
