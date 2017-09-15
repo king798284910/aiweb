@@ -5,7 +5,7 @@
 		<div class='boxLeft' :class='{active:active3}'>
 			<header class="head">
 				<div class='headerTop'>
-					<h1><router-link :to="'/home'" class="blogName">金理学's Blog</router-link></h1>
+					<h1><router-link :to="'/home'" class="blogName">金理学のBlog</router-link></h1>
 					<span>关注互联网最新动态的个人博客网站</span>
 					<p @mouseenter='textMouseEnter_ ()' :class='{active:active4}'>世界上最遥远的距离<br>不是天涯与海角<br>而是我在 if<br>你却在 else (>_
 						<)</p>
@@ -47,7 +47,7 @@
 			<footer class='footer'>©</footer>
 		</div>
 		<div class='boxRight' :class='{active:active3}'>
-
+			<div class='editor' @mousedown = 'Touch($event)' @mouseup="TouchUp"></div>
 		</div>
 		<div class="sidebar-toggle" ref="sidebarToggle" @mouseenter='BtnMouseEnter_()' @mouseleave='BtnMouseLeave_()' @click.stop='BtnClick_()'>
 			<div class="sidebar-toggle-line-wrap">
@@ -348,7 +348,20 @@
 					this.active3 = false;
 				}
 			},
-
+			Touch(e){
+				let self = this;
+			 	let el = e.currentTarget;
+			 	document.onkeydown=function(event){
+	            	var e = event || window.event || arguments.callee.caller.arguments[0];
+	            	e.preventDefault();
+		            if (e.keyCode == 13 && e.ctrlKey) {
+		                self.$router.push('editor');
+		            }
+				};
+			},
+			TouchUp(){
+				document.onkeydown=null;
+			},
 		}
 	}
 </script>
@@ -368,10 +381,11 @@
 
 	.boxRight {
 		width: 300px;
-		background: #fff;
 		position: fixed;
 		right: 0;
 		top: 0;
+		background: rgba(255, 255, 255, 0.3);
+		box-shadow:rgba(254, 87, 87, 0.2) -1px 0px 10px;
 		height: 100%;
 		transform: translateX(100%);
 		transition: all 0.5s;
@@ -465,7 +479,7 @@
 		position: relative;
 		top: 0;
 		width: 1030px;
-		margin: 105px auto 70px;
+		margin: 125px auto 70px;
 		z-index: 99;
 	}
 
@@ -588,7 +602,7 @@
 	.head {
 		width: 1030px;
 		height: 80px;
-		margin: 50px auto 0;
+		margin: 30px auto 0;
 		position: relative;
 		z-index: 999;
 	}
@@ -630,7 +644,7 @@
 	}
 
 	.headerTop h1 {
-		font-size: 16px;
+		font-size: 40px;
 		font-weight: normal;
 		animation: headMove 0.4s ease-out;
 	}
@@ -702,7 +716,7 @@
 
 	.timaAndmusic {
 		position: absolute;
-		top: 185px;
+		top: 205px;
 		right: 0;
 		width: 270px;
 		transform: translateX(10000px);
@@ -727,5 +741,12 @@
 		position: absolute;
 		top: -10px;
 		left: -20px;
+	}
+	.editor{
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
 	}
 </style>

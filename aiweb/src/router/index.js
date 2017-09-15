@@ -69,6 +69,16 @@ export default new Router({
             path: '/message',
             component: resolve => require(['@/components/message'], resolve),
         },//路由到留言页
+
+        {
+            path: '/editor',
+            component: resolve => require(['@/components/commen/editor'], resolve),
+        },//路由到编辑页面
+
+        {
+            path: '/*',
+            redirect: '/home',
+        },//路由到留言页
     ],
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {
