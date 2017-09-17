@@ -13,6 +13,9 @@ html,body,a,ul,h1,p,h2,h3,h4,h5,h6{
   margin: 0;
   padding: 0;
 }
+[v-cloak]{
+	display: none;
+}
 .clearfix:after {
 content: "\0020";
 display: block;
@@ -28,7 +31,7 @@ clear: both;
     animation: moveChangeOut 0.1s ease-out;
     animation-fill-mode :forwards;
 }
-.TimaAndmusic{
+.timaAndmusic.TimaAndmusic{
     animation: moveChangeIn 0.5s ease-out;
     animation-fill-mode :forwards;
 }
@@ -186,4 +189,51 @@ ul.l-article li {
 	.fenleiA:hover{
 		color:#ef3900;
 		text-decoration:underline;
+	}
+	.articleDatail{
+		width: 100%;
+		padding:30px 20px;
+    	box-sizing: border-box;
+    	border-radius: 3px;
+    	background: rgba(255, 255, 255, 0.5);
+    	font-size: 14px;
+	}
+	.articleDatail h2{
+		text-align: center;
+		font-weight: normal;
+	}
+	.articleDatail >p{
+		text-align: center;
+		margin: 20px 0;
+		
+	}
+	.main .articleDatail{
+		margin-top: 20px;
+	}
+	.w-e-text pre code {
+		overflow:auto;
+	}
+	.articleDatail blockquote {
+	  display: block;
+	  border-left: 8px solid #d0e5f2;
+	  padding: 5px 10px;
+	  margin: 10px 0;
+	  line-height: 1.4;
+	  font-size: 100%;
+	  background-color: rgba(241,241,241,0.5);
+	}
+	.articleDatail table {
+	  border: none;
+	  border-collapse: collapse;
+	}
+	.articleDatail table td,
+	.articleDatail table th {
+	  border: 1px solid #f1f1f1;
+	  padding: 3px 5px;
+	  min-width: 50px;
+	  height: 20px;
+	}
+	.articleDatail pre {
+	  line-height: 20px;
+	  font-size: 14px;
 	}

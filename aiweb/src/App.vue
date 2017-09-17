@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" v-cloak>
 		<progress-bar v-if='progressBarShow'></progress-bar>
 
 		<div class='boxLeft' :class='{active:active3}'>
@@ -86,6 +86,9 @@
 					'text': '心得笔记',
 					'path': '/notes'
 				}, {
+					'text': '网站运营',
+					'path': '/operation'
+				}, {
 					'text': '分享心情',
 					'path': '/share'
 				}, {
@@ -94,9 +97,6 @@
 				}, {
 					'text': '留言板',
 					'path': '/message'
-				}, {
-					'text': '关于我',
-					'path': '/about'
 				}, ],
 				progressBarShow:true,
 			}
@@ -112,7 +112,8 @@
 		},
 		mounted() {
 			var self = this;
-
+			console.log("%c又偷看我的源码！"," text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em")
+			console.log('%c再看我打你哦！ ', 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;');
 			function Star(id, x, y) {
 				this.id = id;
 				this.x = x;
@@ -300,18 +301,18 @@
 			};
 
 //============================================================================================================================
-			window.onscroll = function() {
-				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-				if(scrollTop >= 163) {
-					if(!self.active5) {
-						self.active5 = true;
-					}
-				} else {
-					if(self.active5) {
-						self.active5 = false;
-					}
-				}
-			}; //滚动条监听
+//			window.onscroll = function() {
+//				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+//				if(scrollTop >= 163) {
+//					if(!self.active5) {
+//						self.active5 = true;
+//					}
+//				} else {
+//					if(self.active5) {
+//						self.active5 = false;
+//					}
+//				}
+//			}; //滚动条监听
 		},
 		computed:{
 			ifshowTimaAndmusic(){
@@ -495,13 +496,14 @@
 		animation: headMove 1s ease-out;
 	}
 
-	.nav.active {
+	/*.nav.active {
 		position: fixed;
+		width: calc(100% - 300px);
 		z-index: 999;
 		top: 0;
 		background: linear-gradient(to right, rgba(255, 123, 173, 0) 0%, rgba(124, 189, 253, 1) 20%, rgba(124, 189, 253, 1) 80%, rgba(255, 123, 173, 0) 100%);
 		overflow: hidden;
-	}
+	}*/
 
 	.nav ul {
 		width: 1030px;
@@ -604,7 +606,7 @@
 		height: 80px;
 		margin: 30px auto 0;
 		position: relative;
-		z-index: 999;
+		/*z-index: 999;*/
 	}
 
 	.headerTop {
@@ -716,6 +718,7 @@
 
 	.timaAndmusic {
 		position: absolute;
+		z-index: 100;
 		top: 205px;
 		right: 0;
 		width: 270px;

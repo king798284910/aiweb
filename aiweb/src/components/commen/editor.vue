@@ -1,5 +1,7 @@
 <template>
     <div class="wrapper">
+    	<v-tips :pData = 'tipsData'></v-tips>
+    	<v-layer :pLayerData = 'layerData' @queren= 'queren'></v-layer>
         <main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
             <v-crumbs :Rlist='Rlist'></v-crumbs>
             <div class='inputBox'>
@@ -22,30 +24,42 @@
 
             </ul>
             <div id="editorElem" style="text-align:left"></div>
-            <div class='previewBox' v-show='previewData!=null'>
+            <div class='previewBox' v-show='previewData.articleTitle!=""'>
+            	<p class="previewT">预览</p>
                 <span class='previewBoxClose' @click='close_'>×</span>
                 <div class="articleList">
-                    <!-- <ul class='l-article'>
+                     <ul class='l-article'>
                         <li>
                             <h2><router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" class='textTitleA' :title="previewData.articleTitle"  >{{previewData.articleTitle}}</router-link></h2>
                             <router-link :to="'/web/16036'" :title="previewData.articleTitle" rel="bookmark" class="a-pic-link">
-                                <img :src="previewData.articleImg" :alt="previewData.articleTitle" title="" class="a-pic l">
+                                <img :src="previewData.articleImg" :alt="previewData.articleTitle" :title="previewData.articleTitle" class="a-pic l">
                             </router-link>
                             <div class="a-con">
                                 <p>{{previewData.articleOverview}}</p>
-                                <router-link :to="'/itnews/16036'" class="a-more" >阅读全文&gt;&gt;</router-link>
+                                <router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" :title="previewData.articleTitle"  class="a-more" >阅读全文&gt;&gt;</router-link>
                             </div>
                             <p class='autor'>
                                 <span class='paddings textTime'>2017-09-01 18:26:54</span>
-                                <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
+                                <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
                                 <span class='paddings liulan'>浏览(666)</span>
                                 <span class='paddings author'>金理学</span>
                             </p>
                         </li>
 
-                    </ul> -->
+                    </ul> 
                 </div>
-                <div class="articleText"></div>
+                <div class="articleText" >
+                	<div class='articleDatail'>
+                		<h2>{{previewData.articleTitle}}</h2>
+                		<p class='autor'>
+                            <span class='paddings textTime'>2017-09-01 18:26:54</span>
+                            <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
+                            <span class='paddings liulan'>浏览(666)</span>
+                            <span class='paddings author'>金理学</span>
+                        </p>
+                		<div v-html='editorContent' v-highlight></div>
+                	</div>
+                </div>
             </div>
             <div @click='uploadArticle' class='upload'>提交文章</div>
         </main>
@@ -56,9 +70,11 @@
 <script>
     import store from '../../vuex';
     import vCrumbs from './crumbs.vue';
+    import vTips from './tips.vue';
+    import vLayer from './layer.vue';
     import E from 'wangeditor';
     export default {
-        name: 'message',
+        name: 'editor',
         data() {
             return {
                 Rlist:[],//面包屑导航
@@ -70,11 +86,32 @@
                 articleLabel:'',//文章标签
                 editorContent: '',//文章内容
                 tipsContent:'',//提示信息
-                previewData:null,//预览的信息
+                previewData:{
+                	articleTitle:"",
+                	articleOverview:'',
+                	articleImg:'',
+                	articleLabel:{
+                		"text":'',
+                		"Vpath":''
+                	},
+                	id:''
+                },//预览的信息
+                tipsData:{
+                	ifShow:false,
+                	centent:'',
+                },//提示信息
+                layerData:{
+                	ifShow:false,
+                	title:'',
+                	centent:'',
+                },//弹窗信息
+                tijiaoleix:null,//提交的类型
             }
         },
         components:{
-            vCrumbs
+            vCrumbs,
+            vTips,
+            vLayer
         },
         computed:{
             asideMoveIn(){
@@ -84,9 +121,9 @@
         mounted(){
             var self = this;
             self.editorObj = new E('#editorElem');
-            self.editorObj.customConfig.onchange = (html) => {
-                self.editorContent = html;
-            }
+//          self.editorObj.customConfig.onchange = (html) => {
+//              self.editorContent = html;
+//          }
             self.editorObj.create();
         },
         activated(){
@@ -121,24 +158,103 @@
                 }
             },
             articlePreview(){
+            	
                 let articleLabel = JSON.parse(this.articleLabel==''?'{"text":"C3/H5","Vpath":"/web"}':this.articleLabel);
                 this.previewData = {articleTitle:this.articleTitle,
                             articleOverview:this.articleOverview,
                             articleImg:this.articleImg,
                             articleLabel:articleLabel,
-                            editorContent:this.editorContent,
+                            editorContent:this.editorObj.txt.html(),
                             id:Math.floor(Math.random()*9000) + 1000,
                         }
-                        console.log(this.previewData)
+                console.log(this.previewData);
+                this.editorContent = this.editorObj.txt.html();
             },//获取文章内容并预览
             uploadArticle(){
-
+            	
+				if(this.articleTitle == ''){
+            		this.tipsData={
+	                	ifShow:true,
+	                	centent:'文章标题为空！',
+                	}
+                	return
+                }else if(this.articleOverview == ''){
+            		this.tipsData={
+	                	ifShow:true,
+	                	centent:'文章概览为空！',
+                	}
+                	return
+                }else if(this.articleImg == ''){
+                	this.tipsData={
+	                	ifShow:true,
+	                	centent:'文章概览图为空！',
+                	}
+                	return
+            	}else if(this.articleLabel == ''){
+                	this.tipsData={
+	                	ifShow:true,
+	                	centent:'文章标签为空！',
+                	}
+                	return
+            	}else if(this.editorObj.txt.html() == '<p><br></p>'){
+                	this.tipsData={
+	                	ifShow:true,
+	                	centent:'文章内容为空！',
+                	}
+                	return
+            	}else{
+            		this.layerData = {
+	                	ifShow:true,
+	                	title:'提交文章',
+	                	centent:'确定提交文章吗？',
+	                }
+            		this.tijiaoleix = 'article';
+            	}
             },
             uploadShare(){
-
+            	if(this.articleOverview == ''){
+            		this.tipsData={
+	                	ifShow:true,
+	                	centent:'简说内容为空！',
+                	}
+                	return
+                }else if(this.articleImg == ''){
+                	this.tipsData={
+	                	ifShow:true,
+	                	centent:'简说图片为空！',
+                	}
+                	return
+            	}else{
+            		this.layerData = {
+	                	ifShow:true,
+	                	title:'提交简说',
+	                	centent:'确定提交简说吗？',
+	                }
+            		this.tijiaoleix = 'share';
+            	}
+				
             },
             close_(){
-                this.previewData = null;
+                this.previewData = {
+                	articleTitle:"",
+                	articleOverview:'',
+                	articleImg:'',
+                	articleLabel:{
+                		"text":'',
+                		"Vpath":''
+                	},
+                	id:''
+                };
+            },
+            queren(){
+            	if(this.tijiaoleix == 'share'){
+            		alert('提交了简说');
+            		return
+            	}
+            	if(this.tijiaoleix == 'article'){
+            		alert('提交了文章');
+            		return
+            	}
             },
         },
         beforeRouteEnter (to, from, next) {
@@ -321,9 +437,9 @@
         width: 100%;
         margin-top: 20px;
         position: relative;
-        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px #ccc;
     }
-    .previewBox div{
+    .previewBox > div{
         width: 745px;
         margin:20px auto 0;
     }
@@ -342,20 +458,30 @@
     }
     .previewBoxClose{
         display: inline-block;
-        width: 30px;
-        height: 30px;
-        line-height: 18px;
-        text-align: right;
-        font-size: 25px;
+        width: 40px;
+        height: 40px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 30px;
         cursor: pointer;
         position: absolute;
-        border-radius: 0 0 0 30px;
+        border-radius: 50%;
         right: 0px;
         top: 0px;
-        background: rgba(255, 255, 255, 0.5);
-        transition: all 0.3s;
     }
     .previewBoxClose:hover{
-        background: rgba(255, 255, 255, 1);
+        color:#000;
+    }
+    .previewT{
+    	height: 40px;
+    	width: 100%;
+    	background: rgba(255, 255, 255, 0.5);
+    	padding-left: 20px;
+    	line-height: 40px;
+    	box-sizing: border-box;
+    	border-radius: 3px;
+    }
+    .articleText{
+    	
     }
 </style>

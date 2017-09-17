@@ -15,7 +15,7 @@
     import store from '../vuex';
     import vCrumbs from './commen/crumbs.vue';
 	export default {
-		name: 'about',
+		name: 'operation',
 		data() {
 			return {
 				Rlist:[]
@@ -54,7 +54,7 @@
                 next(vm => {
                     vm.Rlist = [
                         {path:'/home',text:'首页'},
-                        {path:'/about',text:'关于我'}
+                        {path:'/operation',text:'网站运营'}
                     ]
                 })
                 clearTimeout(time3);

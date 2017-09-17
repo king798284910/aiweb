@@ -61,9 +61,9 @@ export default new Router({
         },//路由到相册页
 
         {
-            path: '/about',
-            component: resolve => require(['@/components/about'], resolve),
-        },//路由到关于我页
+            path: '/operation',
+            component: resolve => require(['@/components/operation'], resolve),
+        },//路由到网站运营
 
         {
             path: '/message',

@@ -71,11 +71,11 @@
     background-color:#fec001;
   }
 
-  .fade-enter-active, &-leave-active {
+  .fade-enter-active, .fade-leave-active {
     transition: all .3s;
   }
   .fade-enter, .fade-leave-active {
     opacity: 0;
   }
-
+	
 </style>
