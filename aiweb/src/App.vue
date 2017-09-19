@@ -356,7 +356,7 @@
 	            	var e = event || window.event || arguments.callee.caller.arguments[0];
 	            	e.preventDefault();
 		            if (e.keyCode == 13 && e.ctrlKey) {
-		                self.$router.push('editor');
+		                self.$router.push({path:'/editor'});
 		            }
 				};
 			},

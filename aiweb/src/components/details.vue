@@ -24,7 +24,7 @@
     import store from '../vuex';
     import vCrumbs from './commen/crumbs.vue';
 	export default {
-		name: 'web',
+		name: 'details',
 		data() {
 			return {
                 Rlist:[],
@@ -72,8 +72,8 @@
                 store.commit('changeMoveF');
                 setTimeout(function(){
                 next(vm => {
-                    var title_ = '文章'
-                    var  path_o = [{path:to.path,text:title_}]
+                    var title_ = '文章';
+                    var  path_o = [{path:to.path,text:title_}];
                     vm.Rlist = to.meta.concat(path_o);
                 })
                 clearTimeout(time3);
@@ -93,7 +93,6 @@
 	}
 </script>
 <style scoped>
-	@import "../assets/css/reset.css";
 	.wrapper {}
 
 	.main {
@@ -103,7 +102,6 @@
         height: 800px;
 		/*box-shadow: 0 0 10px #ccc;*/
 	}
-
 	.aside {
 		margin-top: 435px;
 		float: right;

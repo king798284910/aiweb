@@ -8,14 +8,14 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/',
-            redirect: '/home'
-        },//重定向到首页
-
-        {
             path: '/home',
             component: resolve => require(['@/components/home'], resolve),
         },//路由到首页
+
+        // {
+        //     path: '/hub',
+        //     component: resolve => require(['@/components/commen/hub'], resolve),
+        // },//跳转分页时的路由中心
 
         {
             path: '/web',
@@ -63,6 +63,12 @@ export default new Router({
         {
             path: '/operation',
             component: resolve => require(['@/components/operation'], resolve),
+        },
+        {
+            path: '/operation/:id',
+            component: resolve => require(['@/components/details'], resolve),
+            meta:[{path:'/home',text:'首页'},
+                  {path:'/operation',text:'网站运营'}]
         },//路由到网站运营
 
         {
@@ -74,11 +80,11 @@ export default new Router({
             path: '/editor',
             component: resolve => require(['@/components/commen/editor'], resolve),
         },//路由到编辑页面
-
+        
         {
-            path: '/*',
+            path: '*',
             redirect: '/home',
-        },//路由到留言页
+        },//路由到首页
     ],
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {

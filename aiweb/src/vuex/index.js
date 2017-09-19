@@ -7,8 +7,8 @@ export default new Vuex.Store({
         asideFlag:false,
         asideMoveFlag:true,
         progressBarShow:true,
-        progressBarisOk:false
-        //changeMoveOutFlag:false,
+        progressBarisOk:false,
+        homePage:1,
     },
     mutations: {
         //是否显示音乐
@@ -25,17 +25,23 @@ export default new Vuex.Store({
         changeMoveT (state) {
           state.asideMoveFlag = true;
         },
+        //进度条是否显示
         progressBarShow_(state){
           state.progressBarShow = true;
         },
         progressBarHide(state){
           state.progressBarShow = false;
         },
+        //进度条是否完成
         progressBarisOk(state){
           state.progressBarisOk = true;
         },
         progressBarisNo(state){
           state.progressBarisOk = false;
+        },
+        //分页的当前所在页数
+        changePage(state,page){
+          state[page.obj] = page.page;
         },
     }
 });

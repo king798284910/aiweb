@@ -55,6 +55,7 @@
 				</li>
 
 			</ul>
+			<v-page @pPage='getPost' :all='all' :pCur='page' :imgflag='imgflag'></v-page>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>
@@ -64,16 +65,22 @@
 
 <script>
     import vSide from './commen/aside.vue';
+    import vPage from './commen/pageBar.vue';
     import store from '../vuex';
 	export default {
 		name: 'home',
 		data() {
 			return {
 				banner: require("../assets/img/home.png"),
+				page:1,
+				all:1,
+				imgflag:false,
+				timer:null,
 			}
 		},
 		components:{
-            vSide
+            vSide,
+            vPage
         },
         computed:{
 			asideMoveIn(){
@@ -89,7 +96,9 @@
         	self.$store.commit('changeMoveT');
         },
         beforeRouteEnter (to, from, next) {
-      		var self = this;
+
+        	let page = store.state.homePage;
+        	console.log('请求到了第'+page+'页的数据');
       		store.commit('progressBarisNo');
       		store.commit('progressBarShow_');
       		var time2 = setTimeout(function(){
@@ -99,7 +108,8 @@
 		    	setTimeout(()=>{
 	      			clearTimeout(time2);
 	  				next(vm => {
-
+						vm.all=30;
+						vm.page = page;
 		        	})
 	        	},100)
       		},0)
@@ -115,12 +125,24 @@
 		    // })
 	  	},
         methods:{
+        	getPost(page) {
+        		let self = this;
+        		self.$store.commit('changePage',{obj:'homePage',page:page});
+        		self.page = page;
+        		self.imgflag = true;
+        		clearTimeout(this.timer);
+        		this.timer = setTimeout(()=>{
+	  				console.log('请求第'+page+'页数据');
+	  				self.imgflag = false;
+	  				document.documentElement.scrollTop = document.body.scrollTop = 0;
 
+	        	},3000)
+		      	
+		    }
         },
 	}
 </script>
 <style scoped>
-	@import "../assets/css/reset.css";
 	.wrapper {}
 
 	.main {
