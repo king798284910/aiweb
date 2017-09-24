@@ -1,11 +1,27 @@
-import express from 'express';
-import router from './router';
-import db from './models/db.js';
+const  express = require('express');
+const router = require('./router');
+const mongoose = require('mongoose');
+const app = express();
 
-let app = express()
-
-.get()
-
+app.use("/api",require("./router"));
 
 
-.listen(3000);
+
+
+mongoose.connect("mongodb://localhost:27017",(error)=>{
+    if(error){
+        console.log("连接数据库失败");
+        console.log(error);
+    }else{
+        console.log("连接数据库成功");
+        //开启服务器
+        app.listen(6666,(error)=>{
+            if(error){
+                console.log("服务器启动失败");
+                console.log(error);
+            }else{
+                console.log("服务器启动成功");
+            }
+        });
+    }
+});

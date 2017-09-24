@@ -1,8 +1,8 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //schema
 
-let articleSchema = new mongoose.Schema({
+const articleSchema = new mongoose.Schema({
 	title:String,//文章标题
 	overview:String,//文章概览
 	imgUrl:String,//文章概览图路径
@@ -14,4 +14,4 @@ let articleSchema = new mongoose.Schema({
 });
 
 //model
-export default mongoose.model('article',articleSchema);
+module.exports = mongoose.model('article',articleSchema);

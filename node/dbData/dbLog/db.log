@@ -1,0 +1,365 @@
+2017-09-24T20:25:01.532+0800 I CONTROL  [initandlisten] MongoDB starting : pid=936 port=27017 dbpath=D:\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T20:25:01.534+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T20:25:01.534+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T20:25:01.535+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T20:25:01.535+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T20:25:01.536+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T20:25:01.536+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T20:25:01.536+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T20:25:01.537+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T20:25:01.537+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T20:25:01.537+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T20:25:01.537+0800 I CONTROL  [initandlisten] options: { config: "D:\dbData\mongo.config", storage: { dbPath: "D:\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T20:25:01.543+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T20:25:01.684+0800 I CONTROL  [initandlisten] 
+2017-09-24T20:25:01.684+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-24T20:25:01.685+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-24T20:25:01.685+0800 I CONTROL  [initandlisten] 
+2017-09-24T20:25:02.001+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/dbData/dbData/diagnostic.data'
+2017-09-24T20:25:02.032+0800 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-09-24T20:25:02.032+0800 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-09-24T20:25:02.039+0800 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-09-24T20:25:02.041+0800 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-09-24T20:25:02.042+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-24T20:25:26.726+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:52008 #1 (1 connection now open)
+2017-09-24T20:25:26.730+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:52008 conn1: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T20:25:26.839+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:52009 #2 (2 connections now open)
+2017-09-24T20:25:26.840+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:52009 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T20:26:05.496+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-24T20:26:05.496+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-24T20:26:05.496+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-24T20:26:05.496+0800 I NETWORK  [consoleTerminate] closing listening socket: 512
+2017-09-24T20:26:05.497+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-24T20:26:05.498+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-24T20:26:05.502+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-24T20:26:05.537+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-24T20:26:05.538+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-24T20:26:05.538+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-24T20:26:10.686+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] MongoDB starting : pid=8148 port=27017 dbpath=D:\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T20:26:11.124+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T20:26:11.125+0800 I CONTROL  [initandlisten] options: { config: "D:\dbData\mongo.config", storage: { dbPath: "D:\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T20:26:11.126+0800 I -        [initandlisten] Detected data files in D:\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T20:26:11.126+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T20:26:11.688+0800 I CONTROL  [initandlisten] 
+2017-09-24T20:26:11.688+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-24T20:26:11.688+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-24T20:26:11.688+0800 I CONTROL  [initandlisten] 
+2017-09-24T20:26:11.918+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/dbData/dbData/diagnostic.data'
+2017-09-24T20:26:11.919+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-24T20:27:26.852+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:52079 #1 (1 connection now open)
+2017-09-24T20:27:26.853+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:52079 conn1: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T20:28:26.861+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:52124 #2 (2 connections now open)
+2017-09-24T20:28:26.863+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:52124 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T21:27:45.348+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:55734 #3 (3 connections now open)
+2017-09-24T21:27:45.357+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:55734 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-24T21:28:43.993+0800 I -        [conn3] end connection 127.0.0.1:55734 (3 connections now open)
+2017-09-24T21:29:02.951+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:55765 #4 (3 connections now open)
+2017-09-24T21:29:02.960+0800 I NETWORK  [conn4] received client metadata from 127.0.0.1:55765 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-24T22:12:11.303+0800 I -        [conn4] end connection 127.0.0.1:55765 (3 connections now open)
+2017-09-24T22:12:12.271+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-24T22:12:12.271+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-24T22:12:12.271+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-24T22:12:12.271+0800 I NETWORK  [consoleTerminate] closing listening socket: 504
+2017-09-24T22:12:12.273+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-24T22:12:12.273+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-24T22:12:12.278+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-24T22:12:12.437+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-24T22:12:12.439+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-24T22:12:12.439+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-24T22:27:51.687+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:27:52.120+0800 I CONTROL  [initandlisten] MongoDB starting : pid=8860 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:27:52.120+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:27:52.120+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:27:52.120+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:27:52.120+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:27:52.121+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:27:52.124+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:27:52.124+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:27:52.448+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263272:448173][8860:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:27:52.448+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263272:448173][8860:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:27:52.449+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506263272:448173][8860:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:27:52.451+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:27:52.452+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:27:52.545+0800 I -        [WTJournalFlusher] Fatal Assertion 28559 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 64
+2017-09-24T22:27:52.545+0800 I -        [WTJournalFlusher] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:27:55.953+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] MongoDB starting : pid=8028 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:27:56.381+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:27:56.382+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:27:56.383+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:27:56.383+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:27:56.622+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263276:622225][8028:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:27:56.622+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263276:622225][8028:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:27:56.622+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506263276:622225][8028:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:27:56.622+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:27:56.622+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:27:56.625+0800 E STORAGE  [thread1] WiredTiger error (-31804) [1506263276:625232][8028:140731304138448], log-server: journal/WiredTigerTmplog.0000000003: fatal log failure: WT_PANIC: WiredTiger library panic
+2017-09-24T22:27:56.625+0800 I -        [thread1] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:27:56.625+0800 I -        [thread1] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:28:01.070+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:28:01.508+0800 I CONTROL  [initandlisten] MongoDB starting : pid=9188 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:28:01.508+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:28:01.508+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:28:01.508+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:28:01.508+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:28:01.509+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:28:01.510+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:28:01.511+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:28:01.748+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263281:748237][9188:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:28:01.749+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263281:748237][9188:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:28:01.749+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506263281:748237][9188:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:28:01.749+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:28:01.749+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:28:01.751+0800 E STORAGE  [thread1] WiredTiger error (-31804) [1506263281:751246][9188:140731304138448], log-server: journal/WiredTigerTmplog.0000000003: fatal log failure: WT_PANIC: WiredTiger library panic
+2017-09-24T22:28:01.751+0800 I -        [thread1] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:28:01.752+0800 I -        [thread1] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:28:26.071+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:28:26.516+0800 I CONTROL  [initandlisten] MongoDB starting : pid=6356 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:28:26.516+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:28:26.516+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:28:26.516+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:28:26.517+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:28:26.518+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:28:26.519+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:28:26.757+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263306:756661][6356:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:28:26.757+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263306:756661][6356:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:28:26.757+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506263306:756661][6356:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:28:26.757+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:28:26.757+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:28:26.760+0800 E STORAGE  [thread1] WiredTiger error (-31804) [1506263306:759668][6356:140731304138448], log-server: journal/WiredTigerTmplog.0000000003: fatal log failure: WT_PANIC: WiredTiger library panic
+2017-09-24T22:28:26.760+0800 I -        [thread1] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:28:26.760+0800 I -        [thread1] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:30:55.110+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:30:55.555+0800 I CONTROL  [initandlisten] MongoDB starting : pid=4140 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:30:55.555+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:30:55.555+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:30:55.556+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:30:55.557+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:30:55.558+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:30:55.558+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:30:55.820+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263455:820119][4140:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:30:55.820+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506263455:820119][4140:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:30:55.820+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506263455:820119][4140:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:30:55.820+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:30:55.821+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:30:55.823+0800 E STORAGE  [thread1] WiredTiger error (-31804) [1506263455:823161][4140:140731304138448], log-server: journal/WiredTigerTmplog.0000000003: fatal log failure: WT_PANIC: WiredTiger library panic
+2017-09-24T22:30:55.823+0800 I -        [thread1] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:30:55.823+0800 I -        [thread1] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:42:37.607+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:42:38.055+0800 I CONTROL  [initandlisten] MongoDB starting : pid=3168 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:42:38.055+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:42:38.055+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:42:38.056+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:42:38.057+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:42:38.058+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:42:38.297+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506264158:296821][3168:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: read checksum error for 4096B block at offset 28672: block header checksum of 207123978 doesn't match expected checksum of 1074498338
+2017-09-24T22:42:38.297+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506264158:296821][3168:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: sizeStorer.wt: encountered an illegal file format or internal value
+2017-09-24T22:42:38.297+0800 E STORAGE  [initandlisten] WiredTiger error (-31804) [1506264158:296821][3168:140731304138448], file:sizeStorer.wt, WT_SESSION.open_cursor: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-09-24T22:42:38.297+0800 I -        [initandlisten] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:42:38.297+0800 I -        [initandlisten] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:42:38.300+0800 E STORAGE  [thread1] WiredTiger error (-31804) [1506264158:299827][3168:140731304138448], log-server: journal/WiredTigerTmplog.0000000003: fatal log failure: WT_PANIC: WiredTiger library panic
+2017-09-24T22:42:38.300+0800 I -        [thread1] Fatal Assertion 28558 at src\mongo\db\storage\wiredtiger\wiredtiger_util.cpp 361
+2017-09-24T22:42:38.300+0800 I -        [thread1] 
+
+***aborting after fassert() failure
+
+
+2017-09-24T22:42:57.000+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:42:57.477+0800 I CONTROL  [initandlisten] MongoDB starting : pid=10696 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:42:57.478+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:42:57.479+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:42:57.479+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:42:57.480+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:42:57.579+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:42:57.579+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-24T22:42:57.579+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-24T22:42:57.579+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:42:57.833+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-24T22:42:57.868+0800 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-09-24T22:42:57.868+0800 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-09-24T22:42:57.873+0800 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-09-24T22:42:57.875+0800 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-09-24T22:42:57.875+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-24T22:45:42.100+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-24T22:45:42.100+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-24T22:45:42.100+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-24T22:45:42.100+0800 I NETWORK  [consoleTerminate] closing listening socket: 508
+2017-09-24T22:45:42.100+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-24T22:45:42.100+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-24T22:45:42.104+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-24T22:45:42.161+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-24T22:45:42.161+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-24T22:45:42.161+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-24T22:45:42.161+08002017-09-24T22:45:43.527+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:45:43.977+0800 I CONTROL  [initandlisten] MongoDB starting : pid=10560 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:45:43.977+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:45:43.978+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:45:43.979+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:45:43.979+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:45:43.980+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:45:44.575+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:45:44.575+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-24T22:45:44.575+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-24T22:45:44.575+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:45:44.808+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-24T22:45:44.810+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-24T22:45:47.800+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-24T22:45:47.800+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-24T22:45:47.800+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-24T22:45:47.800+0800 I NETWORK  [consoleTerminate] closing listening socket: 504
+2017-09-24T22:45:47.801+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-24T22:45:47.801+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-24T22:45:47.802+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-24T22:45:47.919+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-24T22:45:47.920+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-24T22:45:47.921+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-24T22:46:28.582+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] MongoDB starting : pid=7784 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-24T22:46:29.043+0800 I CONTROL  [initandlisten] modules: none
+2017-09-24T22:46:29.044+0800 I CONTROL  [initandlisten] build environment:
+2017-09-24T22:46:29.044+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-24T22:46:29.044+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-24T22:46:29.044+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-24T22:46:29.044+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-24T22:46:29.045+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-24T22:46:29.045+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-24T22:46:29.391+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:46:29.391+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-24T22:46:29.392+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-24T22:46:29.392+0800 I CONTROL  [initandlisten] 
+2017-09-24T22:46:29.633+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-24T22:46:29.634+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-24T22:46:35.903+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:58486 #1 (1 connection now open)
+2017-09-24T22:46:35.904+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:58486 conn1: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T22:46:35.956+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:58487 #2 (2 connections now open)
+2017-09-24T22:46:35.957+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:58487 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-24T22:46:37.669+0800 I -        [conn2] end connection 127.0.0.1:58487 (2 connections now open)
+2017-09-24T22:46:37.669+0800 I -        [conn1] end connection 127.0.0.1:58486 (1 connection now open)
+2017-09-24T22:46:38.747+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-24T22:46:38.747+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-24T22:46:38.747+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-24T22:46:38.747+0800 I NETWORK  [consoleTerminate] closing listening socket: 512
+2017-09-24T22:46:38.747+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-24T22:46:38.747+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-24T22:46:38.749+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-24T22:46:38.875+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-24T22:46:38.876+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-24T22:46:38.876+0800 I CONTROL  [consoleTerminate] shutting down with code:12
