@@ -1,5 +1,5 @@
-const  express = require('express');
-const router = require('./router');
+const express = require('express');
+//const router = require('./router');
 const mongoose = require('mongoose');
 const app = express();
 
@@ -8,7 +8,7 @@ app.use("/api",require("./router"));
 
 
 
-mongoose.connect("mongodb://localhost:27017",(error)=>{
+mongoose.connect("mongodb://localhost:9888",(error)=>{
     if(error){
         console.log("连接数据库失败");
         console.log(error);

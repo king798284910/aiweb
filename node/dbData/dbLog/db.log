@@ -363,3 +363,227 @@
 2017-09-24T22:46:38.875+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
 2017-09-24T22:46:38.876+0800 I CONTROL  [consoleTerminate] now exiting
 2017-09-24T22:46:38.876+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-25T21:19:48.361+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] MongoDB starting : pid=7424 port=27017 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-25T21:19:48.800+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten] modules: none
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten] build environment:
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-25T21:19:48.801+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-25T21:19:48.802+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-25T21:19:48.803+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-25T21:19:49.208+0800 I CONTROL  [initandlisten] 
+2017-09-25T21:19:49.208+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-25T21:19:49.208+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-25T21:19:49.208+0800 I CONTROL  [initandlisten] 
+2017-09-25T21:19:49.607+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-25T21:19:49.612+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-09-25T21:23:11.799+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:61662 #1 (1 connection now open)
+2017-09-25T21:23:11.803+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:61662 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T21:43:28.927+0800 I -        [conn1] end connection 127.0.0.1:61662 (1 connection now open)
+2017-09-25T21:43:43.999+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:62689 #2 (1 connection now open)
+2017-09-25T21:43:44.000+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:62689 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T21:49:53.659+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-25T21:49:53.660+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-25T21:49:53.660+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-25T21:49:53.661+0800 I NETWORK  [consoleTerminate] closing listening socket: 508
+2017-09-25T21:49:53.662+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-25T21:49:53.663+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-25T21:49:53.666+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-25T21:49:53.768+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-25T21:49:53.769+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-25T21:49:53.769+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-25T21:49:53.770+08002017-09-25T21:50:02.330+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] MongoDB starting : pid=4384 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] modules: none
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten] build environment:
+2017-09-25T21:50:02.769+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-25T21:50:02.770+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-25T21:50:02.770+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-25T21:50:02.770+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, security: { authorization: "enabled" }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-25T21:50:02.771+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-25T21:50:02.772+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-25T21:50:03.349+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-25T21:50:03.350+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-25T21:55:23.131+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63316 #1 (1 connection now open)
+2017-09-25T21:55:23.132+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:63316 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T21:55:23.137+0800 I ACCESS   [conn1] SCRAM-SHA-1 authentication failed for jlx on test from client 127.0.0.1:63316 ; UserNotFound: Could not find user jlx@test
+2017-09-25T21:55:23.141+0800 I -        [conn1] end connection 127.0.0.1:63316 (1 connection now open)
+2017-09-25T21:59:15.589+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63467 #2 (1 connection now open)
+2017-09-25T21:59:15.590+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:63467 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T21:59:15.609+0800 I ACCESS   [conn2] Successfully authenticated as principal jlx on admin
+2017-09-25T21:59:15.614+0800 I ACCESS   [conn2] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T21:59:15.619+0800 I ACCESS   [conn2] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T22:00:50.568+0800 I -        [conn2] end connection 127.0.0.1:63467 (1 connection now open)
+2017-09-25T22:01:03.621+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63505 #3 (1 connection now open)
+2017-09-25T22:01:03.622+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:63505 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T22:01:03.651+0800 I ACCESS   [conn3] Successfully authenticated as principal jlx on admin
+2017-09-25T22:01:03.654+0800 I ACCESS   [conn3] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T22:01:03.657+0800 I ACCESS   [conn3] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T22:01:12.926+0800 I -        [conn3] end connection 127.0.0.1:63505 (1 connection now open)
+2017-09-25T22:01:28.329+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63521 #4 (1 connection now open)
+2017-09-25T22:01:28.329+0800 I NETWORK  [conn4] received client metadata from 127.0.0.1:63521 conn4: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T22:01:28.333+0800 I ACCESS   [conn4] SCRAM-SHA-1 authentication failed for jlx on local from client 127.0.0.1:63521 ; UserNotFound: Could not find user jlx@local
+2017-09-25T22:01:28.335+0800 I -        [conn4] end connection 127.0.0.1:63521 (1 connection now open)
+2017-09-25T22:02:17.704+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63550 #5 (1 connection now open)
+2017-09-25T22:02:17.705+0800 I NETWORK  [conn5] received client metadata from 127.0.0.1:63550 conn5: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T22:02:17.739+0800 I ACCESS   [conn5] Successfully authenticated as principal jlx on admin
+2017-09-25T22:02:17.742+0800 I ACCESS   [conn5] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T22:02:17.744+0800 I ACCESS   [conn5] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T22:02:41.504+0800 I -        [conn5] end connection 127.0.0.1:63550 (1 connection now open)
+2017-09-25T22:03:43.062+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:63576 #6 (1 connection now open)
+2017-09-25T22:03:43.063+0800 I NETWORK  [conn6] received client metadata from 127.0.0.1:63576 conn6: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T22:03:43.093+0800 I ACCESS   [conn6] Successfully authenticated as principal jlx on admin
+2017-09-25T22:03:43.095+0800 I ACCESS   [conn6] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T22:03:43.098+0800 I ACCESS   [conn6] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T23:05:01.986+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49252 #7 (2 connections now open)
+2017-09-25T23:05:02.011+0800 I NETWORK  [conn7] received client metadata from 127.0.0.1:49252 conn7: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:05:02.040+0800 I ACCESS   [conn7] Successfully authenticated as principal jlx on admin
+2017-09-25T23:05:02.086+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49253 #8 (3 connections now open)
+2017-09-25T23:05:02.087+0800 I NETWORK  [conn8] received client metadata from 127.0.0.1:49253 conn8: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:05:02.102+0800 I ACCESS   [conn8] Successfully authenticated as principal jlx on admin
+2017-09-25T23:05:02.119+0800 I ACCESS   [conn7] Unauthorized: not authorized on db to execute command { serverStatus: "1" }
+2017-09-25T23:07:33.036+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49325 #9 (4 connections now open)
+2017-09-25T23:07:33.037+0800 I NETWORK  [conn9] received client metadata from 127.0.0.1:49325 conn9: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:07:33.057+0800 I ACCESS   [conn9] Successfully authenticated as principal jlx on admin
+2017-09-25T23:07:33.105+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49326 #10 (5 connections now open)
+2017-09-25T23:07:33.106+0800 I NETWORK  [conn10] received client metadata from 127.0.0.1:49326 conn10: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:07:33.133+0800 I ACCESS   [conn10] Successfully authenticated as principal jlx on admin
+2017-09-25T23:07:33.143+0800 I ACCESS   [conn9] Unauthorized: not authorized on db to execute command { serverStatus: "1" }
+2017-09-25T23:07:43.857+0800 I -        [conn9] end connection 127.0.0.1:49325 (5 connections now open)
+2017-09-25T23:07:43.857+0800 I -        [conn10] end connection 127.0.0.1:49326 (5 connections now open)
+2017-09-25T23:08:23.154+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49349 #11 (4 connections now open)
+2017-09-25T23:08:23.155+0800 I NETWORK  [conn11] received client metadata from 127.0.0.1:49349 conn11: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:08:23.172+0800 I ACCESS   [conn11] SCRAM-SHA-1 authentication failed for jlx on local from client 127.0.0.1:49349 ; UserNotFound: Could not find user jlx@local
+2017-09-25T23:08:27.381+0800 I -        [conn11] end connection 127.0.0.1:49349 (4 connections now open)
+2017-09-25T23:08:44.949+0800 I QUERY    [conn7] assertion 13 not authorized for query on admin.system.js ns:admin.system.js query:{ query: {}, orderby: { _id: 1 } }
+2017-09-25T23:08:44.965+0800 I ACCESS   [conn8] Unauthorized: not authorized on admin to execute command { find: "system.js", filter: {} }
+2017-09-25T23:08:45.845+0800 I QUERY    [conn7] assertion 13 not authorized for query on admin.system.js ns:admin.system.js query:{ query: {}, orderby: { _id: 1 } }
+2017-09-25T23:08:45.847+0800 I ACCESS   [conn8] Unauthorized: not authorized on admin to execute command { find: "system.js", filter: {} }
+2017-09-25T23:08:46.334+0800 I ACCESS   [conn7] Unauthorized: not authorized on admin to execute command { listCollections: 1, filter: {}, cursor: {} }
+2017-09-25T23:10:20.105+0800 I ACCESS   [conn7] Unauthorized: not authorized on admin to execute command { listCollections: 1, filter: {}, cursor: {} }
+2017-09-25T23:12:18.737+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49457 #12 (4 connections now open)
+2017-09-25T23:12:18.737+0800 I NETWORK  [conn12] received client metadata from 127.0.0.1:49457 conn12: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:12:18.765+0800 I ACCESS   [conn12] Successfully authenticated as principal jlx on admin
+2017-09-25T23:12:18.802+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:49458 #13 (5 connections now open)
+2017-09-25T23:12:18.803+0800 I NETWORK  [conn13] received client metadata from 127.0.0.1:49458 conn13: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:12:18.818+0800 I ACCESS   [conn13] Successfully authenticated as principal jlx on admin
+2017-09-25T23:12:18.827+0800 I ACCESS   [conn12] Unauthorized: not authorized on db to execute command { serverStatus: "1" }
+2017-09-25T23:12:36.440+0800 I -        [conn7] end connection 127.0.0.1:49252 (5 connections now open)
+2017-09-25T23:12:36.441+0800 I -        [conn8] end connection 127.0.0.1:49253 (4 connections now open)
+2017-09-25T23:13:11.761+0800 I ACCESS   [conn12] Unauthorized: not authorized on admin to execute command { listCollections: 1, filter: {}, cursor: {} }
+2017-09-25T23:26:33.583+0800 I ACCESS   [conn6] Unauthorized: not authorized on aiweb to execute command { insert: "col1", documents: [ { _id: ObjectId('59c92029b8ce4e41d97a8f1e'), id: "111 " } ], ordered: true }
+2017-09-25T23:46:04.855+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50405 #14 (4 connections now open)
+2017-09-25T23:46:04.861+0800 I NETWORK  [conn14] received client metadata from 127.0.0.1:50405 conn14: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-25T23:46:04.884+0800 I ACCESS   [conn14] Successfully authenticated as principal jlx on admin
+2017-09-25T23:47:01.891+0800 I -        [conn14] end connection 127.0.0.1:50405 (4 connections now open)
+2017-09-25T23:47:04.506+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50429 #15 (4 connections now open)
+2017-09-25T23:47:04.513+0800 I NETWORK  [conn15] received client metadata from 127.0.0.1:50429 conn15: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-25T23:47:04.524+0800 I ACCESS   [conn15] SCRAM-SHA-1 authentication failed for jlx on aiweb from client 127.0.0.1:50429 ; UserNotFound: Could not find user jlx@aiweb
+2017-09-25T23:48:01.406+0800 I -        [conn6] end connection 127.0.0.1:63576 (4 connections now open)
+2017-09-25T23:48:25.517+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50466 #16 (4 connections now open)
+2017-09-25T23:48:25.518+0800 I NETWORK  [conn16] received client metadata from 127.0.0.1:50466 conn16: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:48:25.522+0800 I ACCESS   [conn16] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T23:48:25.525+0800 I ACCESS   [conn16] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T23:49:21.720+0800 I -        [conn16] end connection 127.0.0.1:50466 (4 connections now open)
+2017-09-25T23:49:32.587+0800 I -        [conn15] end connection 127.0.0.1:50429 (3 connections now open)
+2017-09-25T23:51:15.628+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50543 #17 (3 connections now open)
+2017-09-25T23:51:15.629+0800 I NETWORK  [conn17] received client metadata from 127.0.0.1:50543 conn17: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:51:15.630+0800 I ACCESS   [conn17] Unauthorized: not authorized on admin to execute command { listDatabases: 1, nameOnly: true }
+2017-09-25T23:51:18.614+0800 I -        [conn17] end connection 127.0.0.1:50543 (3 connections now open)
+2017-09-25T23:53:16.749+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50599 #18 (3 connections now open)
+2017-09-25T23:53:16.756+0800 I NETWORK  [conn18] received client metadata from 127.0.0.1:50599 conn18: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-25T23:53:43.316+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50609 #19 (4 connections now open)
+2017-09-25T23:53:43.320+0800 I NETWORK  [conn19] received client metadata from 127.0.0.1:50609 conn19: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:53:43.321+0800 I ACCESS   [conn19] Unauthorized: not authorized on admin to execute command { listDatabases: 1, nameOnly: true }
+2017-09-25T23:53:45.397+0800 I -        [conn19] end connection 127.0.0.1:50609 (4 connections now open)
+2017-09-25T23:53:49.372+0800 I -        [conn12] end connection 127.0.0.1:49457 (3 connections now open)
+2017-09-25T23:53:49.378+0800 I -        [conn13] end connection 127.0.0.1:49458 (2 connections now open)
+2017-09-25T23:53:56.557+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50617 #20 (2 connections now open)
+2017-09-25T23:53:56.557+0800 I NETWORK  [conn20] received client metadata from 127.0.0.1:50617 conn20: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:53:56.575+0800 I ACCESS   [conn20] Successfully authenticated as principal jlx on admin
+2017-09-25T23:53:56.613+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50618 #21 (3 connections now open)
+2017-09-25T23:53:56.614+0800 I NETWORK  [conn21] received client metadata from 127.0.0.1:50618 conn21: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:53:56.637+0800 I ACCESS   [conn21] Successfully authenticated as principal jlx on admin
+2017-09-25T23:53:56.646+0800 I ACCESS   [conn20] Unauthorized: not authorized on db to execute command { serverStatus: "1" }
+2017-09-25T23:54:26.162+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50631 #22 (4 connections now open)
+2017-09-25T23:54:26.163+0800 I NETWORK  [conn22] received client metadata from 127.0.0.1:50631 conn22: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:54:26.163+0800 I ACCESS   [conn22] Unauthorized: not authorized on admin to execute command { listDatabases: 1, nameOnly: true }
+2017-09-25T23:54:55.716+0800 I -        [conn22] end connection 127.0.0.1:50631 (4 connections now open)
+2017-09-25T23:55:13.354+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50663 #23 (4 connections now open)
+2017-09-25T23:55:13.355+0800 I NETWORK  [conn23] received client metadata from 127.0.0.1:50663 conn23: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:55:13.355+0800 I ACCESS   [conn23] SCRAM-SHA-1 authentication failed for  on admin from client 127.0.0.1:50663 ; BadValue: Incorrect SCRAM-SHA-1 user name: n=
+2017-09-25T23:55:15.898+0800 I -        [conn23] end connection 127.0.0.1:50663 (4 connections now open)
+2017-09-25T23:55:28.065+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50670 #24 (4 connections now open)
+2017-09-25T23:55:28.066+0800 I NETWORK  [conn24] received client metadata from 127.0.0.1:50670 conn24: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:55:28.066+0800 I ACCESS   [conn24] Unauthorized: not authorized on admin to execute command { listDatabases: 1, nameOnly: true }
+2017-09-25T23:55:31.076+0800 I -        [conn24] end connection 127.0.0.1:50670 (4 connections now open)
+2017-09-25T23:56:31.451+0800 I -        [conn18] end connection 127.0.0.1:50599 (3 connections now open)
+2017-09-25T23:57:19.910+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50717 #25 (3 connections now open)
+2017-09-25T23:57:19.920+0800 I NETWORK  [conn25] received client metadata from 127.0.0.1:50717 conn25: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:57:19.923+0800 I ACCESS   [conn25] SCRAM-SHA-1 authentication failed for jlx on test from client 127.0.0.1:50717 ; UserNotFound: Could not find user jlx@test
+2017-09-25T23:57:19.925+0800 I -        [conn25] end connection 127.0.0.1:50717 (3 connections now open)
+2017-09-25T23:57:33.811+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50722 #26 (3 connections now open)
+2017-09-25T23:57:33.811+0800 I NETWORK  [conn26] received client metadata from 127.0.0.1:50722 conn26: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:57:33.830+0800 I ACCESS   [conn26] Successfully authenticated as principal jlx on admin
+2017-09-25T23:57:33.833+0800 I ACCESS   [conn26] Unauthorized: not authorized on admin to execute command { getLog: "startupWarnings" }
+2017-09-25T23:57:33.836+0800 I ACCESS   [conn26] Unauthorized: not authorized on admin to execute command { replSetGetStatus: 1.0, forShell: 1.0 }
+2017-09-25T23:57:45.667+0800 I -        [conn26] end connection 127.0.0.1:50722 (3 connections now open)
+2017-09-25T23:58:27.164+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-25T23:58:27.164+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-25T23:58:27.165+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-25T23:58:27.165+0800 I NETWORK  [consoleTerminate] closing listening socket: 512
+2017-09-25T23:58:27.166+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-25T23:58:27.168+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-25T23:58:27.173+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-25T23:58:27.311+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-25T23:58:27.313+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-25T23:58:27.313+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-25T23:58:29.463+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-25T23:58:29.920+0800 I CONTROL  [initandlisten] MongoDB starting : pid=9248 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-25T23:58:29.920+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-25T23:58:29.920+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten] modules: none
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten] build environment:
+2017-09-25T23:58:29.921+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-25T23:58:29.922+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-25T23:58:29.922+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-25T23:58:29.922+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, security: { authorization: "disabled" }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-25T23:58:29.923+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-25T23:58:29.923+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-25T23:58:30.744+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-25T23:58:30.748+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-25T23:58:55.494+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50743 #1 (1 connection now open)
+2017-09-25T23:58:55.495+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:50743 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:59:00.688+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50745 #2 (2 connections now open)
+2017-09-25T23:59:00.699+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:50745 conn2: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:59:00.737+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:50746 #3 (3 connections now open)
+2017-09-25T23:59:00.737+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:50746 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 8", architecture: "x86_64", version: "6.2 (build 9200)" } }
+2017-09-25T23:59:07.978+0800 I -        [conn3] end connection 127.0.0.1:50746 (3 connections now open)
+2017-09-25T23:59:07.978+0800 I -        [conn2] end connection 127.0.0.1:50745 (3 connections now open)
+2017-09-25T23:59:11.614+0800 I -        [conn1] end connection 127.0.0.1:50743 (1 connection now open)
+2017-09-26T00:07:01.548+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-26T00:07:01.548+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-26T00:07:01.548+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-26T00:07:01.548+0800 I NETWORK  [consoleTerminate] closing listening socket: 504
+2017-09-26T00:07:01.548+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-26T00:07:01.548+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-26T00:07:01.552+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-26T00:07:01.688+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-26T00:07:01.689+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-26T00:07:01.690+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-26T00:07:01.690+0800
