@@ -1,14 +1,16 @@
 const express = require('express');
-//const router = require('./router');
 const mongoose = require('mongoose');
 const app = express();
 
-app.use("/api",require("./router"));
+//app.use("/api",require("./router"));
+app.get('/',function(req,res){
+
+    console.log(11);
+});
 
 
 
-
-mongoose.connect("mongodb://localhost:9888",(error)=>{
+mongoose.connect("mongodb://localhost:9888/aiweb",(error)=>{
     if(error){
         console.log("连接数据库失败");
         console.log(error);
