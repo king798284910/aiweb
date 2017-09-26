@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+var app = express();
+var bodyParser = require('body-parser');
 
-//app.use("/api",require("./router"));
-app.get('/',function(req,res){
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-    console.log(11);
-});
+app.use("/api",require("./router"));
+
 
 
 
@@ -17,7 +18,7 @@ mongoose.connect("mongodb://localhost:9888/aiweb",(error)=>{
     }else{
         console.log("连接数据库成功");
         //开启服务器
-        app.listen(6666,(error)=>{
+        app.listen(8686,(error)=>{
             if(error){
                 console.log("服务器启动失败");
                 console.log(error);

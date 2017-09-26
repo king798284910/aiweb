@@ -911,4 +911,143 @@
 2017-09-26T17:31:23.058+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
 2017-09-26T17:31:23.058+0800 I CONTROL  [consoleTerminate] now exiting
 2017-09-26T17:31:23.058+0800 I CONTROL  [consoleTerminate] shutting down with code:12
-2017-09-26T17:31:23.058+0800
+2017-09-26T17:31:23.058+08002017-09-26T20:53:01.852+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-26T20:53:02.296+0800 I CONTROL  [initandlisten] MongoDB starting : pid=10544 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] modules: none
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten] build environment:
+2017-09-26T20:53:02.297+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-26T20:53:02.298+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-26T20:53:02.298+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-26T20:53:02.298+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, security: { authorization: "enabled" }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-26T20:53:02.299+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-26T20:53:02.299+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-26T20:53:02.344+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:344144][10544:140731304138448], txn-recover: D:\gitck\aiweb\node\dbData\dbData\journal/WiredTigerLog.0000000005: handle-open: CreateFileW: 系统找不到指定的文件。
+2017-09-26T20:53:02.345+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:345147][10544:140731304138448], WT_CURSOR.next: D:\gitck\aiweb\node\dbData\dbData\journal/WiredTigerLog.0000000005: handle-open: CreateFileW: 系统找不到指定的文件。
+2017-09-26T20:53:02.345+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:345147][10544:140731304138448], WT_CURSOR.next: WiredTiger is unable to read the recovery log.
+2017-09-26T20:53:02.345+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:345147][10544:140731304138448], WT_CURSOR.next: This may be due to the log files being encrypted, being from an older version or due to corruption on disk
+2017-09-26T20:53:02.346+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:345147][10544:140731304138448], WT_CURSOR.next: You should confirm that you have opened the database with the correct options including all encryption and compression options
+2017-09-26T20:53:02.349+0800 E STORAGE  [initandlisten] WiredTiger error (0) [1506430382:349157][10544:140731304138448], txn-recover: D:\gitck\aiweb\node\dbData\dbData\journal/WiredTigerLog.0000000005: handle-open: CreateFileW: 系统找不到指定的文件。
+2017-09-26T20:53:02.643+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-26T20:53:02.644+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-26T20:53:03.886+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-26T20:53:03.886+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-26T20:53:03.886+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-26T20:53:03.886+0800 I NETWORK  [consoleTerminate] closing listening socket: 496
+2017-09-26T20:53:03.887+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-26T20:53:03.887+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-26T20:53:03.888+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-26T20:53:03.930+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-26T20:53:03.931+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-26T20:53:03.931+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-26T20:54:01.313+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-26T20:54:01.763+0800 I CONTROL  [initandlisten] MongoDB starting : pid=10524 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] modules: none
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten] build environment:
+2017-09-26T20:54:01.764+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-26T20:54:01.765+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-26T20:54:01.765+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-26T20:54:01.765+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-26T20:54:01.766+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-26T20:54:01.766+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-26T20:54:02.354+0800 I CONTROL  [initandlisten] 
+2017-09-26T20:54:02.354+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-26T20:54:02.355+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-26T20:54:02.355+0800 I CONTROL  [initandlisten] 
+2017-09-26T20:54:02.586+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-26T20:54:02.587+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-26T21:01:58.899+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53182 #1 (1 connection now open)
+2017-09-26T21:01:58.914+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:53182 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T21:05:40.446+0800 I -        [conn1] end connection 127.0.0.1:53182 (1 connection now open)
+2017-09-26T21:05:48.902+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53511 #2 (1 connection now open)
+2017-09-26T21:05:48.910+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:53511 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T21:06:30.447+0800 I -        [conn2] end connection 127.0.0.1:53511 (1 connection now open)
+2017-09-26T21:06:34.181+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53537 #3 (1 connection now open)
+2017-09-26T21:06:34.190+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:53537 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T21:07:23.080+0800 I -        [conn3] end connection 127.0.0.1:53537 (1 connection now open)
+2017-09-26T21:07:25.235+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53553 #4 (1 connection now open)
+2017-09-26T21:07:25.245+0800 I NETWORK  [conn4] received client metadata from 127.0.0.1:53553 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T21:07:47.415+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53565 #5 (2 connections now open)
+2017-09-26T21:07:47.418+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53566 #6 (3 connections now open)
+2017-09-26T21:07:47.419+0800 I -        [conn5] end connection 127.0.0.1:53565 (3 connections now open)
+2017-09-26T21:07:47.537+0800 I -        [conn6] end connection 127.0.0.1:53566 (2 connections now open)
+2017-09-26T21:07:47.666+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:53567 #7 (2 connections now open)
+2017-09-26T21:07:47.667+0800 I -        [conn7] end connection 127.0.0.1:53567 (2 connections now open)
+2017-09-26T21:19:03.277+0800 I -        [conn4] end connection 127.0.0.1:53553 (1 connection now open)
+2017-09-26T21:25:33.341+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-26T21:25:33.341+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-26T21:25:33.341+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-26T21:25:33.342+0800 I NETWORK  [consoleTerminate] closing listening socket: 504
+2017-09-26T21:25:33.343+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-26T21:25:33.345+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-26T21:25:33.349+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-26T21:25:33.423+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-26T21:25:33.424+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-26T21:25:33.425+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-26T21:28:37.745+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] MongoDB starting : pid=1384 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] modules: none
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten] build environment:
+2017-09-26T21:28:38.188+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-26T21:28:38.189+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-26T21:28:38.189+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-26T21:28:38.189+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-26T21:28:38.190+0800 I -        [initandlisten] Detected data files in D:\gitck\aiweb\node\dbData\dbData created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-26T21:28:38.190+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-26T21:28:38.542+0800 I CONTROL  [initandlisten] 
+2017-09-26T21:28:38.542+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-26T21:28:38.542+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-26T21:28:38.542+0800 I CONTROL  [initandlisten] 
+2017-09-26T21:28:38.912+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-09-26T21:28:38.913+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-26T21:28:43.974+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:55244 #1 (1 connection now open)
+2017-09-26T21:28:43.983+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:55244 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T21:30:42.596+0800 I -        [conn1] end connection 127.0.0.1:55244 (1 connection now open)
+2017-09-26T21:30:44.963+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:55312 #2 (1 connection now open)
+2017-09-26T21:30:44.971+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:55312 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:12:57.528+0800 I -        [conn2] end connection 127.0.0.1:55312 (1 connection now open)
+2017-09-26T23:13:01.137+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:60065 #3 (1 connection now open)
+2017-09-26T23:13:01.145+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:60065 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:14:45.703+0800 I -        [conn3] end connection 127.0.0.1:60065 (1 connection now open)
+2017-09-26T23:14:49.646+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:60288 #4 (1 connection now open)
+2017-09-26T23:14:49.664+0800 I NETWORK  [conn4] received client metadata from 127.0.0.1:60288 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:16:53.681+0800 I -        [conn4] end connection 127.0.0.1:60288 (1 connection now open)
+2017-09-26T23:16:57.281+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:60533 #5 (1 connection now open)
+2017-09-26T23:16:57.307+0800 I NETWORK  [conn5] received client metadata from 127.0.0.1:60533 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:20:23.023+0800 I -        [conn5] end connection 127.0.0.1:60533 (1 connection now open)
+2017-09-26T23:20:26.322+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:60788 #6 (1 connection now open)
+2017-09-26T23:20:26.340+0800 I NETWORK  [conn6] received client metadata from 127.0.0.1:60788 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:24:42.463+0800 I -        [conn6] end connection 127.0.0.1:60788 (1 connection now open)
+2017-09-26T23:24:50.666+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:61321 #7 (1 connection now open)
+2017-09-26T23:24:50.673+0800 I NETWORK  [conn7] received client metadata from 127.0.0.1:61321 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:28:11.372+0800 I -        [conn7] end connection 127.0.0.1:61321 (1 connection now open)
+2017-09-26T23:28:13.531+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:61660 #8 (1 connection now open)
+2017-09-26T23:28:13.539+0800 I NETWORK  [conn8] received client metadata from 127.0.0.1:61660 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:41:43.925+0800 I -        [conn8] end connection 127.0.0.1:61660 (1 connection now open)
+2017-09-26T23:45:02.110+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:64075 #9 (1 connection now open)
+2017-09-26T23:45:02.120+0800 I NETWORK  [conn9] received client metadata from 127.0.0.1:64075 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.1.15" }
+2017-09-26T23:48:43.038+0800 I -        [conn9] end connection 127.0.0.1:64075 (1 connection now open)
+2017-09-26T23:48:43.823+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-26T23:48:43.823+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-26T23:48:43.823+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-26T23:48:43.823+0800 I NETWORK  [consoleTerminate] closing listening socket: 504
+2017-09-26T23:48:43.825+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-26T23:48:43.826+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-26T23:48:43.834+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-26T23:48:43.881+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-26T23:48:43.882+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-26T23:48:43.882+0800 I CONTROL  [consoleTerminate] shutting down with code:12

@@ -4,10 +4,14 @@ const share = require('../models/share.js');
 const express=require("express");
 const router=new express.Router();
 
-router.get('/savearticle',function(req,res){
-    res.send('ok');
+
+router.post('/savearticle',function(req,res){
+    res.json(req.body);
 
 });
+router.post('/saveshare',function(req,res){
+    res.json(req.body);
 
+});
 
 module.exports = router;

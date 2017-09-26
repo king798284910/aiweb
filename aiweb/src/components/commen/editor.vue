@@ -73,6 +73,7 @@
     import vTips from './tips.vue';
     import vLayer from './layer.vue';
     import E from 'wangeditor';
+    import axios from 'axios'
     export default {
         name: 'editor',
         data() {
@@ -248,12 +249,28 @@
             },
             queren(){
             	if(this.tijiaoleix == 'share'){
-            		alert('提交了简说');
+                    let newData = {
+                        content:this.articleOverview,
+                        imgUrl:this.articleImg,
+                    }
             		return
             	}
             	if(this.tijiaoleix == 'article'){
-            		alert('提交了文章');
-            		return
+                    let articleLabel = JSON.parse(this.articleLabel==''?'{"text":"C3/H5","Vpath":"/web"}':this.articleLabel);
+                    let newData = {
+                        title:this.articleTitle,
+                        overview:this.articleOverview,
+                        imgUrl:this.articleImg,
+                        label:articleLabel,
+                        content:this.editorObj.txt.html(),
+                    };
+                    axios.post('/api/savearticle',newData )
+                     .then(function (response) {
+                      console.log(response);
+                     })
+                     .catch(function (error) {
+                      console.log(error);
+                     });
             	}
             },
         },
