@@ -1306,3 +1306,44 @@
 2017-09-27T08:52:13.685+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
 2017-09-27T08:52:13.686+0800 I CONTROL  [consoleTerminate] now exiting
 2017-09-27T08:52:13.686+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-09-27T08:58:46.969+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-27T08:58:47.333+0800 I CONTROL  [initandlisten] MongoDB starting : pid=14004 port=9888 dbpath=E:\Git\learngit\node\dbData\dbData 64-bit host=gis-PC
+2017-09-27T08:58:47.333+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] modules: none
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] build environment:
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-27T08:58:47.334+0800 I CONTROL  [initandlisten] options: { config: "E:\Git\learngit\node\dbData\mongo_com.config", net: { port: 9888 }, storage: { dbPath: "E:\Git\learngit\node\dbData\dbData", engine: "wiredTiger", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "E:\Git\learngit\node\dbData\dbLog\db.log", quiet: false } }
+2017-09-27T08:58:47.336+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3559M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-27T08:58:48.125+0800 I CONTROL  [initandlisten] 
+2017-09-27T08:58:48.125+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-27T08:58:48.126+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-27T08:58:48.126+0800 I CONTROL  [initandlisten] 
+2017-09-27T08:58:48.126+0800 I CONTROL  [initandlisten] Hotfix KB2731284 or later update is not installed, will zero-out data files.
+2017-09-27T08:58:48.127+0800 I CONTROL  [initandlisten] 
+2017-09-27T08:58:49.530+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'E:/Git/learngit/node/dbData/dbData/diagnostic.data'
+2017-09-27T08:58:49.532+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-09-27T08:59:03.620+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:41739 #1 (1 connection now open)
+2017-09-27T08:59:03.621+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:41739 conn1: { application: { name: "Robomongo" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 7", architecture: "x86_64", version: "6.1 SP1 (build 7601)" } }
+2017-09-27T09:00:03.642+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:41752 #2 (2 connections now open)
+2017-09-27T09:00:03.643+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:41752 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.3-7-gf394f8c" }, os: { type: "Windows", name: "Microsoft Windows 7", architecture: "x86_64", version: "6.1 SP1 (build 7601)" } }
+2017-09-27T09:01:09.041+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:41791 #3 (3 connections now open)
+2017-09-27T09:01:09.045+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:41791 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "6.1.7601" }, platform: "Node.js v6.10.0, LE, mongodb-core: 2.1.15" }
+2017-09-27T09:15:08.586+0800 I -        [conn3] end connection 127.0.0.1:41791 (3 connections now open)
+2017-09-27T09:15:33.504+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:42213 #4 (3 connections now open)
+2017-09-27T09:15:33.507+0800 I NETWORK  [conn4] received client metadata from 127.0.0.1:42213 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "6.1.7601" }, platform: "Node.js v6.10.0, LE, mongodb-core: 2.1.15" }
+2017-09-27T16:37:08.728+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-09-27T16:37:08.728+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-09-27T16:37:08.729+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-09-27T16:37:08.729+0800 I NETWORK  [consoleTerminate] closing listening socket: 444
+2017-09-27T16:37:08.763+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-09-27T16:37:08.780+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-09-27T16:37:08.797+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-09-27T16:37:09.016+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-09-27T16:37:09.017+0800 I CONTROL  [consoleTerminate] now exiting
+2017-09-27T16:37:09.017+0800 I CONTROL  [consoleTerminate] shutting down with code:12

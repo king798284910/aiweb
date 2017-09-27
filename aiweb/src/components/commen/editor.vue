@@ -19,7 +19,10 @@
                 <li><input type="radio" value = '{"text":"心得笔记","Vpath":"/notes"}' v-model="articleLabel"><i>心得笔记</i></li>
                 <!-- <li><input type="checkbox" value = '{text:服务器,Vpath:/web}' v-model="articleLabel"><i>服务器</i></li> -->
                 <div @click='articlePreview' class='articlePreview'>预览</div>
-                <div @click='uploadShare' class='uploadShare'>提交简说</div>
+                <div @click='shareUploadFlag && uploadShare()' class='uploadShare' >
+                提交简说
+                <span class='loading_'  v-show='!shareUploadFlag'></span>
+                </div>
                 <li><input type="file" @change="articleImgFn($event)"><i>上传图片</i></li>
 
             </ul>
@@ -61,7 +64,10 @@
                 	</div>
                 </div>
             </div>
-            <div @click='uploadArticle' class='upload'>提交文章</div>
+            <div @click='atcUploadFlag && uploadArticle()' class='upload'>
+            提交文章
+            <span class='loading_' v-show='!atcUploadFlag'></span>
+            </div>
         </main>
         
     </div>
@@ -107,6 +113,8 @@
                 	centent:'',
                 },//弹窗信息
                 tijiaoleix:null,//提交的类型
+                atcUploadFlag:true,
+                shareUploadFlag:true,
             }
         },
         components:{
@@ -176,30 +184,35 @@
 				if(this.articleTitle == ''){
             		this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'文章标题为空！',
                 	}
                 	return
                 }else if(this.articleOverview == ''){
             		this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'文章概览为空！',
                 	}
                 	return
                 }else if(this.articleImg == ''){
                 	this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'文章概览图为空！',
                 	}
                 	return
             	}else if(this.articleLabel == ''){
                 	this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'文章标签为空！',
                 	}
                 	return
             	}else if(this.editorObj.txt.html() == '<p><br></p>'){
                 	this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'文章内容为空！',
                 	}
                 	return
@@ -216,12 +229,14 @@
             	if(this.articleOverview == ''){
             		this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'简说内容为空！',
                 	}
                 	return
                 }else if(this.articleImg == ''){
                 	this.tipsData={
 	                	ifShow:true,
+                        textColor:'red',
 	                	centent:'简说图片为空！',
                 	}
                 	return
@@ -233,7 +248,6 @@
 	                }
             		this.tijiaoleix = 'share';
             	}
-				
             },
             close_(){
                 this.previewData = {
@@ -249,28 +263,55 @@
             },
             queren(){
             	if(this.tijiaoleix == 'share'){
+                    this.shareUploadFlag = false;
                     let newData = {
                         content:this.articleOverview,
                         imgUrl:this.articleImg,
-                    }
-            		return
-            	}
+                    };
+                    axios.post('/api/saveshare',newData )
+                     .then(function (response) {
+                        this.tipsData={
+                            ifShow:true,
+                            textColor:'green',
+                            centent:'提交成功',
+                        }
+                        this.shareUploadFlag = true;
+                     }.bind(this))
+                     .catch(function (error) {
+                        this.tipsData={
+                            ifShow:true,
+                            textColor:'red',
+                            centent:'提交失败',
+                        }
+                        this.shareUploadFlag = true;
+                    }.bind(this));
+            	};
             	if(this.tijiaoleix == 'article'){
-                    let articleLabel = JSON.parse(this.articleLabel==''?'{"text":"C3/H5","Vpath":"/web"}':this.articleLabel);
+                    this.atcUploadFlag = false;
                     let newData = {
                         title:this.articleTitle,
                         overview:this.articleOverview,
                         imgUrl:this.articleImg,
-                        label:articleLabel,
+                        label:this.articleLabel,
                         content:this.editorObj.txt.html(),
                     };
                     axios.post('/api/savearticle',newData )
                      .then(function (response) {
-                      console.log(response);
-                     })
+                        this.tipsData={
+                            ifShow:true,
+                            textColor:'green',
+                            centent:'提交成功',
+                        }
+                        this.atcUploadFlag = true;
+                     }.bind(this))
                      .catch(function (error) {
-                      console.log(error);
-                     });
+                        this.tipsData={
+                            ifShow:true,
+                            textColor:'red',
+                            centent:'提交失败',
+                        }
+                        this.atcUploadFlag = true;
+                    }.bind(this));
             	}
             },
         },
@@ -446,6 +487,7 @@
         cursor: pointer;
         transition: all 0.3s;
         border-radius: 5px;
+        position: relative;
     }
     .upload:hover,.uploadShare:hover{
         background: rgba(255, 255, 255, 0.8);
@@ -498,7 +540,19 @@
     	box-sizing: border-box;
     	border-radius: 3px;
     }
-    .articleText{
+    /*.articleText{
     	
+    }*/
+    .loading_{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        background: url('../../assets/img/loading.gif') center center #fff no-repeat;
+        background-size: 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: not-allowed;
     }
 </style>

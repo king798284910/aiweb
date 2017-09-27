@@ -6,6 +6,8 @@ const router=new express.Router();
 
 
 router.post('/savearticle',function(req,res){
+    req.body.label = JSON.parse(req.body.label);
+
     res.json(req.body);
 
 });

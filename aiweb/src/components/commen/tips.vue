@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade">
 		<div v-if='pData.ifShow' class="tipsMain">
-			<p>{{pData.centent}}</p>
+			<p :style='{color:pData.textColor}'>{{pData.centent}}</p>
 		</div>
 	</transition>
 	
@@ -13,7 +13,9 @@
         	pData:{
         		ifShow:false,
         		centent:'',
-        	}
+                textColor:'',
+        	},
+            
         },
         watch:{
         	pData:{
@@ -24,7 +26,7 @@
 		        			
 		        			self.pData.ifShow = false;
 		        			clearTimeout(timer);
-		        		},2000);
+		        		},200000);
 	        		}
         		},deep:true
     			
@@ -42,7 +44,6 @@
 		padding: 22px 15px;
 		box-sizing: border-box;
 		text-align: center;
-		color: red;
 		background: rgba(255, 255, 255, 0.8);
 		box-shadow: 0 0 10px #ccc;
 		border-radius: 0 0 5px 5px;
