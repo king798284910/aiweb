@@ -26,7 +26,7 @@
 		        			
 		        			self.pData.ifShow = false;
 		        			clearTimeout(timer);
-		        		},200000);
+		        		},2000);
 	        		}
         		},deep:true
     			

@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use("/api",require("./router"));
-
+app.use("/images",express.static(__dirname+"/images"));
 
 
 

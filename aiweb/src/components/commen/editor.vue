@@ -157,6 +157,7 @@
                     var reader = new FileReader();
                     // 将图片将转成 base64 格式
                     reader.readAsDataURL(file);
+                    console.log(file)
                     // 读取成功后的回调
                     reader.onloadend = function () {
                         self.articleImgUrl = this.result;
@@ -269,12 +270,21 @@
                         imgUrl:this.articleImg,
                     };
                     axios.post('/api/saveshare',newData )
-                     .then(function (response) {
-                        this.tipsData={
-                            ifShow:true,
-                            textColor:'green',
-                            centent:'提交成功',
+                     .then(function (res) {
+                        if(res.data.status>0){
+                            this.tipsData={
+                                ifShow:true,
+                                textColor:'green',
+                                centent:res.data.msg,
+                            }
+                        }else{
+                            this.tipsData={
+                                ifShow:true,
+                                textColor:'red',
+                                centent:res.data.msg,
+                            }
                         }
+                        
                         this.shareUploadFlag = true;
                      }.bind(this))
                      .catch(function (error) {
@@ -296,11 +306,19 @@
                         content:this.editorObj.txt.html(),
                     };
                     axios.post('/api/savearticle',newData )
-                     .then(function (response) {
-                        this.tipsData={
-                            ifShow:true,
-                            textColor:'green',
-                            centent:'提交成功',
+                     .then(function (res) {
+                        if(res.data.status>0){
+                            this.tipsData={
+                                ifShow:true,
+                                textColor:'green',
+                                centent:res.data.msg,
+                            }
+                        }else{
+                            this.tipsData={
+                                ifShow:true,
+                                textColor:'red',
+                                centent:res.data.msg,
+                            }
                         }
                         this.atcUploadFlag = true;
                      }.bind(this))
