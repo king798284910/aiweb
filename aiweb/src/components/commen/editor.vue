@@ -130,9 +130,16 @@
         mounted(){
             var self = this;
             self.editorObj = new E('#editorElem');
-//          self.editorObj.customConfig.onchange = (html) => {
-//              self.editorContent = html;
-//          }
+            self.editorObj.customConfig.uploadImgServer = '/api/imgupload';  // 上传图片到服务器
+            self.editorObj.customConfig.uploadFileName = 'imgName';
+            self.editorObj.customConfig.customAlert = function (info) {
+                // info 是需要提示的内容
+                self.tipsData={
+                    ifShow:true,
+                    textColor:'red',
+                    centent:info,
+                }
+            }
             self.editorObj.create();
         },
         activated(){
