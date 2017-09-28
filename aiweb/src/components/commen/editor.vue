@@ -115,6 +115,7 @@
                 tijiaoleix:null,//提交的类型
                 atcUploadFlag:true,
                 shareUploadFlag:true,
+                imgArr:[],
             }
         },
         components:{
@@ -139,7 +140,16 @@
                     textColor:'red',
                     centent:info,
                 }
-            }
+            };
+            self.editorObj.customConfig.uploadImgHooks = {
+                success: function (xhr, editor, result) {
+                    var reg0 = new RegExp("/images([^<>]*?)\.(gif|png|jpg|jpeg|bmp)", "ig");
+                    var imgurl_ = result.data[0].match(reg0)[0];
+                    // 图片上传并返回结果，图片插入成功之后触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+                    self.imgArr.push('.'+ imgurl_);
+                },
+            };
             self.editorObj.create();
         },
         activated(){
@@ -311,6 +321,7 @@
                         imgUrl:this.articleImg,
                         label:this.articleLabel,
                         content:this.editorObj.txt.html(),
+                        imgArr:this.imgArr,
                     };
                     axios.post('/api/savearticle',newData )
                      .then(function (res) {
