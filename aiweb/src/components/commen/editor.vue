@@ -11,13 +11,13 @@
             <div class='textareaBox'>
                 <span class='pTitle1'>内容概览</span>
                 <textarea v-model="articleOverview"></textarea>
-                <div class='imgBox'><img :src="articleImgUrl"><span class='tips_' v-if='tipsContent.length>0'>{{tipsContent}}</span></div>
+                <div class='imgBox'><img :src="articleImg"><span class='tips_' v-if='tipsContent.length>0'>{{tipsContent}}</span></div>
             </div>
             <ul class='inputBox'>
                 <li><input type="radio" value = '{"text":"C3/H5","Vpath":"/web"}' v-model="articleLabel"><i>C3/H5</i></li>
                 <li><input type="radio" value = '{"text":"it资讯","Vpath":"/itnews"}' v-model="articleLabel"><i>it资讯</i></li>
                 <li><input type="radio" value = '{"text":"心得笔记","Vpath":"/notes"}' v-model="articleLabel"><i>心得笔记</i></li>
-                <!-- <li><input type="checkbox" value = '{text:服务器,Vpath:/web}' v-model="articleLabel"><i>服务器</i></li> -->
+                <li><input type="radio" value = '{"text":"网站运营","Vpath":"/operation"}' v-model="articleLabel"><i>网站运营</i></li>
                 <div @click='articlePreview' class='articlePreview'>预览</div>
                 <div @click='shareUploadFlag && uploadShare()' class='uploadShare' >
                 提交简说
@@ -86,7 +86,7 @@
             return {
                 Rlist:[],//面包屑导航
                 editorObj:null,
-                articleImgUrl:'',//图片预览路径
+                //articleImgUrl:'',//图片预览路径
                 articleTitle:'',//文章标题
                 articleOverview:'',//文章概览
                 articleImg:'',//文章概览图
@@ -147,7 +147,7 @@
                     var imgurl_ = result.data[0].match(reg0)[0];
                     // 图片上传并返回结果，图片插入成功之后触发
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-                    self.imgArr.push('.'+ imgurl_);
+                    self.imgArr.push(imgurl_);
                 },
             };
             self.editorObj.create();
@@ -174,10 +174,9 @@
                     var reader = new FileReader();
                     // 将图片将转成 base64 格式
                     reader.readAsDataURL(file);
-                    console.log(file)
                     // 读取成功后的回调
                     reader.onloadend = function () {
-                        self.articleImgUrl = this.result;
+                        //self.articleImgUrl = this.result;
                         self.articleImg = this.result;
                     }
                 }else{
@@ -289,11 +288,7 @@
                     axios.post('/api/saveshare',newData )
                      .then(function (res) {
                         if(res.data.status>0){
-                            this.tipsData={
-                                ifShow:true,
-                                textColor:'green',
-                                centent:res.data.msg,
-                            }
+                            this.$router.push('/share');
                         }else{
                             this.tipsData={
                                 ifShow:true,
@@ -301,7 +296,6 @@
                                 centent:res.data.msg,
                             }
                         }
-                        
                         this.shareUploadFlag = true;
                      }.bind(this))
                      .catch(function (error) {
@@ -326,17 +320,15 @@
                     axios.post('/api/savearticle',newData )
                      .then(function (res) {
                         if(res.data.status>0){
-                            this.tipsData={
-                                ifShow:true,
-                                textColor:'green',
-                                centent:res.data.msg,
-                            }
+                            let articleLabel = JSON.parse(this.articleLabel);
+                            this.$router.push(articleLabel.Vpath);
                         }else{
                             this.tipsData={
                                 ifShow:true,
                                 textColor:'red',
                                 centent:res.data.msg,
                             }
+                            this.imgArr = [];
                         }
                         this.atcUploadFlag = true;
                      }.bind(this))

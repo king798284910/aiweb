@@ -1,10 +1,12 @@
 //接口请求的方法集合
-const article = require('../models/article.js');
-const share = require('../models/share.js');
+//const article = require('../models/article.js');
+const schemaModels = require('../models/schema.js');
 const express=require("express");
 const router=new express.Router();
 const fs = require('fs');
 const multiparty = require('multiparty');
+
+const url_ = 'http://localhost:8686';//服务器地址（若前后端同一服务器，则值为'.'）
 
 router.post('/savearticle',function(req,res){
     //req.body.label = JSON.parse(req.body.label);
@@ -20,7 +22,6 @@ router.post('/savearticle',function(req,res){
 
     for (var i = 0; i < imgArrL; i++) {
         for(var j = 0; j < textImgArr.length; j++) {
-            textImgArr[j] = '.' + textImgArr[j]
             if(imgArr[i] == textImgArr[j]){
                 imgArr.splice(i, 1);
             }
@@ -29,7 +30,7 @@ router.post('/savearticle',function(req,res){
 
     recursion(0,imgArr);//递归删除多余的img
 
-    article.findOne({'title' : req.body.title}, function(err,data) {
+    schemaModels.article.findOne({'title' : req.body.title}, function(err,data) {
         if(err){
             recursion(0,textImgArr);
             res.json({
@@ -40,13 +41,13 @@ router.post('/savearticle',function(req,res){
             if(data==null){
                 saveImg(req.body.imgUrl,function(path){
                     if(path){
-                        req.body.imgUrl = path;
-                        article.create(req.body, function( err1, result ){
+                        req.body.imgUrl = path;//数据库保存的相对路径
+                        schemaModels.article.create(req.body, function( err1, result ){
                             if(err1){
                                 recursion(0,textImgArr);
                                 removeImg(path,function(err2){
                                     if(err2){
-                                        throw err2;
+                                        console.log(err2);
                                     }
                                     res.json({
                                         status:-1,
@@ -61,6 +62,7 @@ router.post('/savearticle',function(req,res){
                                 //     });
                                 // });
                             }else{
+
                                 res.json({
                                     status:1,
                                     msg:'提交成功'
@@ -86,9 +88,10 @@ router.post('/savearticle',function(req,res){
         }
     });
 });//上传文章接口
+
 router.post('/saveshare',function(req,res){
     
-    share.findOne({'content' : req.body.content}, function(err,data) {
+    schemaModels.share.findOne({'content' : req.body.content}, function(err,data) {
         if(err){
             res.json({
                 status:-1,
@@ -99,7 +102,7 @@ router.post('/saveshare',function(req,res){
                 saveImg(req.body.imgUrl,function(path){
                     if(path){
                         req.body.imgUrl = path;
-                        share.create(req.body, function( err1, result ){
+                        schemaModels.share.create(req.body, function( err1, result ){
                             if(err1){
                                 removeImg(path,function(err2){
                                     if(err2){
@@ -156,7 +159,7 @@ router.post('/imgupload',function(req,res){
             var dstPath = files.imgName[0].path;
             res.json({
                 errno:0,
-                data:['http://localhost:8686/' + dstPath]
+                data:[url_+ '/' + dstPath]//上传图片返回的地址
             });
             // var inputFile = files.imgName[0];
             // var uploadedPath = inputFile.path;
@@ -180,11 +183,11 @@ router.post('/imgupload',function(req,res){
 });//富文本编辑器上传图片接口
 
 function saveImg(data_,cb){
-    var extension = '.'+data_.split(';')[0].split('/')[1];
-    var path = './images/' + Date.now() + extension;//从app.js级开始找--在我的项目工程里是这样的
+    var extension = '.'+data_.split(';')[0].split('/')[1];//图片后缀
+    var path = '/images/' + Date.now() + extension;//从app.js级开始找--在我的项目工程里是这样的
     var base64 = data_.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
     var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
-    fs.writeFile(path,dataBuffer,function(err){//用fs写入文件
+    fs.writeFile('.' + path,dataBuffer,function(err){//用fs写入文件
         if(err){
             cb(false);
         }else{
@@ -194,7 +197,7 @@ function saveImg(data_,cb){
 };//图片bese64转换成图片，并存入文件夹
 
 function removeImg(path_,cb){
-    fs.unlink(path_,function (err_) {
+    fs.unlink('.' + path_,function (err_) {
         cb(err_);
     });
 };//删除图片
@@ -202,11 +205,9 @@ function removeImg(path_,cb){
 function recursion(i,imgArr){
     if(imgArr.length>0){
         removeImg(imgArr[i],function(err3){
-            if(err3){
-                throw err3;
-            }
+            console.log(err3);
             if(i<imgArr.length-1){
-                recursion(i++,imgArr);
+                recursion(++i,imgArr);
             }
         });
     };
