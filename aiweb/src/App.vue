@@ -62,6 +62,7 @@
 
 <script>
 	import progressBar from './components/commen/progressBar.vue';
+	import axios from 'axios';
 	export default {
 		name: 'app',
 		data() {
@@ -300,19 +301,11 @@
 				return deg * (Math.PI / 180);
 			};
 
-//============================================================================================================================
-//			window.onscroll = function() {
-//				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-//				if(scrollTop >= 163) {
-//					if(!self.active5) {
-//						self.active5 = true;
-//					}
-//				} else {
-//					if(self.active5) {
-//						self.active5 = false;
-//					}
-//				}
-//			}; //滚动条监听
+			//侧边栏数据的请求
+			axios.get('/api/asideinfo')
+            .then(function (res) {
+            	self.$store.commit('getAsideData',res.data);
+            });
 		},
 		computed:{
 			ifshowTimaAndmusic(){

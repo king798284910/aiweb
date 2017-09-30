@@ -7,22 +7,22 @@
         </ul>
         <div class='tuijianImg'>
             <ul>
-                <li v-for='(itemLi,index) in zuixintuij'>
-                    <router-link class='itemLiA' :to="itemLi.path" :title="itemLi.text">{{itemLi.text}}</router-link>
+                <li v-for='item in asideData.latest'>
+                    <router-link class='itemLiA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
         </div>
         <div class='jishutantao'>
             <h2><router-link :to="'/'">技术探讨</router-link></h2>
             <ul class='rank'>
-                <li v-for='(itemLi2,index) in jishutantao' >
-                    <router-link :to="itemLi2.path" :title="itemLi2.text">{{itemLi2.text}}</router-link>
+                <li v-for='item in asideData.technology' >
+                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
             <h2><router-link :to="'/'">点击排行</router-link></h2>
             <ul class='rank'>
-                <li v-for='(itemLi2,index) in jishutantao' >
-                    <router-link :to="itemLi2.path" :title="itemLi2.text">{{itemLi2.text}}</router-link>
+                <li v-for='item in asideData.hotBlog' >
+                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
         </div>
@@ -52,84 +52,13 @@
                         'path': '/share'
                     },
                 ],
-                zuixintuij:[
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                ],
-                jishutantao:[
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                    {
-                        'text':'个人博客的内页如何优化',
-                        'path': '/web/213'
-                    },
-                ]
             }
-        }
+        },
+        computed:{
+            asideData(){
+                return this.$store.state.asideData
+            },
+        },
     }
 </script>
 
@@ -184,7 +113,7 @@
     .tuijianImg{
         margin-top: 15px;
         width: 100%;
-        padding-top: 90px;
+        padding-top: 80px;
         background: url('../../assets/img/hot-recommend-img.png') rgba(255,255,255,0.4) no-repeat;
         background-position: 0px -50px;
         background-size: 270px;

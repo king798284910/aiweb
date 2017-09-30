@@ -6,6 +6,7 @@
       			<p><span>热门</span>文章 New Blog</p>
       		</h3>
 				<router-link :to="'/web/688'" class='imgBoxLeft'>
+					<span>建站历程</span>
 					<img :src="banner" />
 				</router-link>
 				<ul class="topblog">
@@ -37,20 +38,20 @@
 			<h3><p><span>推荐文章</span>  Journey</p></h3>
 			</div>
 			<ul class='l-article'>
-				<li>
-					<h2><router-link :to="'/web/16036'" class='textTitleA' title="新的一年，继续在前端这条路上前行"  >新的一年，继续在前端这条路上前行</router-link></h2>
-					<router-link :to="'/web/16036'" title="新的一年，继续在前端这条路上前行" rel="bookmark" class="a-pic-link">
-						<img src="http://www.mxxia.com/wp-content/uploads/2017/02/timg.jpg" alt="新的一年，继续在前端这条路上前行" title="" class="a-pic l">
+				<li v-for='item in listData'>
+					<h2><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
+					<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link">
+						<img :src="item.imgUrl" :alt="item.title" :title="item.title" class="a-pic l">
 					</router-link>
 					<div class="a-con">
-						<p>自从工作以来，工作繁忙，很少来打理博客，索引量一直在下降，现在只有169，但查了下排名，搜索个人博客和前端博客，能排在六七页这样，还算是不错的。 建了博客也一年多了，但并没有发表很多文章，没有记录什么学习笔记 ，也是深感惭愧啊。每天忙忙碌碌的，也没做出什么成绩，技术也并没有很大提高，经常在加班中度过。。。。。。</p>
-						<router-link :to="'/itnews/16036'" class="a-more" >阅读全文&gt;&gt;</router-link>
+						<p>{{item.overview}}。。。。。。</p>
+						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more" >阅读全文&gt;&gt;</router-link>
 					</div>
 					<p class='autor'>
-						<span class='paddings textTime'>2017-09-01 18:26:54</span>
-						<span class='paddings fenlei'>[<router-link :to="'/web'" class="fenleiA" >H5/C3</router-link>]</span>
-						<span class='paddings liulan'>浏览(666)</span>
-						<span class='paddings author'>金理学</span>
+						<span class='paddings textTime'>{{item.editDate}}</span>
+						<span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" class="fenleiA" >{{JSON.parse(item.label).text}}</router-link>]</span>
+						<span class='paddings liulan'>浏览({{item.views}})</span>
+						<span class='paddings author'>{{item.author}}</span>
 					</p>
 				</li>
 
@@ -67,6 +68,7 @@
     import vSide from './commen/aside.vue';
     import vPage from './commen/pageBar.vue';
     import store from '../vuex';
+    import axios from 'axios';
 	export default {
 		name: 'home',
 		data() {
@@ -75,7 +77,7 @@
 				page:1,
 				all:1,
 				imgflag:false,
-				timer:null,
+				listData:[],
 			}
 		},
 		components:{
@@ -94,35 +96,38 @@
 			var self = this;
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
+
+        	
         },
         beforeRouteEnter (to, from, next) {
 
         	let page = store.state.homePage;
-        	console.log('请求到了第'+page+'页的数据');
       		store.commit('progressBarisNo');
       		store.commit('progressBarShow_');
-      		var time2 = setTimeout(function(){
-      			store.commit('progressBarisOk');
+
+      		axios.get('/api/getarticle',{
+        		params:{
+        			lable:'home',
+        			page:page,
+        			limit:1,
+        		}
+			})
+			.then(function(res){
+				store.commit('progressBarisOk');
       			store.commit('changeAsideF');
 		    	store.commit('changeMoveF');
 		    	setTimeout(()=>{
-	      			clearTimeout(time2);
 	  				next(vm => {
-						vm.all=30;
+	  					vm.listData = res.data.listData
+						vm.all=res.data.count;
 						vm.page = page;
 		        	})
 	        	},100)
-      		},0)
-		    // getPost(to.params.id, (err, post) => {
-		    //   if (err) {
-		    //     // display some global error message
-		    //     next(false)
-		    //   } else {
-		    //     next(vm => {
-		    //       vm.post = post
-		    //     })
-		    //   }
-		    // })
+			})
+			.catch(function(err){
+			    console.log(err);
+
+			});
 	  	},
         methods:{
         	getPost(page) {
@@ -130,14 +135,27 @@
         		self.$store.commit('changePage',{obj:'homePage',page:page});
         		self.page = page;
         		self.imgflag = true;
-        		clearTimeout(this.timer);
-        		this.timer = setTimeout(()=>{
-	  				console.log('请求第'+page+'页数据');
-	  				self.imgflag = false;
-	  				document.documentElement.scrollTop = document.body.scrollTop = 0;
 
-	        	},3000)
-		      	
+	        	axios.get('/api/getarticle',{
+	        		params:{
+	        			lable:'home',
+	        			page:page,
+	        			limit:1,
+	        		}
+				})
+				.then(function(res){
+	  				self.imgflag = false;
+	  				self.listData = res.data.listData
+					self.all=res.data.count;
+	  				document.documentElement.scrollTop = document.body.scrollTop = 0;
+	  				console.log(res.data);
+				})
+				.catch(function(err){
+				  	console.log(err);
+				  	self.imgflag = false;
+				  	self.listData = [];
+	  				document.documentElement.scrollTop = document.body.scrollTop = 0;
+				});
 		    }
         },
 	}
@@ -166,15 +184,45 @@
 	}
 
 	.imgBoxLeft {
-		width: 400px;
+		display: inline-block;
+		width: calc(50% - 20px);
+		height: 206px;
+		padding:10px;
+		margin: 0 10px;
+		box-sizing: border-box;
+		float: left;
+		box-shadow: 0px 0px 3px #999;
+		position: relative;
+		overflow: hidden;
+		transition: all 0.5s;
 	}
-
+	.imgBoxLeft:hover{
+		transform: translateY(-3px);
+		box-shadow: 0px 1px 15px #999;
+	}
+	.imgBoxLeft span{
+	    position: absolute;
+	    height:calc(100% - 20px);
+	    width:30px;
+        background: rgba(255, 255, 255, 0.4);
+    	color: #ef3900;
+	    font-size: 16px;
+	    font-weight: bold;
+	    text-align: center;
+	    line-height: 46px;
+	    display: inline-block;
+	    top: 10px;
+	    left: 10px;
+	    overflow: hidden;
+	}
 	.imgBoxLeft img {
-		width: 315px;
-		height: 203px;
-		margin-left: 10px;
+		width: calc(100% - 30px);
+		height: 100%;
+		margin-left: 30px;
+		box-sizing: border-box;
 		clear: left;
 		float: left;
+		
 	}
 
 	h3 {
@@ -205,11 +253,9 @@
 	.topblog {
 		background: url(../assets/img/libg.png) no-repeat 15px 15px;
 		border: #dddddd 1px solid;
-		border-left: 0;
-		border-bottom: 0;
 		line-height: 26px;
 		float: right;
-		width: 55%;
+		width: calc(50% - 7px);
 		margin-right: 5px;
 		overflow: hidden;
 	}
@@ -226,8 +272,11 @@
 		font-weight: bold;
 		display: block;
 		height: 52px;
-		padding: 7px 0;
+		padding: 7px 10px 7px 50px;
 		transition: all 0.3s;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 
 	.topblog li a:hover {
@@ -246,6 +295,9 @@
 		color: #ef3900;
 		font-weight: normal;
 		transition: all 0.3s;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 
 	.template {

@@ -161,6 +161,7 @@
         position:relative;
         color:#000;
         overflow:hidden;
+        transition: all 0.5s;
     }
     .page-bar li.pageCbtn:hover,.page-bar li.pageCbtn.active{
         border:2px solid #ff7bad;
@@ -173,7 +174,6 @@
         border:2px solid #ff7bad;
         background: rgba(255,255,255,0.8);
         color:#ef3900;
-        font-weight: bold;
     }
     .page-bar .btnPage{
         font-size: 24px;

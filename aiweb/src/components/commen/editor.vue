@@ -105,12 +105,9 @@
                 },//预览的信息
                 tipsData:{
                 	ifShow:false,
-                	centent:'',
                 },//提示信息
                 layerData:{
                 	ifShow:false,
-                	title:'',
-                	centent:'',
                 },//弹窗信息
                 tijiaoleix:null,//提交的类型
                 atcUploadFlag:true,

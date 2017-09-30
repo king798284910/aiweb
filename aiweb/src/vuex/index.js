@@ -9,6 +9,16 @@ export default new Vuex.Store({
         progressBarShow:true,
         progressBarisOk:false,
         homePage:1,
+        webPage:1,
+        itnewsPage:1,
+        notesPage:1,
+        operationPage:1,
+        sharePage:1,
+        asideData:{
+          latest:[],//最新推荐
+          technology:[],//技术探讨
+          hotBlog:[],//点击排行
+        }
     },
     mutations: {
         //是否显示音乐
@@ -43,5 +53,8 @@ export default new Vuex.Store({
         changePage(state,page){
           state[page.obj] = page.page;
         },
+        getAsideData(state,data){
+          state.asideData = data;
+        }
     }
 });
