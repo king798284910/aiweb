@@ -88,9 +88,9 @@
 			asideMoveIn(){
 				return this.$store.state.asideMoveFlag
 			},
-			// asideMoveOut(){
-			// 	return this.$store.state.changeMoveOutFlag
-			// },
+			asideData(){
+                return this.$store.state.asideData
+            },
 		},
         activated(){
 			var self = this;
@@ -191,21 +191,20 @@
 		margin: 0 10px;
 		box-sizing: border-box;
 		float: left;
-		box-shadow: 0px 0px 3px #999;
+		border:1px solid #fff;
 		position: relative;
 		overflow: hidden;
-		transition: all 0.5s;
+		transition: all 1s;
 	}
 	.imgBoxLeft:hover{
-		transform: translateY(-3px);
-		box-shadow: 0px 1px 15px #999;
+		transform: scale(1.03);
 	}
 	.imgBoxLeft span{
 	    position: absolute;
 	    height:calc(100% - 20px);
 	    width:30px;
         background: rgba(255, 255, 255, 0.4);
-    	color: #ef3900;
+    	color: #ef7000;
 	    font-size: 16px;
 	    font-weight: bold;
 	    text-align: center;
@@ -222,7 +221,6 @@
 		box-sizing: border-box;
 		clear: left;
 		float: left;
-		
 	}
 
 	h3 {

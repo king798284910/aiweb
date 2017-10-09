@@ -169,6 +169,7 @@
     .jishutantao ul li {
         line-height: 31px;
         clear: both;
+        height: 31px;
         padding-left: 5px;
     }
     .jishutantao ul li a{

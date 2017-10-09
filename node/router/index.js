@@ -277,6 +277,32 @@ router.get('/getarticle',function(req,res){
     }
 });
 
+router.get('/getshare',function(req,res){
+    var result = {
+        count:1,
+        listData:[],
+    }
+    schemaModels.share.count({}, function(err, count) {
+        if(count){
+            result.count = Math.ceil(count/req.query.limit);
+        }
+        schemaModels.share.find({},
+        '-_id -__v', {
+        skip: (req.query.page-1)*req.query.limit, sort : {'newDate' : -1},limit: req.query.limit*1
+        }, function(err, data) {
+            if(data){
+                for (var i = 0; i < data.length; i++) {
+                    data[i].imgUrl = url_ + data[i].imgUrl;
+                }
+                result.listData = data;
+            }else{
+                console.log(err)
+            }
+            res.json(result);
+        });
+    });
+});
+
 function saveImg(data_,cb){
     var extension = '.'+data_.split(';')[0].split('/')[1];//图片后缀
     var path = '/images/' + Date.now() + extension;//从app.js级开始找--在我的项目工程里是这样的

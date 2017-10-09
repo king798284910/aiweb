@@ -3,33 +3,21 @@
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
 			<ul class='list'>
-				<li class="list-li clearfix">
+				<li class="list-li clearfix" v-for='item in listData'>
      				<div class="say-pic-box">
-		               <img src="http://www.duanliang920.com/uploads/141008/1-14100QG622R6.jpg"  alt="你愿与我一路同行，我将为你背负行囊！---加油 2015~">
+		               <img :src="item.imgUrl">
 		            </div>
 		            <div class="say-text">
 		               	<p class="info">
-		               		你愿与我一路同行，我将为你背负行囊！---加油 2015~你你愿与我一路同行，你愿与我一路同行，我将为你背负行囊！---加油 2015~你愿与我一路同行，我将为你背负行囊！---加油 2015~我将为你背负行囊！---加油 2015~愿与我一路同行，我将为你背负行囊！---加油 2015~
+		               		{{item.content}}
 		                 	<span class="date-time">
-		                 		2015-02-19
-		                 	</span> 
-		                </p>
-		            </div>
-     			</li>
-     			<li class="list-li clearfix">
-     				<div class="say-pic-box">
-		               <img src="http://www.duanliang920.com/uploads/141008/1-14100QG622R6.jpg"  alt="你愿与我一路同行，我将为你背负行囊！---加油 2015~">
-		            </div>
-		            <div class="say-text">
-		               	<p class="info">
-		               		你愿与我一路同行，我将为你背负行囊！---加油 2015~
-		                 	<span class="date-time">
-		                 		2015-02-19
+		                 		[{{item.editDate}}]
 		                 	</span> 
 		                </p>
 		            </div>
      			</li>
 			</ul>
+            <v-page @pPage='getPost' :all='all' :pCur='page' :imgflag='imgflag'></v-page>
 		</main>
 	</div>
 </template>
@@ -37,16 +25,22 @@
 <script>
     import store from '../vuex';
     import vCrumbs from './commen/crumbs.vue';
+    import vPage from './commen/pageBar.vue';
+    import axios from 'axios';
 	export default {
 		name: 'share',
 		data() {
 			return {
 				Rlist:[],
-				
+				page:1,
+                all:1,
+                imgflag:false,
+                listData:[],
 			}
 		},
         components:{
-            vCrumbs
+            vCrumbs,
+            vPage
         },
         computed:{
             asideMoveIn(){
@@ -69,30 +63,60 @@
             var self = this;
             store.commit('progressBarisNo');
             store.commit('progressBarShow_');
-            var time3 = setTimeout(function(){
+            let page = store.state.sharePage;
+            axios.get('/api/getshare',{
+                params:{
+                    page:page,
+                    limit:10,
+                }
+            })
+            .then(function(res){
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
                 setTimeout(()=>{
-                next(vm => {
-                    vm.Rlist = [
-                        {path:'/home',text:'首页'},
-                        {path:'/share',text:'分享心情'}
-                    ]
-                })
-                clearTimeout(time3);
+                    next(vm => {
+                        vm.Rlist = [
+                            {path:'/home',text:'首页'},
+                            {path:'/share',text:'分享心情'}
+                        ]
+                        vm.listData = res.data.listData
+                        vm.all=res.data.count;
+                        vm.page = page;
+                    })
                 },100)
-            },0)
-            // getPost(to.params.id, (err, post) => {
-            //   if (err) {
-            //     // display some global error message
-            //     next(false)
-            //   } else {
-            //     next(vm => {
-            //       vm.post = post
-            //     })
-            //   }
-            // })
+            })
+            .catch(function(err){
+                console.log(err);
+
+            });
+        },
+        methods:{
+            getPost(page) {
+                let self = this;
+                self.$store.commit('changePage',{obj:'sharePage',page:page});
+                self.page = page;
+                self.imgflag = true;
+
+                axios.get('/api/getshare',{
+                    params:{
+                        page:page,
+                        limit:1,
+                    }
+                })
+                .then(function(res){
+                    self.imgflag = false;
+                    self.listData = res.data.listData
+                    self.all=res.data.count;
+                    document.documentElement.scrollTop = document.body.scrollTop = 0;
+                })
+                .catch(function(err){
+                    console.log(err);
+                    self.imgflag = false;
+                    self.listData = [];
+                    document.documentElement.scrollTop = document.body.scrollTop = 0;
+                });
+            }
         },
 	}
 </script>
@@ -166,7 +190,6 @@
 	}
 	ul.list li .say-text {
 	    width: 850px;
-	    min-height: 65px;
 	    background: rgba(255, 255, 255, 0.7); 
 	    display: block;
 	    border-radius: 5px;
@@ -195,22 +218,16 @@
 	ul.list li .say-text p.info {
 	    width: 100%;
 	    height: 100%;
-	    padding:10px 100px 10px 10px;
+	    padding:15px;
 	    box-sizing: border-box;
 	}
 	ul.list li .say-text p.info .date-time {
-	    display: block;
-	    width: 85px;
+	    
 	    height: 25px;
 	    line-height: 25px;
-	    /*background: #ee5a5a;*/
-	    border-radius: 3px;
-	    text-align: center;
+        padding-left: 20px;
 	    color: #ee5a5a;
-	    position: absolute;
-	    right: 5px;
-	    bottom: 5px;
 	    font-size: 14px;
-	    text-indent:0;
+        white-space: nowrap;
 	}
 </style>

@@ -66,25 +66,10 @@
         },
       	beforeRouteEnter (to, from, next) {
       		var self = this;
-            let page = store.state.homePage;
+            let page = store.state.webPage;
       		store.commit('progressBarisNo');
       		store.commit('progressBarShow_');
-      		// var time3 = setTimeout(function(){
-      		// 	store.commit('progressBarisOk');
-      		// 	store.commit('changeAsideF');
-        //         store.commit('changeMoveF');
-        //         setTimeout(()=>{
-        //             next(vm => {
-        //                 vm.Rlist = [
-        //                     {path:'/home',text:'首页'},
-        //                     {path:'/web',text:'C3/H5'}
-        //                 ]
-        //             })
-        //             clearTimeout(time3);
-        //         },100)
-      		// },0);
-
-
+            
             axios.get('/api/getarticle',{
                 params:{
                     lable:'{"text":"C3/H5","Vpath":"/web"}',
