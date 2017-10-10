@@ -364,7 +364,7 @@
 	@import "assets/css/reset.css";
 	body {
 		background: url('assets/img/bg.jpg') #7DE6F3 no-repeat;
-		background-attachment: fixed;
+		/*background-attachment: fixed;*/
 		background-size: 100% auto;
 	}
 
@@ -639,7 +639,7 @@
 	}
 
 	.headerTop h1 {
-		font-size: 40px;
+		font-size: 26px;
 		font-weight: normal;
 		animation: headMove 0.4s ease-out;
 	}

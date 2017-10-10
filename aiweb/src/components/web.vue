@@ -81,17 +81,15 @@
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
-                setTimeout(()=>{
-                    next(vm => {
-                        vm.Rlist = [
-                            {path:'/home',text:'首页'},
-                            {path:'/web',text:'C3/H5'}
-                        ]
-                        vm.listData = res.data.listData
-                        vm.all=res.data.count;
-                        vm.page = page;
-                    })
-                },100)
+                next(vm => {
+                    vm.Rlist = [
+                        {path:'/home',text:'首页'},
+                        {path:'/web',text:'C3/H5'}
+                    ]
+                    vm.listData = res.data.listData
+                    vm.all=res.data.count;
+                    vm.page = page;
+                })
             })
             .catch(function(err){
                 console.log(err);
@@ -117,7 +115,6 @@
                     self.listData = res.data.listData
                     self.all=res.data.count;
                     document.documentElement.scrollTop = document.body.scrollTop = 0;
-                    console.log(res.data);
                 })
                 .catch(function(err){
                     console.log(err);

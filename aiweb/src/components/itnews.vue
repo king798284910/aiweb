@@ -73,7 +73,7 @@
             let page = store.state.itnewsPage;
             store.commit('progressBarisNo');
             store.commit('progressBarShow_');
-            
+
             axios.get('/api/getarticle',{
                 params:{
                     lable:'{"text":"it资讯","Vpath":"/itnews"}',
@@ -85,22 +85,18 @@
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
-                setTimeout(()=>{
-                    next(vm => {
-                        vm.Rlist = [
-                            {path:'/home',text:'首页'},
-                            {path:'/itnews',text:'it资讯'}
-                        ]
-                        vm.listData = res.data.listData
-                        vm.all=res.data.count;
-                        vm.page = page;
-                        console.log(res)
-                    })
-                },100)
+                next(vm => {
+                    vm.Rlist = [
+                        {path:'/home',text:'首页'},
+                        {path:'/itnews',text:'it资讯'}
+                    ]
+                    vm.listData = res.data.listData
+                    vm.all=res.data.count;
+                    vm.page = page;
+                })
             })
             .catch(function(err){
                 console.log(err);
-
             });
         },
         methods:{
@@ -122,7 +118,6 @@
                     self.listData = res.data.listData
                     self.all=res.data.count;
                     document.documentElement.scrollTop = document.body.scrollTop = 0;
-                    console.log(res.data);
                 })
                 .catch(function(err){
                     console.log(err);

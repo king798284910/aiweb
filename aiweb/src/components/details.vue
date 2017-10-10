@@ -2,15 +2,15 @@
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
-			<div class='articleDatail'>
-        		<h2>{{previewData.articleTitle}}</h2>
+			<div class='articleDatail' v-for='item in detailData'>
+        		<h2>{{item.title}}</h2>
         		<p class='autor'>
-                    <span class='paddings textTime'>2017-09-01 18:26:54</span>
-                    <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
-                    <span class='paddings liulan'>浏览(666)</span>
-                    <span class='paddings author'>金理学</span>
+                    <span class='paddings textTime'>{{item.editDate}}</span>
+                    <span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" :title="JSON.parse(item.label).text"  class="fenleiA" >{{JSON.parse(item.label).text}}</router-link>]</span>
+                    <span class='paddings liulan'>浏览({{item.views}})</span>
+                    <span class='paddings author'>{{item.author}}</span>
                 </p>
-        		<div v-html='editorContent' v-highlight></div>
+        		<div v-html='item.content' v-highlight></div>
         	</div>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
@@ -23,22 +23,13 @@
     import vSide from './commen/aside.vue';
     import store from '../vuex';
     import vCrumbs from './commen/crumbs.vue';
+    import axios from 'axios';
 	export default {
 		name: 'details',
 		data() {
 			return {
                 Rlist:[],
-                previewData:{
-                	articleTitle:"微博用户发布内容无版权？回应：版权归用户而非平台",
-                	articleOverview:'',
-                	articleImg:'',
-                	articleLabel:{
-                		"text":'C3/H5',
-                		"Vpath":'/web'
-                	},
-                	id:'7981'
-                },//预览的信息
-                editorContent:'',
+                detailData:[],
 			}
 		},
 		components:{
@@ -49,9 +40,6 @@
             asideMoveIn(){
                 return this.$store.state.asideMoveFlag
             },
-            // asideMoveOut(){
-            //  return this.$store.state.changeMoveOutFlag
-            // },
         },
         mounted(){
             var self = this;
@@ -60,35 +48,59 @@
             var self = this;
             self.$store.commit('changeAsideT');
             self.$store.commit('changeMoveT');
-			
+
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
             store.commit('progressBarisNo');
             store.commit('progressBarShow_');
-            var time3 = setTimeout(function(){
+
+            axios.get('/api/getarticledetails',{
+                params:{
+                    id:to.params.id
+                }
+            })
+            .then(function(res){
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
-                setTimeout(function(){
                 next(vm => {
                     var title_ = '文章';
                     var  path_o = [{path:to.path,text:title_}];
                     vm.Rlist = to.meta.concat(path_o);
+                    if(res.data.status>0){
+                        vm.detailData = res.data.data
+                        console.log(res.data)
+                    }
+                    store.commit('changeAsideT');
+                    store.commit('changeMoveT');
                 })
-                clearTimeout(time3);
-                },100)
-            },0)
-            // getPost(to.params.id, (err, post) => {
-            //   if (err) {
-            //     // display some global error message
-            //     next(false)
-            //   } else {
-            //     next(vm => {
-            //       vm.post = post
-            //     })
-            //   }
-            // })
+            })
+            .catch(function(err){
+                console.log(err);
+
+            });
+        },
+        beforeRouteUpdate (to, from, next) {
+            var self = this;
+            self.detailData = [];
+            axios.get('/api/getarticledetails',{
+                params:{
+                    id:to.params.id
+                }
+            })
+            .then(function(res){
+                var title_ = '文章';
+                var  path_o = [{path:to.path,text:title_}];
+                self.Rlist = to.meta.concat(path_o);
+                if(res.data.status>0){
+                    self.detailData = res.data.data
+                }
+                next();
+            })
+            .catch(function(err){
+                console.log(err);
+            });
         },
 	}
 </script>

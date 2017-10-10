@@ -97,7 +97,6 @@
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
 
-        	
         },
         beforeRouteEnter (to, from, next) {
 
@@ -109,20 +108,18 @@
         		params:{
         			lable:'home',
         			page:page,
-        			limit:1,
+        			limit:6,
         		}
 			})
 			.then(function(res){
 				store.commit('progressBarisOk');
       			store.commit('changeAsideF');
 		    	store.commit('changeMoveF');
-		    	setTimeout(()=>{
-	  				next(vm => {
-	  					vm.listData = res.data.listData
-						vm.all=res.data.count;
-						vm.page = page;
-		        	})
-	        	},100)
+  				next(vm => {
+  					vm.listData = res.data.listData
+					vm.all=res.data.count;
+					vm.page = page;
+	        	})
 			})
 			.catch(function(err){
 			    console.log(err);
@@ -140,7 +137,7 @@
 	        		params:{
 	        			lable:'home',
 	        			page:page,
-	        			limit:1,
+	        			limit:6,
 	        		}
 				})
 				.then(function(res){
@@ -148,7 +145,6 @@
 	  				self.listData = res.data.listData
 					self.all=res.data.count;
 	  				document.documentElement.scrollTop = document.body.scrollTop = 0;
-	  				console.log(res.data);
 				})
 				.catch(function(err){
 				  	console.log(err);

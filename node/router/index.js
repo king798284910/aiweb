@@ -275,7 +275,7 @@ router.get('/getarticle',function(req,res){
             });
         });
     }
-});
+});//获取文章列表
 
 router.get('/getshare',function(req,res){
     var result = {
@@ -301,7 +301,35 @@ router.get('/getshare',function(req,res){
             res.json(result);
         });
     });
-});
+});//获取简说列表
+
+router.get('/getarticledetails',function(req,res){
+
+    schemaModels.article.findById(req.query.id,'views', function(err, data) {
+        if(data){
+            schemaModels.article.findByIdAndUpdate(req.query.id,{$set: {views: ++data.views}},{select:'-_id -__v -newDate',new:true}, function(err, data) {
+                if(data){
+                    res.json({
+                        status:1,
+                        data:[data]
+                    });
+                }else{
+                    res.json({
+                        status:-1,
+                        data:'查询失败'
+                    });
+                }
+
+            });
+        }else{
+            res.json({
+                status:-1,
+                data:'查询失败'
+            });
+        }
+        
+    });
+});//获取文章详情
 
 function saveImg(data_,cb){
     var extension = '.'+data_.split(';')[0].split('/')[1];//图片后缀
