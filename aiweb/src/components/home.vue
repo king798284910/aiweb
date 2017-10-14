@@ -2,49 +2,37 @@
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<div class='banner'>
-				<h3>
+				<h3 v-scrollmove>
       			<p><span>热门</span>文章 New Blog</p>
-      		</h3>
+      			</h3>
 				<router-link :to="'/web/688'" class='imgBoxLeft'>
 					<span>建站历程</span>
 					<img :src="banner" />
 				</router-link>
 				<ul class="topblog">
-					<li>
-						<router-link :to="'/web/16036'">腾讯云和阿里云对比哪个好？云计<span>在对比每一款产品时，本文先通过一系列的标准化测...</span></router-link>
-					</li>
-					<li>
-						<router-link :to="'/web/15346'">dux主题1.8下载-大前端主题<span>最近看到很多找大前端主题dux主题1.8下载的，我也...</span></router-link>
-					</li>
-					<li>
-						<router-link :to="'/web/2479'">网络刷单骗子伎俩揭晓<span>很多大学生总想赚钱，看到网上各类刷单广告心痒的...</span></router-link>
+					<li v-for='item in top3'>
+						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id">{{item.title}}<span>{{item.overview}}</span></router-link>
 					</li>
 				</ul>
-				<h3><p><span>心得笔记</span>  Journey</p></h3>
-			<ul class="template">
-				<li>
-					<router-link :to="'/web/16036'" title="16篇大数据分析好文推荐！">
-						<img src="../assets/img/defaultpic.gif" alt="16篇大数据分析好文推荐！">
-					</router-link>
-					<span>16篇大数据分析好文推荐！</span>
-				</li>
-				<li>
-					<router-link :to="'/web/16036'" title="怎么样上网可以避免泄露重要的个人隐私"><img src="../assets/img/defaultpic.gif" alt="怎么样上网可以避免泄露重要的个人隐私"></router-link><span>怎么样上网可以避免泄露重要的个人隐私</span></li>
-				<li>
-					<router-link :to="'/web/16036'" title="明天就要高考了，这些事一定要提前知道啊"><img src="../assets/img/defaultpic.gif" alt="明天就要高考了，这些事一定要提前知道啊"></router-link><span>明天就要高考了，这些事一定要提前知道啊</span></li>
-				<li>
-					<router-link :to="'/web/16036'" title="关于成为一个有目标感的人的清单"><img src="../assets/img/defaultpic.gif" alt="关于成为一个有目标感的人的清单"></router-link><span>关于成为一个有目标感的人的清单</span></li>
-			</ul>
-			<h3><p><span>推荐文章</span>  Journey</p></h3>
+				<h3 v-scrollmove><p><span>心得笔记</span>  Journey</p></h3>
+				<ul class="template">
+					<li v-for = 'item in asideData.notes' v-scrollmove>
+						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">
+							<img :src="item.imgUrl">
+						</router-link>
+						<span>{{item.title}}</span>
+					</li>
+				</ul>
+				<h3 v-scrollmove><p><span>推荐文章</span>  Journey</p></h3>
 			</div>
 			<ul class='l-article'>
-				<li v-for='item in listData'>
+				<li v-for='item in listData' v-scrollmove>
 					<h2><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
 					<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link">
 						<img :src="item.imgUrl" :alt="item.title" :title="item.title" class="a-pic l">
 					</router-link>
 					<div class="a-con">
-						<p>{{item.overview}}。。。。。。</p>
+						<p>{{item.overview}} . . .</p>
 						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more" >阅读全文&gt;&gt;</router-link>
 					</div>
 					<p class='autor'>
@@ -91,18 +79,19 @@
 			asideData(){
                 return this.$store.state.asideData
             },
+            top3(){
+            	return this.asideData.hotBlog.slice(0,3)
+            }
 		},
         activated(){
 			var self = this;
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
-
         },
         beforeRouteEnter (to, from, next) {
-
         	let page = store.state.homePage;
-      		store.commit('progressBarisNo');
-      		store.commit('progressBarShow_');
+      		// store.commit('progressBarisNo');
+      		// store.commit('progressBarShow_');
 
       		axios.get('/api/getarticle',{
         		params:{
@@ -307,6 +296,29 @@
 		position: relative;
 		transition: all 1s ;
 	}
+	@keyframes listMove {
+		0%{
+			transform: translateX(30px);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+	}
+	.template li.move:nth-child(1){
+		animation: listMove 0.5s;
+	}
+	.template li.move:nth-child(2){
+		animation: listMove 1s;
+	}
+	.template li.move:nth-child(3){
+		animation: listMove 1.5s;
+	}
+	.template li.move:nth-child(4){
+		animation: listMove 2s;
+	}
 	.template li:hover{
 		transform: scale(1.1);
 	}
@@ -335,105 +347,5 @@
 		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 		display: block;
 	}
-	/*ul.l-article li {
-	box-sizing: border-box;
-    height: auto;
-    box-shadow: 1px 1px 5px #bbb;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    width: 745px;
-    padding: 10px 20px;
-    font-size: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    transition: all 0.5s;
-	}
-	ul.l-article li:hover{
-		background: rgba(255, 255, 255, 0.7);
-	}
-	ul.l-article li h2 {
-		font-size: 14px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    position: relative;
-}
-	ul.l-article li h2 a{
-		color: #333;
-	}
-	ul.l-article li:hover img.a-pic {
-		transform: scale(1.05);
-	}
-	ul.l-article li img.a-pic {
-    width: 180px;
-    height: 120px;
-    border: 1px solid #bbb;
-    padding: 3px;
-    transition: all 0.6s;
-}
-	ul.l-article li div.a-con p {
-    line-height: 30px;
-    text-indent: 2em;
-}
-	ul.l-article li div.a-con {
-    position: relative;
-    width: 500px;
-    min-height: 120px;
-    float: right;
-	}
-	ul.l-article li div.a-con a.a-more {
-	position: absolute;
-    bottom: -10px;
-    right: 10px;
-    width: 90px;
-    height: 30px;
-    line-height: 30px;
-    background: #fd8a61;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-	}
-	.autor {
-    overflow: hidden;
-    margin-top: 10px;
-    display: inline-block;
-    color: #999;
-    width: 100%;
-	}
-	.paddings{
-		display: inline-block;
-		margin-right:20px;
-		padding-left: 25px;
-		line-height: 22px;
-		background-size: 20px!important;
-
-	}
-	.textTime{
-		background: url(../assets/img/clock.png) no-repeat left center;
-	}
-	.fenlei{
-		background: url(../assets/img/label.png) no-repeat left 2px;
-	}
-	.liulan{
-		background: url(../assets/img/browse.png) no-repeat left center;
-	}
-	.author{
-		background: url(../assets/img/author.png) no-repeat left center;
-		background-size: 16px!important;
-	}
-	.textTitleA{
-		display: inline-block;
-		transition: all 0.5s;
-	}
-	.textTitleA:hover{
-		transform: translateX(20px);
-		color: #ef3900;
-	}
-	.fenleiA{
-		transition: all 0.5s;
-		color:#759b08;
-
-	}
-	.fenleiA:hover{
-		color:#ef3900;
-		text-decoration:underline;
-	}*/
+	
 </style>

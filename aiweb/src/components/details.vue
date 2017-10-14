@@ -10,7 +10,7 @@
                     <span class='paddings liulan'>浏览({{item.views}})</span>
                     <span class='paddings author'>{{item.author}}</span>
                 </p>
-        		<div v-html='item.content' v-highlight></div>
+        		<div class='contentBox' v-html='item.content' v-highlight></div>
         	</div>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
@@ -46,14 +46,14 @@
         },
         activated(){
             var self = this;
-            self.$store.commit('changeAsideT');
-            self.$store.commit('changeMoveT');
+            // self.$store.commit('changeAsideT');
+            // self.$store.commit('changeMoveT');
 
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
-            store.commit('progressBarisNo');
-            store.commit('progressBarShow_');
+            // store.commit('progressBarisNo');
+            // store.commit('progressBarShow_');
 
             axios.get('/api/getarticledetails',{
                 params:{
@@ -66,12 +66,12 @@
                 store.commit('changeMoveF');
                 next(vm => {
                     var title_ = '文章';
-                    var  path_o = [{path:to.path,text:title_}];
-                    vm.Rlist = to.meta.concat(path_o);
                     if(res.data.status>0){
                         vm.detailData = res.data.data
-                        console.log(res.data)
+                        title_ = res.data.data[0].title
                     }
+                    var  path_o = [{path:to.path,text:title_}];
+                    vm.Rlist = to.meta.concat(path_o);
                     store.commit('changeAsideT');
                     store.commit('changeMoveT');
                 })
@@ -90,6 +90,7 @@
                 }
             })
             .then(function(res){
+                self.$store.commit('progressBarisOk');
                 var title_ = '文章';
                 var  path_o = [{path:to.path,text:title_}];
                 self.Rlist = to.meta.concat(path_o);
@@ -121,5 +122,8 @@
 		/*box-shadow: 0 0 10px #ccc;
 		background: rgba(255, 255, 255, 0.5);*/
 	}
-
+    .contentBox{
+        line-height: 26px;
+    }
+    
 </style>

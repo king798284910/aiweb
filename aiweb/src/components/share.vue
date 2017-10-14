@@ -7,7 +7,7 @@
      				<div class="say-pic-box">
 		               <img :src="item.imgUrl">
 		            </div>
-		            <div class="say-text">
+		            <div class="say-text" v-scrollmove>
 		               	<p class="info">
 		               		{{item.content}}
 		                 	<span class="date-time">
@@ -61,30 +61,28 @@
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
-            store.commit('progressBarisNo');
-            store.commit('progressBarShow_');
+            // store.commit('progressBarisNo');
+            // store.commit('progressBarShow_');
             let page = store.state.sharePage;
             axios.get('/api/getshare',{
                 params:{
                     page:page,
-                    limit:10,
+                    limit:20,
                 }
             })
             .then(function(res){
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
-                setTimeout(()=>{
-                    next(vm => {
-                        vm.Rlist = [
-                            {path:'/home',text:'首页'},
-                            {path:'/share',text:'分享心情'}
-                        ]
-                        vm.listData = res.data.listData
-                        vm.all=res.data.count;
-                        vm.page = page;
-                    })
-                },100)
+                next(vm => {
+                    vm.Rlist = [
+                        {path:'/home',text:'首页'},
+                        {path:'/share',text:'分享心情'}
+                    ]
+                    vm.listData = res.data.listData
+                    vm.all=res.data.count;
+                    vm.page = page;
+                })
             })
             .catch(function(err){
                 console.log(err);
@@ -101,7 +99,7 @@
                 axios.get('/api/getshare',{
                     params:{
                         page:page,
-                        limit:1,
+                        limit:20,
                     }
                 })
                 .then(function(res){
@@ -158,7 +156,7 @@
 	    top: 10px;
 	}
 	ul.list li:hover .say-text{
-		background: #fff;
+		background: #e9f3e9;
 	}
 	ul.list li:hover::before{
 		border-color: transparent transparent transparent rgba(255, 255, 255, 1);
@@ -182,15 +180,15 @@
 	    margin-top: 5px;
 	    transition: all .5s;
 	}
-	ul.list li:hover img{
-		transform: scale(1.05);
-	}
+	/*ul.list li:hover img{
+		transform: rotateZ(360deg);
+	}*/
 	ul.list li:first-child .say-pic-box img {
 	    margin-top: 0;
 	}
 	ul.list li .say-text {
 	    width: 850px;
-	    background: rgba(255, 255, 255, 0.7); 
+	    background: rgba(255, 255, 255, 0.5); 
 	    display: block;
 	    border-radius: 5px;
         box-shadow: 1px 1px 5px #bbb;
@@ -220,6 +218,7 @@
 	    height: 100%;
 	    padding:15px;
 	    box-sizing: border-box;
+
 	}
 	ul.list li .say-text p.info .date-time {
 	    

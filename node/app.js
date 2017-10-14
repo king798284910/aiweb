@@ -2,14 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 var app = express();
 var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+//为vue开启简洁路由模式
+app.use(require('connect-history-api-fallback')());
+app.use(bodyParser.json({limit:'50mb'}));
+app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
 
 app.use("/api",require("./router"));
 app.use("/images",express.static(__dirname+"/images"));
-
-
+app.use(express.static(__dirname+'/static'));
 
 mongoose.connect("mongodb://localhost:9888/aiweb",(error)=>{
     if(error){

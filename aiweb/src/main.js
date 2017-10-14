@@ -5,9 +5,10 @@ import App from './App'
 import router from './router'
 import store from './vuex'
 import Highlight from './assets/js/highlight_v.js'
-
+import scrollMove from './assets/js/scrollMove.js'
 
 Vue.use(Highlight);
+Vue.use(scrollMove);
 
 Vue.config.productionTip = false;
 /* eslint-disable no-new */

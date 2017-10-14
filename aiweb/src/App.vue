@@ -1,12 +1,12 @@
 <template>
-	<div id="app" v-cloak>
+	<div id="app" v-cloak @click='clickA($event)'>
 		<progress-bar v-if='progressBarShow'></progress-bar>
 
 		<div class='boxLeft' :class='{active:active3}'>
 			<header class="head">
 				<div class='headerTop'>
-					<h1><router-link :to="'/home'" class="blogName">金理学のBlog</router-link></h1>
-					<span>关注互联网最新动态的个人博客网站</span>
+					<h1  v-scrollmove><router-link :to="'/home'" class="blogName">金理学のBlog</router-link></h1>
+					<span v-scrollmove>关注互联网最新动态的个人博客网站</span>
 					<p @mouseenter='textMouseEnter_ ()' :class='{active:active4}'>世界上最遥远的距离<br>不是天涯与海角<br>而是我在 if<br>你却在 else (>_
 						<)</p>
 				</div>
@@ -18,13 +18,6 @@
 					<div class='timeEmbed'>
 						<embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" quality="high" bgcolor="#ffffff" width="270" height="100" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
 					</div>
-					<!--<object type="application/x-shockwave-flash" style="outline:none; margin-top: 10px;border-radius: 3px;box-shadow: 0 0 10px #ccc;" data="http://cdn.abowman.com/widgets/fish/fish.swf?" width="270" height="150">
-						<param name="movie" value="http://cdn.abowman.com/widgets/fish/fish.swf?">
-						<param name="AllowScriptAccess" value="always">
-						<param name="wmode" value="opaque">
-						<param name="scale" value="noscale">
-						<param name="salign" value="tl">
-					</object>-->
 					<object type="application/x-shockwave-flash" style="outline:none;margin-top:15px" data="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2F&amp;up_tailColor=E6DEBE&amp;" width="270" height="200">
 						<param name="movie" value="http://cdn.abowman.com/widgets/hamster/hamster.swf?up_bodyColor=f0e9cc&amp;up_feetColor=D4C898&amp;up_eyeColor=000567&amp;up_wheelSpokeColor=DEDEDE&amp;up_wheelColor=FFFFFF&amp;up_waterColor=E0EFFF&amp;up_earColor=b0c4de&amp;up_wheelOuterColor=FF4D4D&amp;up_snoutColor=F7F4E9&amp;up_bgColor=F0E4E4&amp;up_foodColor=cba920&amp;up_wheelCenterColor=E4EB2E&amp;up_tailColor=E6DEBE&amp;">
 						<param name="AllowScriptAccess" value="always">
@@ -47,6 +40,15 @@
 			<footer class='footer'>©</footer>
 		</div>
 		<div class='boxRight' :class='{active:active3}'>
+			<div class='pictureBox'></div>
+			<p class='namep'>金理学</p>
+			<p class='jianjie'>生日：1992-10-08</p>
+			<p class='jianjie'>籍贯：湖北省—通山县</p>
+			<p class='jianjie'>现居：深圳市—宝安区</p>
+			<p class='jianjie'>职业：网站制作</p>
+			<p class='jianjie'>爱好：羽毛球、乒乓球、游泳</p>
+			<p class='dictum'>土地是以它的肥沃和收获而被估价的；才能也是土地，不过它生产的不是粮食，而是真理。如果只能滋生瞑想和幻想的话，即使再大的才能也只是砂地或盐池，那上面连小草也长不出来的。 —— 别林斯基</p>
+			<p class='dictum'>人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</p>
 			<div class='editor' @mousedown = 'Touch($event)' @mouseup="TouchUp"></div>
 		</div>
 		<div class="sidebar-toggle" ref="sidebarToggle" @mouseenter='BtnMouseEnter_()' @mouseleave='BtnMouseLeave_()' @click.stop='BtnClick_()'>
@@ -92,10 +94,12 @@
 				}, {
 					'text': '分享心情',
 					'path': '/share'
-				}, {
-					'text': '相册',
-					'path': '/photo'
-				}, {
+				},
+				//  {
+				// 	'text': '相册',
+				// 	'path': '/photo'
+				// },
+				 {
 					'text': '留言板',
 					'path': '/message'
 				}, ],
@@ -108,8 +112,8 @@
 		watch:{
 			progressBarShow_(){
 				this.progressBarShow = this.progressBarShow_
-
-			}
+			},
+			
 		},
 		mounted() {
 			var self = this;
@@ -306,6 +310,7 @@
             .then(function (res) {
             	self.$store.commit('getAsideData',res.data);
             });
+            
 		},
 		computed:{
 			ifshowTimaAndmusic(){
@@ -356,6 +361,22 @@
 			TouchUp(){
 				document.onkeydown=null;
 			},
+			clickA(e){
+				var test = window.location.pathname;
+				var target = e.target;
+				var currentTarget = e.currentTarget;
+				
+				while(target !== currentTarget ){
+		            if(target.tagName == 'A'){
+		                if(e.target.pathname != test){
+							this.$store.commit('progressBarisNo');
+      						this.$store.commit('progressBarShow_');
+						}
+		                break;
+		            }
+		            target = target.parentNode;
+		        }
+			}
 		}
 	}
 </script>
@@ -576,6 +597,7 @@
 		90% {
 			color: #f000ff;
 		}
+		
 	}
 	@keyframes headMove {
 		0%{
@@ -616,7 +638,6 @@
 		font-size: 12px;
 		top: 25px;
 		cursor: pointer;
-		animation: headMove 0.7s ease-out;
 	}
 
 	.headerTop p {
@@ -641,7 +662,6 @@
 	.headerTop h1 {
 		font-size: 26px;
 		font-weight: normal;
-		animation: headMove 0.4s ease-out;
 	}
 
 	.blogName {
@@ -745,4 +765,46 @@
 		right: 0;
 		bottom: 0;
 	}
-</style>
+	.pictureBox{
+		height: 100px;
+		width: 100px;
+		margin:100px auto 0;
+		border-radius: 50%;
+		overflow: hidden;
+		background: url(./assets/img/headpic2.jpg) center -28px;
+		background-size: 100px;
+		cursor: pointer;
+		transition:all 1s;
+	}
+	.pictureBox:hover{
+		transform: scale(1.3) rotateZ(360deg);
+	}
+	.namep{
+		margin: 15px 0 25px;
+		text-align: center;
+		color: #ef3900;
+		font-weight: bold;
+	}
+	.jianjie{
+		margin-top: 10px;
+		font-size: 12px;
+		text-align: center;
+		color: #ef7000;
+	}
+	.dictum{
+		width: 240px;
+		margin: 40px auto 0;
+		line-height: 30px;
+		font-size: 12px;
+		text-indent: 2em;
+		color: #ef7000;
+	}
+@media screen and (max-width: 1280px) {
+    .sidebar-toggle {
+        display: none;
+    }
+    body{
+    	min-width: 1280px;
+    }
+}
+	</style>

@@ -10,7 +10,6 @@ function resolve (dir) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    scrollReveal:'./src/assets/js/scrollReveal.js'
   },
   output: {
     path: config.build.assetsRoot,

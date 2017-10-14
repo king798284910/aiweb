@@ -8,12 +8,59 @@ body{
     box-sizing: border-box;
     overflow: auto;
 }
+/*页面滚动动画*/
+html body .move{
+    animation: moveS 1s;
+}
+@keyframes moveS {
+    0%{
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/*位置的导航和头部的动画*/
+ul.crumbsBox li.move,.headerTop h1.move{
+    animation: moveS1 1s;
+}
+@keyframes moveS1 {
+    0%{
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/*分享页面的动画*/
+.say-text.move{
+    animation: moveS2 1s;
+}
+@keyframes moveS2 {
+    0%{
+        transform: translate(0,-50%) scale(0.9);
+        opacity: 0;
+    }
+    50%{
+        transform: translate(0,-50%) scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0,-50%) scale(1);
+        opacity: 1;
+    }
+}
 html,body,a,ul,h1,p,h2,h3,h4,h5,h6{
   text-decoration: none;
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 [v-cloak]{
 	display: none;
 }
@@ -97,11 +144,15 @@ ul.l-article li {
     padding: 10px 20px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.5);
-    transition: all 0.5s;
+    transition: all 1s;
 	}
 	ul.l-article li:hover{
 		background: rgba(255, 255, 255, 0.8);
 	}
+    ul.l-article li:hover .textTitleA{
+        transform: translateX(20px);
+        color: #ef3900;
+    }
 	ul.l-article li h2 {
 	font-size: 14px;
 
@@ -111,7 +162,7 @@ ul.l-article li {
 	ul.l-article li h2 a{
         width: 100%;
         height: 100%;
-		color: #333;
+		color: #ef7000;
         padding-bottom: 10px;
 	}
 	ul.l-article li img.a-pic:hover  {
@@ -127,6 +178,7 @@ ul.l-article li {
 	ul.l-article li div.a-con p {
     line-height: 30px;
     text-indent: 2em;
+    color:#ef7000;
 }
 	ul.l-article li div.a-con {
     position: relative;
@@ -177,10 +229,6 @@ ul.l-article li {
 	.textTitleA{
 		display: inline-block;
 		transition: all 0.5s;
-	}
-	.textTitleA:hover{
-		transform: translateX(20px);
-		color: #ef3900;
 	}
 	.fenleiA{
 		transition: all 0.5s;
@@ -261,4 +309,8 @@ ul.l-article li {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: rgba(85, 85, 85,0.2);;
+}
+.contentBox code.hljs{
+    border-radius: 8px;
+    background: rgba(253, 246, 227, 0.7);
 }

@@ -308,7 +308,7 @@
                     this.atcUploadFlag = false;
                     let newData = {
                         title:this.articleTitle,
-                        overview:this.articleOverview,
+                        overview:this.articleOverview.slice(0,150),
                         imgUrl:this.articleImg,
                         label:this.articleLabel,
                         content:this.editorObj.txt.html(),

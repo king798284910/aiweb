@@ -2,7 +2,7 @@
   
   <ul class="crumbsBox">
       <li>您当前的位置 :</li>
-      <li v-for='(item,index) in Rlist'>
+      <li v-for='(item,index) in Rlist' v-scrollmove>
         <router-link :to="item.path" class='fenleiA' :title="item.text">{{item.text}}</router-link>
       </li>
   </ul>
@@ -66,4 +66,5 @@
     line-height: 40px;
     padding:0 8px;
   }
+  
 </style>

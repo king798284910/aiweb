@@ -7,6 +7,7 @@ const fs = require('fs');
 const multiparty = require('multiparty');
 
 const url_ = 'http://localhost:8686';//服务器地址（若前后端同一服务器，则值为'.'）
+//const url_ = '.';//服务器地址（若前后端不同服务器，则值为'http://localhost:8686'）
 
 router.post('/savearticle',function(req,res){
     //req.body.label = JSON.parse(req.body.label);
@@ -189,6 +190,7 @@ router.get('/asideinfo',function(req,res){
         latest:[],//最新推荐
         technology:[],//技术探讨
         hotBlog:[],//点击排行
+        notes:[],//心得笔记排行
     }
     //查询最新文章
     schemaModels.article.find({},
@@ -214,7 +216,7 @@ router.get('/asideinfo',function(req,res){
             }
             //查询点击排行
             schemaModels.article.find({},
-            'title label _id',{
+            'title label _id overview',{
             sort : {'views' : -1},
             limit: 12,
             },function(err,data){
@@ -223,7 +225,22 @@ router.get('/asideinfo',function(req,res){
                 }else{
                     console.log(err)
                 }
-                res.json(result);
+                //心得笔记排行榜
+                schemaModels.article.find({'label':'{"text":"心得笔记","Vpath":"/notes"}'},
+                'title label _id imgUrl',{
+                sort : {'views' : -1},
+                limit: 4,
+                },function(err,data){
+                    if(data){
+                        for (var i = 0; i < data.length; i++) {
+                            data[i].imgUrl = url_ + data[i].imgUrl;
+                        }
+                        result.notes = data;
+                    }else{
+                        console.log(err)
+                    }
+                    res.json(result);
+                });
             });
         });
     });

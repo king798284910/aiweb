@@ -38,8 +38,8 @@
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
-            store.commit('progressBarisNo');
-            store.commit('progressBarShow_');
+            // store.commit('progressBarisNo');
+            // store.commit('progressBarShow_');
             var time3 = setTimeout(function(){
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
@@ -54,16 +54,7 @@
                 clearTimeout(time3);
                 },100)
             },0)
-            // getPost(to.params.id, (err, post) => {
-            //   if (err) {
-            //     // display some global error message
-            //     next(false)
-            //   } else {
-            //     next(vm => {
-            //       vm.post = post
-            //     })
-            //   }
-            // })
+            
         },
 	}
 </script>

@@ -3,13 +3,13 @@
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
             <ul class='l-article'>
-                <li v-for='item in listData'>
-                    <h2><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
+                <li v-for='item in listData' v-scrollmove>
+                    <h2 v-scrollmove><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
                     <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link">
                         <img :src="item.imgUrl" :alt="item.title" :title="item.title" class="a-pic l">
                     </router-link>
                     <div class="a-con">
-                        <p>{{item.overview}}。。。。。。</p>
+                        <p>{{item.overview}} . . .</p>
                         <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more" >阅读全文&gt;&gt;</router-link>
                     </div>
                     <p class='autor'>
@@ -71,8 +71,8 @@
         beforeRouteEnter (to, from, next) {
             var self = this;
             let page = store.state.itnewsPage;
-            store.commit('progressBarisNo');
-            store.commit('progressBarShow_');
+            // store.commit('progressBarisNo');
+            // store.commit('progressBarShow_');
 
             axios.get('/api/getarticle',{
                 params:{

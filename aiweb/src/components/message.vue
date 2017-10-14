@@ -39,21 +39,18 @@
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
-            store.commit('progressBarisNo');
-            store.commit('progressBarShow_');
+            // store.commit('progressBarisNo');
+            // store.commit('progressBarShow_');
             var time3 = setTimeout(function(){
                 store.commit('progressBarisOk');
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
-                setTimeout(function(){
-                    next(vm => {
-                        vm.Rlist = [
-                            {path:'/home',text:'首页'},
-                            {path:'/message',text:'留言板'}
-                        ]
-                    })
-                    clearTimeout(time3);
-                },100)
+                next(vm => {
+                    vm.Rlist = [
+                        {path:'/home',text:'首页'},
+                        {path:'/message',text:'留言板'}
+                    ]
+                })
             },0)
             // getPost(to.params.id, (err, post) => {
             //   if (err) {
