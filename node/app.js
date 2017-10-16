@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:9888/aiweb",(error)=>{
     }else{
         console.log("连接数据库成功");
         //开启服务器
-        app.listen(3000,(error)=>{
+        app.listen(8686,(error)=>{
             if(error){
                 console.log("服务器启动失败");
                 console.log(error);

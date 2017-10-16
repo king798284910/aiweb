@@ -104,6 +104,7 @@
 					'path': '/message'
 				}, ],
 				progressBarShow:true,
+				key:'',
 			}
 		},
 		components:{
@@ -349,17 +350,19 @@
 			},
 			Touch(e){
 				let self = this;
-			 	let el = e.currentTarget;
+			 	//let el = e.currentTarget;
 			 	document.onkeydown=function(event){
 	            	var e = event || window.event || arguments.callee.caller.arguments[0];
 	            	e.preventDefault();
-		            if (e.keyCode == 13 && e.ctrlKey) {
+	            	self.key += e.key;
+		            if (self.key == '1314520.') {
 		                self.$router.push({path:'/editor'});
 		            }
 				};
 			},
 			TouchUp(){
 				document.onkeydown=null;
+				this.key = '';
 			},
 			clickA(e){
 				var test = window.location.pathname;
