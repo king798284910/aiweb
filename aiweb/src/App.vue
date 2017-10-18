@@ -42,7 +42,7 @@
 					<input v-model='userName' type="password">
 				</div>
 				<div>
-					<input v-model='passWord' type="password">
+					<input v-model='passWord' type="password" @keyup.enter="login">
 				</div>
 				<div class='btnBox'>
 					<span class='login' @click ='login'>登录</span>
@@ -434,6 +434,8 @@
 	                	centent:'登录失败',
                 	}
 				});
+				this.userName = '';
+				this.passWord = '';
 			}
 		}
 	}
@@ -878,8 +880,9 @@
 		border:none;
 		outline: none;
 		height: 20px;
-		width: 160px;
+		width: 150px;
 		margin-top: 5px;
+		padding-left: 10px;
 	}
 	.btnBox{
 		font-size: 12px;

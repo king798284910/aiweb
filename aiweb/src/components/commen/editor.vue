@@ -146,6 +146,18 @@
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
                     self.imgArr.push(imgurl_);
                 },
+                fail: function (xhr, editor, result) {
+                    // 图片上传并返回结果，但图片插入错误时触发
+                    // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+                    if(result.errno == -3){
+                        sessionStorage.removeItem("login");
+                        var timerr = setTimeout(()=>{
+                            self.$store.commit('changeLoginBoxFlag',true);
+                        },2300)
+                        
+                    }
+                    
+                },
             };
             self.editorObj.create();
         },
@@ -286,6 +298,10 @@
                      .then(function (res) {
                         if(res.data.status>0){
                             this.$router.push('/share');
+                        }
+                        else if(res.data.status==0){
+                            sessionStorage.removeItem("login");
+                            this.$store.commit('changeLoginBoxFlag',true);
                         }else{
                             this.tipsData={
                                 ifShow:true,
@@ -319,7 +335,11 @@
                         if(res.data.status>0){
                             let articleLabel = JSON.parse(this.articleLabel);
                             this.$router.push(articleLabel.Vpath);
-                        }else{
+                        }else if(res.data.status==0){
+                            sessionStorage.removeItem("login");
+                            this.$store.commit('changeLoginBoxFlag',true);
+                        }
+                        else{
                             this.tipsData={
                                 ifShow:true,
                                 textColor:'red',
@@ -354,6 +374,9 @@
                 })
             } else {
                 store.commit('changeLoginBoxFlag',true);
+                next({
+                    path:'/home'
+                })
             }
         },
     }

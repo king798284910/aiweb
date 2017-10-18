@@ -137,7 +137,7 @@ router.post('/savearticle',function(req,res){
         });
     }else{
         res.json({
-            status:-1,
+            status:0,
             msg:'未登录'
         });
     }
@@ -145,7 +145,8 @@ router.post('/savearticle',function(req,res){
 
 router.post('/saveshare',function(req,res){
     if(req.session && req.session.user){
-        req.body.editDate  = req.body.newDate = new Date().format("yyyy-MM-dd");//当前时间
+        req.body.editDate  =  new Date().format("yyyy-MM-dd");//当前时间
+        req.body.newDate = new Date();
         schemaModels.share.findOne({'content' : req.body.content}, function(err,data) {
             if(err){
                 res.json({
@@ -201,7 +202,7 @@ router.post('/saveshare',function(req,res){
         });
     }else{
         res.json({
-            status:-1,
+            status:0,
             msg:'未登录'
         });
     }
@@ -244,7 +245,7 @@ router.post('/imgupload',function(req,res){
         });
     }else{
         res.json({
-            errno:-1,
+            errno:-3,
             data:[]
         });
     }
