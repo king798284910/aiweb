@@ -2,6 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 var app = express();
 var bodyParser = require('body-parser');
+
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+app.use(session({
+    secret: 'aiweb',
+    name: 'aiweb',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+    cookie: {maxAge: 60*60*1000},  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
+    resave: false,
+    saveUninitialized: true,
+}));
+
 //为vue开启简洁路由模式
 app.use(require('connect-history-api-fallback')());
 app.use(bodyParser.json({limit:'50mb'}));

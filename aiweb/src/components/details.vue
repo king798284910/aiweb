@@ -6,7 +6,7 @@
         		<h2>{{item.title}}</h2>
         		<p class='autor'>
                     <span class='paddings textTime'>{{item.editDate}}</span>
-                    <span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" :title="JSON.parse(item.label).text"  class="fenleiA" >{{JSON.parse(item.label).text}}</router-link>]</span>
+                    <span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" :title="JSON.parse(item.label).text"  class="fenleiA vueA" >{{JSON.parse(item.label).text}}</router-link>]</span>
                     <span class='paddings liulan'>浏览({{item.views}})</span>
                     <span class='paddings author'>{{item.author}}</span>
                 </p>
@@ -112,7 +112,6 @@
 		float: left;
 		width: 745px;
 		/*background: rgba(255, 255, 255, 0.5);*/
-        height: 800px;
 		/*box-shadow: 0 0 10px #ccc;*/
 	}
 	.aside {

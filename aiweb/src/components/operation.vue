@@ -4,17 +4,17 @@
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
             <ul class='l-article'>
                 <li v-for='item in listData' v-scrollmove>
-                    <h2 v-scrollmove><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
-                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link">
+                    <h2 v-scrollmove><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA vueA' :title="item.title"  >{{item.title}}</router-link></h2>
+                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link vueA">
                         <img :src="item.imgUrl" :alt="item.title" :title="item.title" class="a-pic l">
                     </router-link>
                     <div class="a-con">
                         <p>{{item.overview}}。。。。。。</p>
-                        <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more" >阅读全文&gt;&gt;</router-link>
+                        <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more vueA" >阅读全文&gt;&gt;</router-link>
                     </div>
                     <p class='autor'>
                         <span class='paddings textTime'>{{item.editDate}}</span>
-                        <span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" class="fenleiA" >{{JSON.parse(item.label).text}}</router-link>]</span>
+                        <span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" class="fenleiA vueA" >{{JSON.parse(item.label).text}}</router-link>]</span>
                         <span class='paddings liulan'>浏览({{item.views}})</span>
                         <span class='paddings author'>{{item.author}}</span>
                     </p>

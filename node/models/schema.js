@@ -20,9 +20,14 @@ const articleSchema = new mongoose.Schema({
     views:{type:Number,default:0},//浏览次数
 });//文章
 
+const userSchema = new mongoose.Schema({
+    userName:String,//用户名
+    passWord:String,//用户密码
+});//用户
 
 //model
 module.exports = {
     share : mongoose.model('share',shareSchema),
     article : mongoose.model('article',articleSchema),
+    user : mongoose.model('user',userSchema),
 } 

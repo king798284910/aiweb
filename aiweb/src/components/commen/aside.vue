@@ -2,27 +2,27 @@
     <div class='asideTemplate'>
         <ul class='aside_nav clearfix'>
             <li v-for='item in litext'>
-                <router-link :to="item.path" :title="item.text">{{item.text}}</router-link>
+                <router-link class='vueA' :to="item.path" :title="item.text">{{item.text}}</router-link>
             </li>
         </ul>
         <div class='tuijianImg'>
             <ul>
                 <li v-for='item in asideData.latest'>
-                    <router-link class='itemLiA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
+                    <router-link class='itemLiA vueA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
         </div>
         <div class='jishutantao'>
-            <h2><router-link :to="'/'">技术探讨</router-link></h2>
+            <h2><router-link  class='vueA' :to="'/'">技术探讨</router-link></h2>
             <ul class='rank'>
                 <li v-for='item in asideData.technology' >
-                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
+                    <router-link class='vueA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
-            <h2><router-link :to="'/'">点击排行</router-link></h2>
+            <h2><router-link class='vueA' :to="'/'">点击排行</router-link></h2>
             <ul class='rank'>
                 <li v-for='item in asideData.hotBlog' >
-                    <router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
+                    <router-link class='vueA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">{{item.title}}</router-link>
                 </li>
             </ul>
         </div>

@@ -33,17 +33,17 @@
                 <div class="articleList">
                      <ul class='l-article'>
                         <li>
-                            <h2><router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" class='textTitleA' :title="previewData.articleTitle"  >{{previewData.articleTitle}}</router-link></h2>
-                            <router-link :to="'/web/16036'" :title="previewData.articleTitle" rel="bookmark" class="a-pic-link">
+                            <h2><router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" class='textTitleA vueA' :title="previewData.articleTitle"  >{{previewData.articleTitle}}</router-link></h2>
+                            <router-link :to="'/web/16036'" :title="previewData.articleTitle" rel="bookmark" class="a-pic-link vueA">
                                 <img :src="previewData.articleImg" :alt="previewData.articleTitle" :title="previewData.articleTitle" class="a-pic l">
                             </router-link>
                             <div class="a-con">
                                 <p>{{previewData.articleOverview}}</p>
-                                <router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" :title="previewData.articleTitle"  class="a-more" >阅读全文&gt;&gt;</router-link>
+                                <router-link :to="previewData.articleLabel.Vpath +'/'+ previewData.id" :title="previewData.articleTitle"  class="a-more vueA" >阅读全文&gt;&gt;</router-link>
                             </div>
                             <p class='autor'>
                                 <span class='paddings textTime'>2017-09-01 18:26:54</span>
-                                <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
+                                <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA vueA" >{{previewData.articleLabel.text}}</router-link>]</span>
                                 <span class='paddings liulan'>浏览(666)</span>
                                 <span class='paddings author'>金理学</span>
                             </p>
@@ -56,7 +56,7 @@
                 		<h2>{{previewData.articleTitle}}</h2>
                 		<p class='autor'>
                             <span class='paddings textTime'>2017-09-01 18:26:54</span>
-                            <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA" >{{previewData.articleLabel.text}}</router-link>]</span>
+                            <span class='paddings fenlei'>[<router-link :to="previewData.articleLabel.Vpath" :title="previewData.articleLabel.text"  class="fenleiA vueA" >{{previewData.articleLabel.text}}</router-link>]</span>
                             <span class='paddings liulan'>浏览(666)</span>
                             <span class='paddings author'>金理学</span>
                         </p>
@@ -342,13 +342,19 @@
         },
         beforeRouteEnter (to, from, next) {
             store.commit('progressBarisOk');
-            store.commit('changeMoveF');
-            next(vm => {
-                vm.Rlist = [
-                    {path:'/home',text:'首页'},
-                    {path:'/editor',text:'编辑'}
-                ]
-            })
+            var value = sessionStorage.getItem("login")
+            if (value) {
+                store.commit('changeMoveF');
+                next(vm => {
+                    
+                    vm.Rlist = [
+                        {path:'/home',text:'首页'},
+                        {path:'/editor',text:'编辑'}
+                    ]
+                })
+            } else {
+                store.commit('changeLoginBoxFlag',true);
+            }
         },
     }
 </script>

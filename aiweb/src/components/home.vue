@@ -5,19 +5,19 @@
 				<h3 v-scrollmove>
       			<p><span>热门</span>文章 New Blog</p>
       			</h3>
-				<router-link :to="'/web/688'" class='imgBoxLeft'>
+				<router-link :to="'/web/688'" class='imgBoxLeft vueA'>
 					<span>建站历程</span>
 					<img :src="banner" />
 				</router-link>
 				<ul class="topblog">
 					<li v-for='item in top3'>
-						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id">{{item.title}}<span>{{item.overview}}</span></router-link>
+						<router-link class='vueA' :to="JSON.parse(item.label).Vpath + '/' + item._id">{{item.title}}<span>{{item.overview}}</span></router-link>
 					</li>
 				</ul>
 				<h3 v-scrollmove><p><span>心得笔记</span>  Journey</p></h3>
 				<ul class="template">
 					<li v-for = 'item in asideData.notes' v-scrollmove>
-						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">
+						<router-link class=vueA :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">
 							<img :src="item.imgUrl">
 						</router-link>
 						<span>{{item.title}}</span>
@@ -27,17 +27,17 @@
 			</div>
 			<ul class='l-article'>
 				<li v-for='item in listData' v-scrollmove>
-					<h2><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA' :title="item.title"  >{{item.title}}</router-link></h2>
-					<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link">
+					<h2><router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class='textTitleA vueA' :title="item.title"  >{{item.title}}</router-link></h2>
+					<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title" rel="bookmark" class="a-pic-link vueA">
 						<img :src="item.imgUrl" :alt="item.title" :title="item.title" class="a-pic l">
 					</router-link>
 					<div class="a-con">
 						<p>{{item.overview}} . . .</p>
-						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more" >阅读全文&gt;&gt;</router-link>
+						<router-link :to="JSON.parse(item.label).Vpath + '/' + item._id" class="a-more vueA" >阅读全文&gt;&gt;</router-link>
 					</div>
 					<p class='autor'>
 						<span class='paddings textTime'>{{item.editDate}}</span>
-						<span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" class="fenleiA" >{{JSON.parse(item.label).text}}</router-link>]</span>
+						<span class='paddings fenlei'>[<router-link :to="JSON.parse(item.label).Vpath" class="fenleiA vueA" >{{JSON.parse(item.label).text}}</router-link>]</span>
 						<span class='paddings liulan'>浏览({{item.views}})</span>
 						<span class='paddings author'>{{item.author}}</span>
 					</p>

@@ -1,11 +1,11 @@
 <template>
 	<div id="app" v-cloak @click='clickA($event)'>
 		<progress-bar v-if='progressBarShow'></progress-bar>
-
+		<v-tips :pData = 'tipsData'></v-tips>
 		<div class='boxLeft' :class='{active:active3}'>
 			<header class="head">
 				<div class='headerTop'>
-					<h1  v-scrollmove><router-link :to="'/home'" class="blogName">金理学のBlog</router-link></h1>
+					<h1  v-scrollmove><router-link :to="'/home'" class="blogName vueA">金理学のBlog</router-link></h1>
 					<span v-scrollmove>关注互联网最新动态的个人博客网站</span>
 					<p @mouseenter='textMouseEnter_ ()' :class='{active:active4}'>世界上最遥远的距离<br>不是天涯与海角<br>而是我在 if<br>你却在 else (>_
 						<)</p>
@@ -28,7 +28,7 @@
 			<nav class='nav' :class='{active:active5}'>
 				<ul>
 					<li ref='navLi' v-for="(item,index) in litext">
-						<router-link :to="item.path" class="navLink">{{item.text}}</router-link>
+						<router-link :to="item.path" class="navLink vueA">{{item.text}}</router-link>
 					</li>
 				</ul>
 			</nav>
@@ -37,6 +37,18 @@
 			<keep-alive>
 				<router-view class='routerVue clearfix'></router-view>
 			</keep-alive>
+			<div class='loginbox' :class='{active:loginBoxFlag}'>
+				<div>
+					<input v-model='userName' type="password">
+				</div>
+				<div>
+					<input v-model='passWord' type="password">
+				</div>
+				<div class='btnBox'>
+					<span class='login' @click ='login'>登录</span>
+					<span class='close' @click ='cLogin'>取消</span>
+				</div>
+			</div>
 			<footer class='footer'>©</footer>
 		</div>
 		<div class='boxRight' :class='{active:active3}'>
@@ -49,7 +61,7 @@
 			<p class='jianjie'>爱好：羽毛球、乒乓球、游泳</p>
 			<p class='dictum'>土地是以它的肥沃和收获而被估价的；才能也是土地，不过它生产的不是粮食，而是真理。如果只能滋生瞑想和幻想的话，即使再大的才能也只是砂地或盐池，那上面连小草也长不出来的。 —— 别林斯基</p>
 			<p class='dictum'>人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克</p>
-			<div class='editor' @mousedown = 'Touch($event)' @mouseup="TouchUp"></div>
+			<div class='editor' @click="toEditor"></div>
 		</div>
 		<div class="sidebar-toggle" ref="sidebarToggle" @mouseenter='BtnMouseEnter_()' @mouseleave='BtnMouseLeave_()' @click.stop='BtnClick_()'>
 			<div class="sidebar-toggle-line-wrap">
@@ -65,11 +77,14 @@
 <script>
 	import progressBar from './components/commen/progressBar.vue';
 	import axios from 'axios';
+	import vTips from './components/commen/tips.vue';
 	export default {
 		name: 'app',
 		data() {
 			return {
 				clickFlag: true,
+				userName:'',
+				passWord:'',
 				active: false,
 				active2: false,
 				active3: false,
@@ -104,11 +119,14 @@
 					'path': '/message'
 				}, ],
 				progressBarShow:true,
-				key:'',
+				tipsData:{
+                	ifShow:false,
+                },//提示信息
 			}
 		},
 		components:{
-            progressBar
+            progressBar,
+            vTips,
         },
 		watch:{
 			progressBarShow_(){
@@ -320,6 +338,9 @@
 			progressBarShow_(){
 		        return this.$store.state.progressBarShow
 			},
+			loginBoxFlag(){
+				return this.$store.state.loginBoxFlag
+			}
 		},
 		methods: {
 			textMouseEnter_() {
@@ -348,37 +369,71 @@
 					this.active3 = false;
 				}
 			},
-			Touch(e){
-				let self = this;
-			 	//let el = e.currentTarget;
-			 	document.onkeydown=function(event){
-	            	var e = event || window.event || arguments.callee.caller.arguments[0];
-	            	e.preventDefault();
-	            	self.key += e.key;
-		            if (self.key == '1314520.') {
-		                self.$router.push({path:'/editor'});
-		            }
-				};
-			},
-			TouchUp(){
-				document.onkeydown=null;
-				this.key = '';
-			},
 			clickA(e){
-				var test = window.location.pathname;
+				var url_ = window.location.pathname;
 				var target = e.target;
 				var currentTarget = e.currentTarget;
-				
 				while(target !== currentTarget ){
-		            if(target.tagName == 'A'){
-		                if(e.target.pathname != test){
-							this.$store.commit('progressBarisNo');
-      						this.$store.commit('progressBarShow_');
-						}
-		                break;
-		            }
-		            target = target.parentNode;
+					if(target){
+						if(target.className.indexOf('vueA') > 0){
+			            	this.clickFlag = true;
+		                	this.active2 = false;
+							this.active3 = false;
+			                if(e.target.pathname != url_){
+								this.$store.commit('progressBarisNo');
+	      						this.$store.commit('progressBarShow_');
+							}
+			                break;
+			            }
+			            target = target.parentNode;
+					}else{
+						break;
+					}
 		        }
+			},
+			toEditor(){
+				this.clickFlag = true;
+            	this.active2 = false;
+				this.active3 = false;
+				this.$router.push('/editor');
+			},
+			cLogin(){
+				this.$store.commit('changeLoginBoxFlag',false);
+			},
+			login(){
+				var self = this;
+				self.$store.commit('changeLoginBoxFlag',false);
+				axios.get('/api/login',{
+	        		params:{
+	        			userName:self.userName,
+	        			passWord:self.passWord,
+	        		}
+				})
+				.then(function(res){
+					if(res.data.status>0){
+						self.tipsData={
+                            ifShow:true,
+                            textColor:'green',
+                            centent:res.data.msg,
+                        }
+						sessionStorage.setItem("login",true);
+                        self.$router.push('/editor');
+                    }else{
+                        self.tipsData={
+                            ifShow:true,
+                            textColor:'red',
+                            centent:res.data.msg,
+                        }
+                    }
+				})
+				.catch(function(err){
+					console.log(err)
+					self.tipsData={
+	                	ifShow:true,
+                        textColor:'red',
+	                	centent:'登录失败',
+                	}
+				});
 			}
 		}
 	}
@@ -390,6 +445,7 @@
 		background: url('assets/img/bg.jpg') #7DE6F3 no-repeat;
 		/*background-attachment: fixed;*/
 		background-size: 100% auto;
+		min-width: 1080px;
 	}
 
 	#app {
@@ -415,7 +471,7 @@
 		width: 100%;
 		transition: all 0.5s;
 		min-height: 1030px;
-		border-top: 1px solid transparent;
+		/*border-top: 1px solid transparent;*/
 	}
 
 	.boxLeft.active {
@@ -802,12 +858,63 @@
 		text-indent: 2em;
 		color: #ef7000;
 	}
-@media screen and (max-width: 1280px) {
-    .sidebar-toggle {
+	.loginbox{
+		position:fixed;
+		z-index: 9999;
+		width: 160px;
+		background: #e9f3e9;
+		box-shadow: 1px 1px 5px #bbb;
+		top:-100px;
+		left: 50%;
+		padding:0 10px;
+		transform: translateX(-50%);
+		border-radius: 0 0 3px 3px;
+		transition: all 0.6s;
+	}
+	.loginbox.active{
+		top:0;
+	}
+	.loginbox input{
+		border:none;
+		outline: none;
+		height: 20px;
+		width: 160px;
+		margin-top: 5px;
+	}
+	.btnBox{
+		font-size: 12px;
+		text-align: center;
+		padding: 5px 0;
+	}
+	.btnBox span{
+		display: inline-block;
+		cursor: pointer;
+		color:#555;
+	}
+	.btnBox span:hover{
+		color:#ef7000;
+	}
+	.btnBox .login{
+		margin-right: 60px;
+	}
+@media screen and (max-width: 1366px) {
+    .sidebar-toggle,.boxRight {
         display: none;
     }
-    body{
-    	min-width: 1280px;
+    .pictureBox {
+	    margin: 10px auto 0;
+    }
+    .boxLeft.active {
+		width: 100%;
+	}
+
+	.boxRight.active {
+		transform: translateX(100%);
+	}
+}
+@media screen and (max-height:730px) {
+    .pictureBox {
+	    margin: 10px auto 0;
     }
 }
-	</style>
+</style>

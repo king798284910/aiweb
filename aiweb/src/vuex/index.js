@@ -18,7 +18,8 @@ export default new Vuex.Store({
           latest:[],//最新推荐
           technology:[],//技术探讨
           hotBlog:[],//点击排行
-        }
+        },
+        loginBoxFlag:false,//登录框弹出
     },
     mutations: {
         //是否显示音乐
@@ -55,6 +56,9 @@ export default new Vuex.Store({
         },
         getAsideData(state,data){
           state.asideData = data;
+        },
+        changeLoginBoxFlag(state,data){
+          state.loginBoxFlag = data;
         }
     }
 });

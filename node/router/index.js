@@ -6,183 +6,248 @@ const router=new express.Router();
 const fs = require('fs');
 const multiparty = require('multiparty');
 
-const url_ = 'http://localhost:8686';//服务器地址（若前后端同一服务器，则值为'.'）
-//const url_ = '.';//服务器地址（若前后端不同服务器，则值为'http://localhost:8686'）
+const url_ = 'http://localhost:8686';//服务器地址（若前后端同一服务器，则值为''）
+//const url_ = '';//服务器地址（若前后端不同服务器，则值为'http://localhost:8686'）
 
-router.post('/savearticle',function(req,res){
-    //req.body.label = JSON.parse(req.body.label);
-    req.body.editDate  = req.body.newDate = new Date().format("yyyy-MM-dd hh:mm:ss");//当前时间
-
-    var imgArr = req.body.imgArr.concat([]);//[]上传过的图片的路径
-
-    var imgArrL = req.body.imgArr.length;//上传过的图片的个数
-
-    delete req.body.imgArr;//删除属性
-
-    var reg0 = new RegExp("/images([^<>]*?)\.(gif|png|jpg|jpeg|bmp)", "ig");
-
-    var textImgArr = req.body.content.match(reg0) == null ?[]:req.body.content.match(reg0);//[]
-
-    for (var i = 0; i < imgArrL; i++) {
-        for(var j = 0; j < textImgArr.length; j++) {
-            if(imgArr[i] == textImgArr[j]){
-                imgArr.splice(i, 1);
-            }
-        }
-    }//匹配哪些图片在文章中，不在的删掉。
-
-    recursion(0,imgArr);//递归删除多余的img
-
-    schemaModels.article.findOne({'title' : req.body.title}, function(err,data) {
+router.get('/login',function(req,res){
+    // schemaModels.user.create(req.query, function( err, result ){
+    //     if(err){
+    //         res.json({
+    //             status:-1,
+    //             msg:'注册失败'
+    //         });
+    //     }else{
+    //         res.json({
+    //             status:1,
+    //             msg:'注册成功'
+    //         });
+    //     }
+    // });
+    schemaModels.user.findOne({'userName':req.query.userName},'passWord', function( err, data ){
         if(err){
-            recursion(0,textImgArr);
             res.json({
                 status:-1,
-                msg:'提交失败'
+                msg:'登录失败'
             });
         }else{
-            if(data==null){
-                saveImg(req.body.imgUrl,function(path){
-                    if(path){
-                        req.body.imgUrl = path;//数据库保存的相对路径
-                        schemaModels.article.create(req.body, function( err1, result ){
-                            if(err1){
-                                recursion(0,textImgArr);
-                                removeImg(path,function(err2){
-                                    if(err2){
-                                        console.log(err2);
-                                    }
-                                    res.json({
-                                        status:-1,
-                                        msg:'提交失败'
-                                    });
-                                });
-                                // fs.unlink(path,function (err_) {
-                                //     if(err_) throw err;
-                                //     res.json({
-                                //         status:-1,
-                                //         msg:'提交失败'
-                                //     });
-                                // });
-                            }else{
-
-                                res.json({
-                                    status:1,
-                                    msg:'提交成功'
-                                });
-                            }
-                        });
-                    }else{
-                        recursion(0,textImgArr);
-                        res.json({
-                            status:-1,
-                            msg:'图片保存失败'
-                        });
-                    }
-                });
+            if(data!=null){
+                if(data.passWord == req.query.passWord){
+                    req.session.user = req.query.userName;
+                    res.json({
+                        status:1,
+                        msg:'登录成功'
+                    });
+                }else{
+                    res.json({
+                        status:-1,
+                        msg:'密码错误'
+                    });
+                }
             }else{
+                res.json({
+                    status:-1,
+                    msg:'用户名错误'
+                });
+            }
+        }
+    });
+});//登录
+
+router.post('/savearticle',function(req,res){
+    if(req.session && req.session.user){
+        //req.body.label = JSON.parse(req.body.label);
+        req.body.editDate  = req.body.newDate = new Date().format("yyyy-MM-dd hh:mm:ss");//当前时间
+
+        var imgArr = req.body.imgArr.concat([]);//[]上传过的图片的路径
+
+        var imgArrL = req.body.imgArr.length;//上传过的图片的个数
+
+        delete req.body.imgArr;//删除属性
+
+        var reg0 = new RegExp("/images([^<>]*?)\.(gif|png|jpg|jpeg|bmp)", "ig");
+
+        var textImgArr = req.body.content.match(reg0) == null ?[]:req.body.content.match(reg0);//[]
+
+        for (var i = 0; i < imgArrL; i++) {
+            for(var j = 0; j < textImgArr.length; j++) {
+                if(imgArr[i] == textImgArr[j]){
+                    imgArr.splice(i, 1);
+                }
+            }
+        }//匹配哪些图片在文章中，不在的删掉。
+
+        recursion(0,imgArr);//递归删除多余的img
+
+        schemaModels.article.findOne({'title' : req.body.title}, function(err,data) {
+            if(err){
                 recursion(0,textImgArr);
                 res.json({
                     status:-1,
-                    msg:'文章已存在'
+                    msg:'提交失败'
                 });
-            }
+            }else{
+                if(data==null){
+                    saveImg(req.body.imgUrl,function(path){
+                        if(path){
+                            req.body.imgUrl = path;//数据库保存的相对路径
+                            schemaModels.article.create(req.body, function( err1, result ){
+                                if(err1){
+                                    recursion(0,textImgArr);
+                                    removeImg(path,function(err2){
+                                        if(err2){
+                                            console.log(err2);
+                                        }
+                                        res.json({
+                                            status:-1,
+                                            msg:'提交失败'
+                                        });
+                                    });
+                                    // fs.unlink(path,function (err_) {
+                                    //     if(err_) throw err;
+                                    //     res.json({
+                                    //         status:-1,
+                                    //         msg:'提交失败'
+                                    //     });
+                                    // });
+                                }else{
 
-        }
-    });
+                                    res.json({
+                                        status:1,
+                                        msg:'提交成功'
+                                    });
+                                }
+                            });
+                        }else{
+                            recursion(0,textImgArr);
+                            res.json({
+                                status:-1,
+                                msg:'图片保存失败'
+                            });
+                        }
+                    });
+                }else{
+                    recursion(0,textImgArr);
+                    res.json({
+                        status:-1,
+                        msg:'文章已存在'
+                    });
+                }
+
+            }
+        });
+    }else{
+        res.json({
+            status:-1,
+            msg:'未登录'
+        });
+    }
 });//上传文章接口
 
 router.post('/saveshare',function(req,res){
-    req.body.editDate  = req.body.newDate = new Date().format("yyyy-MM-dd");//当前时间
-    schemaModels.share.findOne({'content' : req.body.content}, function(err,data) {
-        if(err){
-            res.json({
-                status:-1,
-                msg:'提交失败'
-            });
-        }else{
-            if(data==null){
-                saveImg(req.body.imgUrl,function(path){
-                    if(path){
-                        req.body.imgUrl = path;
-                        schemaModels.share.create(req.body, function( err1, result ){
-                            if(err1){
-                                removeImg(path,function(err2){
-                                    if(err2){
-                                        console.log(err2);
-                                    }
-                                    res.json({
-                                        status:-1,
-                                        msg:'提交失败'
-                                    });
-                                });
-                                // fs.unlink(path,function (err_) {
-                                //     if(err_) throw err;
-                                //     res.json({
-                                //         status:-1,
-                                //         msg:'提交失败'
-                                //     });
-                                // });
-                            }else{
-                                res.json({
-                                    status:1,
-                                    msg:'提交成功'
-                                });
-                            }
-                        });
-                    }else{
-                        res.json({
-                            status:-1,
-                            msg:'图片保存失败'
-                        });
-                    }
-
-                });
-            }else{
+    if(req.session && req.session.user){
+        req.body.editDate  = req.body.newDate = new Date().format("yyyy-MM-dd");//当前时间
+        schemaModels.share.findOne({'content' : req.body.content}, function(err,data) {
+            if(err){
                 res.json({
                     status:-1,
-                    msg:'简说已存在'
+                    msg:'提交失败'
                 });
-            }
+            }else{
+                if(data==null){
+                    saveImg(req.body.imgUrl,function(path){
+                        if(path){
+                            req.body.imgUrl = path;
+                            schemaModels.share.create(req.body, function( err1, result ){
+                                if(err1){
+                                    removeImg(path,function(err2){
+                                        if(err2){
+                                            console.log(err2);
+                                        }
+                                        res.json({
+                                            status:-1,
+                                            msg:'提交失败'
+                                        });
+                                    });
+                                    // fs.unlink(path,function (err_) {
+                                    //     if(err_) throw err;
+                                    //     res.json({
+                                    //         status:-1,
+                                    //         msg:'提交失败'
+                                    //     });
+                                    // });
+                                }else{
+                                    res.json({
+                                        status:1,
+                                        msg:'提交成功'
+                                    });
+                                }
+                            });
+                        }else{
+                            res.json({
+                                status:-1,
+                                msg:'图片保存失败'
+                            });
+                        }
 
-        }
-    });
+                    });
+                }else{
+                    res.json({
+                        status:-1,
+                        msg:'简说已存在'
+                    });
+                }
+
+            }
+        });
+    }else{
+        res.json({
+            status:-1,
+            msg:'未登录'
+        });
+    }
 });//上传简说接口
 
 router.post('/imgupload',function(req,res){
-    var form = new multiparty.Form({uploadDir: './images/'});
-    form.parse(req, function(err, fields, files) {
+    if(req.session && req.session.user){
+        var form = new multiparty.Form({uploadDir: './images/'});
+        form.parse(req, function(err, fields, files) {
 
-        if(err){
-            res.json({
-                errno:-1,
-                data:[]
-            });
-        } else {
-            var dstPath = files.imgName[0].path;
-            res.json({
-                errno:0,
-                data:[url_+ '/' + dstPath]//上传图片返回的地址
-            });
-            // var inputFile = files.imgName[0];
-            // var uploadedPath = inputFile.path;
-            // var dstPath = './images/' + inputFile.originalFilename;
-            // //重命名为真实文件名
-            // fs.rename(uploadedPath, dstPath, function(err) {
-            //     if(err){
-            //         res.json({
-            //             errno:-1,
-            //             data:[]
-            //         });
-            //     } else {
-            //         res.json({
-            //             errno:0,
-            //             data:[dstPath]
-            //         });
-            //     }
-            // });
-        }
-    });
+            if(err){
+                res.json({
+                    errno:-1,
+                    data:[]
+                });
+            } else {
+                var dstPath = files.imgName[0].path;
+                res.json({
+                    errno:0,
+                    data:[url_+ '/' + dstPath]//上传图片返回的地址
+                });
+                // var inputFile = files.imgName[0];
+                // var uploadedPath = inputFile.path;
+                // var dstPath = './images/' + inputFile.originalFilename;
+                // //重命名为真实文件名
+                // fs.rename(uploadedPath, dstPath, function(err) {
+                //     if(err){
+                //         res.json({
+                //             errno:-1,
+                //             data:[]
+                //         });
+                //     } else {
+                //         res.json({
+                //             errno:0,
+                //             data:[dstPath]
+                //         });
+                //     }
+                // });
+            }
+        });
+    }else{
+        res.json({
+            errno:-1,
+            data:[]
+        });
+    }
 });//富文本编辑器上传图片接口
 
 router.get('/asideinfo',function(req,res){

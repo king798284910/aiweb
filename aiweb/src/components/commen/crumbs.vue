@@ -3,7 +3,7 @@
   <ul class="crumbsBox">
       <li>您当前的位置 :</li>
       <li v-for='(item,index) in Rlist' v-scrollmove>
-        <router-link :to="item.path" class='fenleiA' :title="item.text">{{item.text}}</router-link>
+        <router-link :to="item.path" class='fenleiA vueA' :title="item.text">{{item.text}}</router-link>
       </li>
   </ul>
   
