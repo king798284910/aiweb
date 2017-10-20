@@ -78,7 +78,7 @@
                 params:{
                     lable:'{"text":"it资讯","Vpath":"/itnews"}',
                     page:page,
-                    limit:1,
+                    limit:8,
                 }
             })
             .then(function(res){
@@ -110,7 +110,7 @@
                     params:{
                         lable:'{"text":"it资讯","Vpath":"/itnews"}',
                         page:page,
-                        limit:1,
+                        limit:8,
                     }
                 })
                 .then(function(res){

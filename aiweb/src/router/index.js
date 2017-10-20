@@ -55,10 +55,10 @@ export default new Router({
             component: resolve => require(['@/components/share'], resolve),
         },//路由到分享页
 
-        {
-            path: '/photo',
-            component: resolve => require(['@/components/photo'], resolve),
-        },//路由到相册页
+        // {
+        //     path: '/photo',
+        //     component: resolve => require(['@/components/photo'], resolve),
+        // },//路由到相册页
 
         {
             path: '/operation',

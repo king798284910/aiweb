@@ -3,11 +3,11 @@
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
 			<ul class='list'>
-				<li class="list-li clearfix" v-for='item in listData'>
+				<li class="list-li clearfix" v-for='item in listData'  v-scrollmove>
      				<div class="say-pic-box">
 		               <img :src="item.imgUrl">
 		            </div>
-		            <div class="say-text" v-scrollmove>
+		            <div class="say-text">
 		               	<p class="info">
 		               		{{item.content}}
 		                 	<span class="date-time">

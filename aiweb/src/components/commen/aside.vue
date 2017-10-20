@@ -86,7 +86,7 @@
         background: #ff7bad;
     }
     .aside_nav li:nth-child(2){
-        
+
         background: #ffc000;
     }
     .aside_nav li:nth-child(3){
@@ -142,9 +142,9 @@
         color:#ef3900;
         text-decoration:underline;
     }
-    .jishutantao{
-        
-    }
+    /*.jishutantao{
+
+    }*/
     .jishutantao h2 {
         color: #FFF;
         background: #f16e50;

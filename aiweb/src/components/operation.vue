@@ -78,7 +78,7 @@
                 params:{
                     lable:'{"text":"网站运营","Vpath":"/operation"}',
                     page:page,
-                    limit:1,
+                    limit:8,
                 }
             })
             .then(function(res){
@@ -111,7 +111,7 @@
                     params:{
                         lable:'{"text":"网站运营","Vpath":"/operation"}',
                         page:page,
-                        limit:1,
+                        limit:8,
                     }
                 })
                 .then(function(res){

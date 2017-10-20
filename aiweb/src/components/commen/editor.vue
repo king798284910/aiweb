@@ -151,12 +151,8 @@
                     // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
                     if(result.errno == -3){
                         sessionStorage.removeItem("login");
-                        var timerr = setTimeout(()=>{
-                            self.$store.commit('changeLoginBoxFlag',true);
-                        },2300)
-                        
+                        self.$store.commit('changeLoginBoxFlag',true);
                     }
-                    
                 },
             };
             self.editorObj.create();
@@ -165,7 +161,6 @@
             var self = this;
             self.$store.commit('changeAsideF');
             self.$store.commit('changeMoveT');
-            
         },
         methods:{
             articleImgFn(e){
@@ -366,7 +361,6 @@
             if (value) {
                 store.commit('changeMoveF');
                 next(vm => {
-                    
                     vm.Rlist = [
                         {path:'/home',text:'首页'},
                         {path:'/editor',text:'编辑'}

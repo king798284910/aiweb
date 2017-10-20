@@ -12,6 +12,9 @@
                 </p>
         		<div class='contentBox' v-html='item.content' v-highlight></div>
         	</div>
+            
+            <!--高速版-->
+            <div id="SOHUCS" :sid="sid"></div>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>
@@ -30,6 +33,7 @@
 			return {
                 Rlist:[],
                 detailData:[],
+                sid:'',
 			}
 		},
 		components:{
@@ -46,12 +50,9 @@
         },
         activated(){
             var self = this;
-            // self.$store.commit('changeAsideT');
-            // self.$store.commit('changeMoveT');
-
+            
         },
         beforeRouteEnter (to, from, next) {
-            var self = this;
             // store.commit('progressBarisNo');
             // store.commit('progressBarShow_');
 
@@ -65,6 +66,7 @@
                 store.commit('changeAsideF');
                 store.commit('changeMoveF');
                 next(vm => {
+                    vm.sid = to.params.id;
                     var title_ = '文章';
                     if(res.data.status>0){
                         vm.detailData = res.data.data

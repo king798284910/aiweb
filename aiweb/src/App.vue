@@ -33,22 +33,24 @@
 				</ul>
 			</nav>
 			<!-- <div class="filter"></div> -->
-			<canvas id="canvas"></canvas>
+			<canvas id="canvas" v-if='isIE()'></canvas>
 			<keep-alive>
 				<router-view class='routerVue clearfix'></router-view>
 			</keep-alive>
-			<div class='loginbox' :class='{active:loginBoxFlag}'>
-				<div>
-					<input v-model='userName' type="password">
+			<transition name="loginFade">
+				<div class='loginbox' v-if='loginBoxFlag'>
+					<div>
+						<input v-model='userName' type="password">
+					</div>
+					<div>
+						<input v-model='passWord' type="password" @keyup.enter="login">
+					</div>
+					<div class='btnBox'>
+						<span class='login' @click ='login'>登录</span>
+						<span class='close' @click ='cLogin'>取消</span>
+					</div>
 				</div>
-				<div>
-					<input v-model='passWord' type="password" @keyup.enter="login">
-				</div>
-				<div class='btnBox'>
-					<span class='login' @click ='login'>登录</span>
-					<span class='close' @click ='cLogin'>取消</span>
-				</div>
-			</div>
+			</transition>
 			<footer class='footer'>©</footer>
 		</div>
 		<div class='boxRight' :class='{active:active3}'>
@@ -138,198 +140,198 @@
 			var self = this;
 			console.log("%c又偷看我的源码！"," text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em")
 			console.log('%c再看我打你哦！ ', 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;');
-			function Star(id, x, y) {
-				this.id = id;
-				this.x = x;
-				this.y = y;
-				this.r = Math.floor(Math.random() * 2) + 2;
-				var alpha = (Math.floor(Math.random() * 10) + 5) / 10;
-				this.color = "rgba(255,255,255," + alpha + ")";
-			}
-
-			Star.prototype.draw = function() {
-				ctx.fillStyle = this.color;
-				ctx.shadowBlur = this.r * 2;
-				ctx.beginPath();
-				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-				ctx.closePath();
-				ctx.fill();
-			}
-
-			Star.prototype.move = function() {
-				this.y -= .3;
-				if(this.y <= -10) this.y = HEIGHT + 10;
-				this.draw();
-			}
-
-			Star.prototype.die = function() {
-				stars[this.id] = null;
-				delete stars[this.id];
-			}
-
-			function Dot(id, x, y, r) {
-				this.id = id;
-				this.x = x;
-				this.y = y;
-				this.r = Math.floor(Math.random() * 5) + 1;
-				this.maxLinks = 2;
-				this.speed = .5;
-				this.a = .7;
-				this.aReduction = .005;
-				this.color = "rgba(255,255,255," + this.a + ")";
-				this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
-
-				this.dir = Math.floor(Math.random() * 140) + 200;
-			}
-
-			Dot.prototype.draw = function() {
-				ctx.fillStyle = this.color;
-				ctx.shadowBlur = this.r * 2;
-				ctx.beginPath();
-				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
-				ctx.closePath();
-				ctx.fill();
-			}
-
-			Dot.prototype.link = function() {
-				if(this.id == 0) return;
-				var previousDot1 = getPreviousDot(this.id, 1);
-				var previousDot2 = getPreviousDot(this.id, 2);
-				var previousDot3 = getPreviousDot(this.id, 3);
-				if(!previousDot1) return;
-				ctx.strokeStyle = this.linkColor;
-				ctx.moveTo(previousDot1.x, previousDot1.y);
-				ctx.beginPath();
-				ctx.lineTo(this.x, this.y);
-				if(previousDot2 != false) ctx.lineTo(previousDot2.x, previousDot2.y);
-				if(previousDot3 != false) ctx.lineTo(previousDot3.x, previousDot3.y);
-				ctx.stroke();
-				ctx.closePath();
-			}
-
-			function getPreviousDot(id, stepback) {
-				if(id == 0 || id - stepback < 0) return false;
-				if(typeof dots[id - stepback] != "undefined") return dots[id - stepback];
-				else return false; //getPreviousDot(id - stepback);
-			}
-
-			Dot.prototype.move = function() {
-				this.a -= this.aReduction;
-				if(this.a <= 0) {
-					this.die();
-					return
-				}
-				this.color = "rgba(255,255,255," + this.a + ")";
-				this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
-				this.x = this.x + Math.cos(degToRad(this.dir)) * this.speed,
-					this.y = this.y + Math.sin(degToRad(this.dir)) * this.speed;
-
-				this.draw();
-				this.link();
-			}
-
-			Dot.prototype.die = function() {
-				dots[this.id] = null;
-				delete dots[this.id];
-			}
-
-			var canvas = document.getElementById('canvas'),
-				ctx = canvas.getContext('2d'),
-				WIDTH,
-				HEIGHT,
-				mouseMoving = false,
-				mouseMoveChecker,
-				mouseX,
-				mouseY,
-				stars = [],
-				initStarsPopulation = 100,
-				dots = [],
-				dotsMinDist = 2,
-				maxDistFromCursor = 50;
-
-			setCanvasSize();
-			init();
-
-			function setCanvasSize() {
-				WIDTH = document.documentElement.clientWidth,
-					HEIGHT = document.documentElement.clientHeight;
-
-				canvas.setAttribute("width", WIDTH);
-				canvas.setAttribute("height", HEIGHT);
-			}
-
-			function init() {
-				ctx.strokeStyle = "white";
-				ctx.shadowColor = "white";
-				for(var i = 0; i < initStarsPopulation; i++) {
-					stars[i] = new Star(i, Math.floor(Math.random() * WIDTH), Math.floor(Math.random() * HEIGHT));
-					//stars[i].draw();
-				}
-				ctx.shadowBlur = 0;
-				animate();
-			}
-
-			function animate() {
-				ctx.clearRect(0, 0, WIDTH, HEIGHT);
-
-				for(var i in stars) {
-					stars[i].move();
-				}
-				for(var i in dots) {
-					dots[i].move();
-				}
-				drawIfMouseMoving();
-				requestAnimationFrame(animate);
-			}
-
-			window.onmousemove = function(e) {
-				mouseMoving = true;
-				mouseX = e.clientX;
-				mouseY = e.clientY;
-				clearInterval(mouseMoveChecker);
-				mouseMoveChecker = setTimeout(function() {
-					mouseMoving = false;
-				}, 100);
-			}
-
-			function drawIfMouseMoving() {
-				if(!mouseMoving) return;
-
-				if(dots.length == 0) {
-					dots[0] = new Dot(0, mouseX, mouseY);
-					dots[0].draw();
-					return;
+			if(self.isIE()){
+				function Star(id, x, y) {
+					this.id = id;
+					this.x = x;
+					this.y = y;
+					this.r = Math.floor(Math.random() * 2) + 2;
+					var alpha = (Math.floor(Math.random() * 10) + 5) / 10;
+					this.color = "rgba(255,255,255," + alpha + ")";
 				}
 
-				var previousDot = getPreviousDot(dots.length, 1);
-				var prevX = previousDot.x;
-				var prevY = previousDot.y;
+				Star.prototype.draw = function() {
+					ctx.fillStyle = this.color;
+					ctx.shadowBlur = this.r * 2;
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+					ctx.closePath();
+					ctx.fill();
+				}
 
-				var diffX = Math.abs(prevX - mouseX);
-				var diffY = Math.abs(prevY - mouseY);
+				Star.prototype.move = function() {
+					this.y -= .3;
+					if(this.y <= -10) this.y = HEIGHT + 10;
+					this.draw();
+				}
 
-				if(diffX < dotsMinDist || diffY < dotsMinDist) return;
+				Star.prototype.die = function() {
+					stars[this.id] = null;
+					delete stars[this.id];
+				}
 
-				var xVariation = Math.random() > .5 ? -1 : 1;
-				xVariation = xVariation * Math.floor(Math.random() * maxDistFromCursor) + 1;
-				var yVariation = Math.random() > .5 ? -1 : 1;
-				yVariation = yVariation * Math.floor(Math.random() * maxDistFromCursor) + 1;
-				dots[dots.length] = new Dot(dots.length, mouseX + xVariation, mouseY + yVariation);
-				dots[dots.length - 1].draw();
-				dots[dots.length - 1].link();
-			}
-			//setInterval(drawIfMouseMoving, 17);
+				function Dot(id, x, y, r) {
+					this.id = id;
+					this.x = x;
+					this.y = y;
+					this.r = Math.floor(Math.random() * 5) + 1;
+					this.maxLinks = 2;
+					this.speed = .5;
+					this.a = .7;
+					this.aReduction = .005;
+					this.color = "rgba(255,255,255," + this.a + ")";
+					this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
 
-			function degToRad(deg) {
-				return deg * (Math.PI / 180);
-			};
+					this.dir = Math.floor(Math.random() * 140) + 200;
+				}
 
+				Dot.prototype.draw = function() {
+					ctx.fillStyle = this.color;
+					ctx.shadowBlur = this.r * 2;
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				Dot.prototype.link = function() {
+					if(this.id == 0) return;
+					var previousDot1 = getPreviousDot(this.id, 1);
+					var previousDot2 = getPreviousDot(this.id, 2);
+					var previousDot3 = getPreviousDot(this.id, 3);
+					if(!previousDot1) return;
+					ctx.strokeStyle = this.linkColor;
+					ctx.moveTo(previousDot1.x, previousDot1.y);
+					ctx.beginPath();
+					ctx.lineTo(this.x, this.y);
+					if(previousDot2 != false) ctx.lineTo(previousDot2.x, previousDot2.y);
+					if(previousDot3 != false) ctx.lineTo(previousDot3.x, previousDot3.y);
+					ctx.stroke();
+					ctx.closePath();
+				}
+
+				function getPreviousDot(id, stepback) {
+					if(id == 0 || id - stepback < 0) return false;
+					if(typeof dots[id - stepback] != "undefined") return dots[id - stepback];
+					else return false; //getPreviousDot(id - stepback);
+				}
+
+				Dot.prototype.move = function() {
+					this.a -= this.aReduction;
+					if(this.a <= 0) {
+						this.die();
+						return
+					}
+					this.color = "rgba(255,255,255," + this.a + ")";
+					this.linkColor = "rgba(255,255,255," + this.a / 4 + ")";
+					this.x = this.x + Math.cos(degToRad(this.dir)) * this.speed,
+						this.y = this.y + Math.sin(degToRad(this.dir)) * this.speed;
+
+					this.draw();
+					this.link();
+				}
+
+				Dot.prototype.die = function() {
+					dots[this.id] = null;
+					delete dots[this.id];
+				}
+
+				var canvas = document.getElementById('canvas'),
+					ctx = canvas.getContext('2d'),
+					WIDTH,
+					HEIGHT,
+					mouseMoving = false,
+					mouseMoveChecker,
+					mouseX,
+					mouseY,
+					stars = [],
+					initStarsPopulation = 100,
+					dots = [],
+					dotsMinDist = 2,
+					maxDistFromCursor = 50;
+
+				setCanvasSize();
+				init();
+
+				function setCanvasSize() {
+					WIDTH = document.documentElement.clientWidth,
+						HEIGHT = document.documentElement.clientHeight;
+
+					canvas.setAttribute("width", WIDTH);
+					canvas.setAttribute("height", HEIGHT);
+				}
+
+				function init() {
+					ctx.strokeStyle = "white";
+					ctx.shadowColor = "white";
+					for(var i = 0; i < initStarsPopulation; i++) {
+						stars[i] = new Star(i, Math.floor(Math.random() * WIDTH), Math.floor(Math.random() * HEIGHT));
+						//stars[i].draw();
+					}
+					ctx.shadowBlur = 0;
+					animate();
+				}
+
+				function animate() {
+					ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+					for(var i in stars) {
+						stars[i].move();
+					}
+					for(var i in dots) {
+						dots[i].move();
+					}
+					drawIfMouseMoving();
+					requestAnimationFrame(animate);
+				}
+
+				window.onmousemove = function(e) {
+					mouseMoving = true;
+					mouseX = e.clientX;
+					mouseY = e.clientY;
+					clearInterval(mouseMoveChecker);
+					mouseMoveChecker = setTimeout(function() {
+						mouseMoving = false;
+					}, 100);
+				}
+
+				function drawIfMouseMoving() {
+					if(!mouseMoving) return;
+
+					if(dots.length == 0) {
+						dots[0] = new Dot(0, mouseX, mouseY);
+						dots[0].draw();
+						return;
+					}
+
+					var previousDot = getPreviousDot(dots.length, 1);
+					var prevX = previousDot.x;
+					var prevY = previousDot.y;
+
+					var diffX = Math.abs(prevX - mouseX);
+					var diffY = Math.abs(prevY - mouseY);
+
+					if(diffX < dotsMinDist || diffY < dotsMinDist) return;
+
+					var xVariation = Math.random() > .5 ? -1 : 1;
+					xVariation = xVariation * Math.floor(Math.random() * maxDistFromCursor) + 1;
+					var yVariation = Math.random() > .5 ? -1 : 1;
+					yVariation = yVariation * Math.floor(Math.random() * maxDistFromCursor) + 1;
+					dots[dots.length] = new Dot(dots.length, mouseX + xVariation, mouseY + yVariation);
+					dots[dots.length - 1].draw();
+					dots[dots.length - 1].link();
+				}
+				//setInterval(drawIfMouseMoving, 17);
+
+				function degToRad(deg) {
+					return deg * (Math.PI / 180);
+				};
+			}//若是ie则不执行
 			//侧边栏数据的请求
 			axios.get('/api/asideinfo')
             .then(function (res) {
             	self.$store.commit('getAsideData',res.data);
             });
-            
 		},
 		computed:{
 			ifshowTimaAndmusic(){
@@ -343,6 +345,14 @@
 			}
 		},
 		methods: {
+			isIE() { //ie?
+			 	if (!!window.ActiveXObject || "ActiveXObject" in window){
+			  		return false;
+			 	}
+			  	else{
+			  		return true;
+			  	}
+			},
 			textMouseEnter_() {
 				if(this.textFlag) {
 					this.textFlag = false;
@@ -416,9 +426,12 @@
                             textColor:'green',
                             centent:res.data.msg,
                         }
+                        self.userName = '';
+						self.passWord = '';
 						sessionStorage.setItem("login",true);
                         self.$router.push('/editor');
                     }else{
+                    	self.$store.commit('changeLoginBoxFlag',true);
                         self.tipsData={
                             ifShow:true,
                             textColor:'red',
@@ -427,6 +440,7 @@
                     }
 				})
 				.catch(function(err){
+					self.$store.commit('changeLoginBoxFlag',true);
 					console.log(err)
 					self.tipsData={
 	                	ifShow:true,
@@ -434,8 +448,6 @@
 	                	centent:'登录失败',
                 	}
 				});
-				this.userName = '';
-				this.passWord = '';
 			}
 		}
 	}
@@ -866,16 +878,15 @@
 		width: 160px;
 		background: #e9f3e9;
 		box-shadow: 1px 1px 5px #bbb;
-		top:-100px;
-		left: 50%;
+		top:0px;
+		right: 0;
 		padding:0 10px;
-		transform: translateX(-50%);
 		border-radius: 0 0 3px 3px;
 		transition: all 0.6s;
 	}
-	.loginbox.active{
+	/*.loginbox.active{
 		top:0;
-	}
+	}*/
 	.loginbox input{
 		border:none;
 		outline: none;
@@ -884,6 +895,12 @@
 		margin-top: 5px;
 		padding-left: 10px;
 	}
+	.loginFade-enter-active, .loginFade-leave {
+    	transform: translateY(0);
+  	}
+  	.loginFade-enter, .loginFade-leave-active {
+    	transform: translateY(-100%);
+  	}
 	.btnBox{
 		font-size: 12px;
 		text-align: center;
@@ -898,7 +915,7 @@
 		color:#ef7000;
 	}
 	.btnBox .login{
-		margin-right: 60px;
+		margin-right: 40px;
 	}
 @media screen and (max-width: 1366px) {
     .sidebar-toggle,.boxRight {

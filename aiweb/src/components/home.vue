@@ -5,7 +5,7 @@
 				<h3 v-scrollmove>
       			<p><span>热门</span>文章 New Blog</p>
       			</h3>
-				<router-link :to="'/web/688'" class='imgBoxLeft vueA'>
+				<router-link :to="'/web/59e4bfda170b230baff812e8'" class='imgBoxLeft vueA'>
 					<span>建站历程</span>
 					<img :src="banner" />
 				</router-link>
@@ -17,7 +17,7 @@
 				<h3 v-scrollmove><p><span>心得笔记</span>  Journey</p></h3>
 				<ul class="template">
 					<li v-for = 'item in asideData.notes' v-scrollmove>
-						<router-link class=vueA :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">
+						<router-link class='vueA' :to="JSON.parse(item.label).Vpath + '/' + item._id" :title="item.title">
 							<img :src="item.imgUrl">
 						</router-link>
 						<span>{{item.title}}</span>
@@ -45,6 +45,7 @@
 
 			</ul>
 			<v-page @pPage='getPost' :all='all' :pCur='page' :imgflag='imgflag'></v-page>
+			<!-- <div id="uyan_frame"></div> -->
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>
@@ -87,6 +88,17 @@
 			var self = this;
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
+    //     	var body = document.getElementsByTagName('body')[0];
+    //     	var script_ = document.getElementById('script1');
+    //     	if(script_){
+    //     		body.removeChild(script_);
+    //     	}
+        	
+    // 　　　　var script = document.createElement("script");
+
+    //         script.setAttribute("src", "http://v3.uyan.cc/code/uyan.js");
+    //         script.setAttribute("id", "script");
+    //         body.appendChild(script);
         },
         beforeRouteEnter (to, from, next) {
         	let page = store.state.homePage;
@@ -143,6 +155,10 @@
 				});
 		    }
         },
+        mounted(){
+
+        	
+        }
 	}
 </script>
 <style scoped>
@@ -202,6 +218,7 @@
 	.imgBoxLeft img {
 		width: calc(100% - 30px);
 		height: 100%;
+		border: none;
 		margin-left: 30px;
 		box-sizing: border-box;
 		clear: left;
@@ -344,7 +361,8 @@
 		height: 80px;
 		background: #FFF;
 		padding: 4px;
-		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+		border: none;
+		/*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);*/
 		display: block;
 	}
 	

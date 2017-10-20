@@ -8,49 +8,54 @@ const multiparty = require('multiparty');
 
 const url_ = 'http://localhost:8686';//服务器地址（若前后端同一服务器，则值为''）
 //const url_ = '';//服务器地址（若前后端不同服务器，则值为'http://localhost:8686'）
+const loginType = 1;//1为登录登录，不为1则是注册接口。
 
 router.get('/login',function(req,res){
-    // schemaModels.user.create(req.query, function( err, result ){
-    //     if(err){
-    //         res.json({
-    //             status:-1,
-    //             msg:'注册失败'
-    //         });
-    //     }else{
-    //         res.json({
-    //             status:1,
-    //             msg:'注册成功'
-    //         });
-    //     }
-    // });
-    schemaModels.user.findOne({'userName':req.query.userName},'passWord', function( err, data ){
-        if(err){
-            res.json({
-                status:-1,
-                msg:'登录失败'
-            });
-        }else{
-            if(data!=null){
-                if(data.passWord == req.query.passWord){
-                    req.session.user = req.query.userName;
-                    res.json({
-                        status:1,
-                        msg:'登录成功'
-                    });
+
+    if(loginType == 1){
+        schemaModels.user.findOne({'userName':req.query.userName},'passWord', function( err, data ){
+            if(err){
+                res.json({
+                    status:-1,
+                    msg:'登录失败'
+                });
+            }else{
+                if(data!=null){
+                    if(data.passWord == req.query.passWord){
+                        req.session.user = req.query.userName;
+                        res.json({
+                            status:1,
+                            msg:'登录成功'
+                        });
+                    }else{
+                        res.json({
+                            status:-1,
+                            msg:'密码错误'
+                        });
+                    }
                 }else{
                     res.json({
                         status:-1,
-                        msg:'密码错误'
+                        msg:'用户名错误'
                     });
                 }
-            }else{
+            }
+        });
+    }else{
+        schemaModels.user.create(req.query, function( err, result ){
+            if(err){
                 res.json({
                     status:-1,
-                    msg:'用户名错误'
+                    msg:'注册失败'
+                });
+            }else{
+                res.json({
+                    status:1,
+                    msg:'注册成功'
                 });
             }
-        }
-    });
+        });
+    }
 });//登录
 
 router.post('/savearticle',function(req,res){
