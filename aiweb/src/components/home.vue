@@ -45,7 +45,7 @@
 
 			</ul>
 			<v-page @pPage='getPost' :all='all' :pCur='page' :imgflag='imgflag'></v-page>
-			<!-- <div id="uyan_frame"></div> -->
+			<div id="SOHUCS"></div>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>
@@ -88,17 +88,7 @@
 			var self = this;
         	self.$store.commit('changeAsideT');
         	self.$store.commit('changeMoveT');
-    //     	var body = document.getElementsByTagName('body')[0];
-    //     	var script_ = document.getElementById('script1');
-    //     	if(script_){
-    //     		body.removeChild(script_);
-    //     	}
-        	
-    // 　　　　var script = document.createElement("script");
-
-    //         script.setAttribute("src", "http://v3.uyan.cc/code/uyan.js");
-    //         script.setAttribute("id", "script");
-    //         body.appendChild(script);
+   
         },
         beforeRouteEnter (to, from, next) {
         	let page = store.state.homePage;
@@ -156,8 +146,41 @@
 		    }
         },
         mounted(){
-
-        	
+        	(function(){
+                var appid = 'cyth2U5GX';
+                var conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
+                var width = window.innerWidth || document.documentElement.clientWidth;
+                if (width < 960) {
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); }
+                else {
+                    var loadJs=function(d,a){
+                        var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+                        var b=document.createElement("script");
+                        b.setAttribute("type","text/javascript");
+                        b.setAttribute("charset","UTF-8");
+                        b.setAttribute("src",d);
+                        if(typeof a==="function"){
+                            if(window.attachEvent){
+                                b.onreadystatechange=function(){
+                                    var e=b.readyState;
+                                    if(e==="loaded"||e==="complete"){
+                                        b.onreadystatechange=null;
+                                        a()
+                                    }
+                                }
+                            }else{
+                                b.onload=a
+                            }
+                        }
+                        c.appendChild(b)
+                    };
+                    loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+                        window.changyan.api.config({
+                            appid:appid,conf:conf
+                        })
+                    });
+                }
+            })();
         }
 	}
 </script>
