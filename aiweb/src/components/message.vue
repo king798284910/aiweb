@@ -2,6 +2,7 @@
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
+            <div id="SOHUCS" sid="message"></div>
 		</main>
 		
 	</div>
@@ -24,44 +25,38 @@
             asideMoveIn(){
                 return this.$store.state.asideMoveFlag
             },
-            // asideMoveOut(){
-            //  return this.$store.state.changeMoveOutFlag
-            // },
         },
         mounted(){
+
             var self = this;
+            (function(){
+                var appid = 'cyth2U5GX',
+                conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
+                var doc = document,
+                s = doc.createElement('script'),
+                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                s.type = 'text/javascript';
+                s.charset = 'utf-8';
+                s.src =  ' http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                h.insertBefore(s,h.firstChild);
+            })();
         },
         activated(){
             var self = this;
             self.$store.commit('changeAsideF');
             self.$store.commit('changeMoveT');
-
         },
         beforeRouteEnter (to, from, next) {
             var self = this;
-            // store.commit('progressBarisNo');
-            // store.commit('progressBarShow_');
-            var time3 = setTimeout(function(){
-                store.commit('progressBarisOk');
-                store.commit('changeAsideF');
-                store.commit('changeMoveF');
-                next(vm => {
-                    vm.Rlist = [
-                        {path:'/home',text:'首页'},
-                        {path:'/message',text:'留言板'}
-                    ]
-                })
-            },0)
-            // getPost(to.params.id, (err, post) => {
-            //   if (err) {
-            //     // display some global error message
-            //     next(false)
-            //   } else {
-            //     next(vm => {
-            //       vm.post = post
-            //     })
-            //   }
-            // })
+            store.commit('progressBarisOk');
+            store.commit('changeAsideF');
+            store.commit('changeMoveF');
+            next(vm => {
+                vm.Rlist = [
+                    {path:'/home',text:'首页'},
+                    {path:'/message',text:'留言板'}
+                ]
+            });
         },
 	}
 </script>

@@ -47,49 +47,49 @@
         },
         mounted(){
             var self = this;
-            (function(){
-                var appid = 'cyth2U5GX';
-                var conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
-                var width = window.innerWidth || document.documentElement.clientWidth;
-                if (width < 960) {
-                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); }
-                else {
-                    var loadJs=function(d,a){
-                        var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
-                        var b=document.createElement("script");
-                        b.setAttribute("type","text/javascript");
-                        b.setAttribute("charset","UTF-8");
-                        b.setAttribute("src",d);
-                        if(typeof a==="function"){
-                            if(window.attachEvent){
-                                b.onreadystatechange=function(){
-                                    var e=b.readyState;
-                                    if(e==="loaded"||e==="complete"){
-                                        b.onreadystatechange=null;
-                                        a()
-                                    }
-                                }
-                            }else{
-                                b.onload=a
-                            }
-                        }
-                        c.appendChild(b)
-                    };
-                    loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-                        window.changyan.api.config({
-                            appid:appid,conf:conf
-                        })
-                    });
-                }
-            })();
+            // (function(){
+            //     var appid = 'cyth2U5GX';
+            //     var conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
+            //     var loadJs=function(d,a){
+            //         var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+            //         var b=document.createElement("script");
+            //         var e=document.getElementById('cyScript');
+            //         // if(e){
+            //         //     c.removeChild(e);
+            //         // }
+            //         b.setAttribute("type","text/javascript");
+            //         b.setAttribute("charset","UTF-8");
+            //         b.setAttribute("src",d);
+            //         // b.setAttribute("id",'cyScript');
+            //         if(typeof a==="function"){
+            //             if(window.attachEvent){
+            //                 b.onreadystatechange=function(){
+            //                     var e=b.readyState;
+            //                     if(e==="loaded"||e==="complete"){
+            //                         b.onreadystatechange=null;
+            //                         a()
+            //                     }
+            //                 }
+            //             }else{
+            //                 b.onload=a
+            //             }
+            //         }
+            //         c.appendChild(b)
+            //     };
+            //     loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+            //         window.changyan.api.config({
+            //             appid:appid,conf:conf
+            //         })
+            //     });
+            // })();
+            
+            
         },
         activated(){
             var self = this;
 
         },
         beforeRouteEnter (to, from, next) {
-            // store.commit('progressBarisNo');
-            // store.commit('progressBarShow_');
 
             axios.get('/api/getarticledetails',{
                 params:{
@@ -111,6 +111,17 @@
                     vm.Rlist = to.meta.concat(path_o);
                     store.commit('changeAsideT');
                     store.commit('changeMoveT');
+                    (function(){
+                        var appid = 'cyth2U5GX',
+                        conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
+                        var doc = document,
+                        s = doc.createElement('script'),
+                        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                        s.type = 'text/javascript';
+                        s.charset = 'utf-8';
+                        s.src =  ' http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                        h.insertBefore(s,h.firstChild);
+                    })();
                 })
             })
             .catch(function(err){
@@ -135,6 +146,17 @@
                     self.detailData = res.data.data
                 }
                 next();
+                (function(){
+                    var appid = 'cyth2U5GX',
+                    conf = 'prod_f35b415ad2428d11aa93a874f3f98c0d';
+                    var doc = document,
+                    s = doc.createElement('script'),
+                    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                    s.type = 'text/javascript';
+                    s.charset = 'utf-8';
+                    s.src =  ' http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                    h.insertBefore(s,h.firstChild);
+                })();
             })
             .catch(function(err){
                 console.log(err);
