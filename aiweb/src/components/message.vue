@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<main class='main' :class='{moveInMain:asideMoveIn,moveOutMain:!asideMoveIn}'>
 			<v-crumbs :Rlist='Rlist'></v-crumbs>
-            <div id="SOHUCS" sid="message"></div>
+            <div id="SOHUCS" class='cybox' sid="message"></div>
 		</main>
 		
 	</div>

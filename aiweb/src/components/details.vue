@@ -14,7 +14,7 @@
         	</div>
 
             <!--高速版-->
-            <div id="SOHUCS" :sid="sid"></div>
+            <div id="SOHUCS" class='cybox' :sid="sid"></div>
 		</main>
 		<aside class='aside' :class='{moveIn:asideMoveIn,moveOut:!asideMoveIn}'>
 			<v-side></v-side>

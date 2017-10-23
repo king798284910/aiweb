@@ -310,3 +310,13 @@ ul.l-article li {
     border-radius: 8px;
     background: rgba(253, 246, 227, 0.7);
 }
+.cybox{
+    padding: 0 15px 10px!important;
+    box-sizing: border-box;
+    background: rgba(255,255,255,.5)!important;
+    margin-top: 20px!important;
+}
+.changyan-overlay-outer{
+    left: 50% !important;
+    transform: translateX(-50%);
+}
