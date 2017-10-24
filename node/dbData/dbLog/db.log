@@ -3397,3 +3397,37 @@
 2017-10-23T22:56:53.303+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
 2017-10-23T22:56:53.304+0800 I CONTROL  [consoleTerminate] now exiting
 2017-10-23T22:56:53.305+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-10-24T22:59:14.138+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-24T22:59:14.606+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5496 port=9888 dbpath=D:\gitck\aiweb\node\dbData\dbData 64-bit host=LAPTOP-B72GA7SB
+2017-10-24T22:59:14.606+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] modules: none
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten] build environment:
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2017-10-24T22:59:14.607+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-24T22:59:14.608+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-24T22:59:14.608+0800 I CONTROL  [initandlisten] options: { config: "D:\gitck\aiweb\node\dbData\mongo_home.config", net: { port: 9888 }, storage: { dbPath: "D:\gitck\aiweb\node\dbData\dbData", engine: "wiredTiger", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "D:\gitck\aiweb\node\dbData\dbLog\db.log", quiet: false } }
+2017-10-24T22:59:14.609+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1326M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-10-24T22:59:15.018+0800 I CONTROL  [initandlisten] 
+2017-10-24T22:59:15.019+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-24T22:59:15.019+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-24T22:59:15.019+0800 I CONTROL  [initandlisten] 
+2017-10-24T22:59:15.439+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/gitck/aiweb/node/dbData/dbData/diagnostic.data'
+2017-10-24T22:59:15.443+0800 I NETWORK  [thread1] waiting for connections on port 9888
+2017-10-24T22:59:34.654+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:54409 #1 (1 connection now open)
+2017-10-24T22:59:34.665+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:54409 conn1: { driver: { name: "nodejs", version: "2.2.11" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.14393" }, platform: "Node.js v6.9.5, LE, mongodb-core: 2.0.13" }
+2017-10-24T23:14:50.703+0800 I -        [conn1] end connection 127.0.0.1:54409 (1 connection now open)
+2017-10-24T23:14:53.146+0800 I CONTROL  [thread2] CTRL_CLOSE_EVENT signal
+2017-10-24T23:14:53.146+0800 I CONTROL  [consoleTerminate] got CTRL_CLOSE_EVENT, will terminate after current cmd ends
+2017-10-24T23:14:53.147+0800 I NETWORK  [consoleTerminate] shutdown: going to close listening sockets...
+2017-10-24T23:14:53.147+0800 I NETWORK  [consoleTerminate] closing listening socket: 508
+2017-10-24T23:14:53.148+0800 I NETWORK  [consoleTerminate] shutdown: going to flush diaglog...
+2017-10-24T23:14:53.148+0800 I FTDC     [consoleTerminate] Shutting down full-time diagnostic data capture
+2017-10-24T23:14:53.151+0800 I STORAGE  [consoleTerminate] WiredTigerKVEngine shutting down
+2017-10-24T23:14:53.249+0800 I STORAGE  [consoleTerminate] shutdown: removing fs lock...
+2017-10-24T23:14:53.249+0800 I CONTROL  [consoleTerminate] now exiting
+2017-10-24T23:14:53.250+0800 I CONTROL  [consoleTerminate] shutting down with code:12
+2017-10-24T23:14:53.250+0800

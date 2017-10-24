@@ -197,7 +197,6 @@
                             editorContent:this.editorObj.txt.html(),
                             id:Math.floor(Math.random()*9000) + 1000,
                         }
-                console.log(this.previewData);
                 this.editorContent = this.editorObj.txt.html();
             },//获取文章内容并预览
             uploadArticle(){

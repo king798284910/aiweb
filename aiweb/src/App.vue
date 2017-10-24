@@ -51,7 +51,7 @@
 					</div>
 				</div>
 			</transition>
-			<footer class='footer'>备案/许可证编号为：粤ICP备17133228号</footer>
+			<footer class='footer'>粤ICP备17133228号</footer>
 		</div>
 		<div class='boxRight' :class='{active:active3}'>
 			<div class='pictureBox'></div>
@@ -797,7 +797,7 @@
 		color: #fff;
 		text-shadow: #fe5757 1px 1px 1px;
 		text-align: center;
-		background: rgba(255, 255, 255, 0.5);
+		background: rgba(124,189,253,.6);
 		position: absolute;
 		bottom: 0;
 	}
