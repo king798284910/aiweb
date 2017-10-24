@@ -64,7 +64,7 @@
         this.fastF = true;
         this.$refs.move.addEventListener("animationend", function(){
           self.$store.commit('progressBarHide');
-          this.removeEventListener('animationend',false);
+          this.removeEventListener('animationend',arguments.callee);
         },false);
       },
     },
