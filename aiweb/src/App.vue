@@ -346,12 +346,20 @@
 		},
 		methods: {
 			isIE() { //ie?
-			 	if (!!window.ActiveXObject || "ActiveXObject" in window){
-			  		return false;
-			 	}
-			  	else{
-			  		return true;
-			  	}
+			 	// if (!!window.ActiveXObject || "ActiveXObject" in window){
+			  // 		return false;
+			 	// }
+			  // 	else{
+			  // 		return true;
+			  // 	}
+			  return false
+			},
+			isFirefox(){
+				if (navigator.userAgent.indexOf("Firefox") > -1){
+					return true;
+				}else{
+					return false;
+				}
 			},
 			textMouseEnter_() {
 				if(this.textFlag) {
